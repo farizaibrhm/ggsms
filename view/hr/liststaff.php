@@ -1,53 +1,21 @@
 <?php
+require_once '../../model/DataSource.php';
+$database = new DataSource();
 include('../../controller/hr/HRController.php');
-require '../../model/db_connect.php';
-$sql= "select * from attendance";
-$sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM staffregistration";
+$staffname= $row['hrname'];
 $sendsql=mysqli_query($connection,$sql);
-if(isset($_POST["submit"])){
-	$latitude = $_POST["latitude"];
-	$longitude = $_POST["longitude"];
-  
-$employeename= $row["hrname"];
-$employeeemail= $row["hremail"];
-date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
-$clockintime= date("h:i:s");
-$clockouttime= date("0:0:0");
-$longitude =$_POST["longitude"];
-$latitude =$_POST["latitude"];
+$result = $database->select($sql);
 
 
-$sql = "INSERT INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
-
-$sendsql = mysqli_query($connection, $sql);
-$link="../hr/attendance.php";
-if($sendsql) 
-{
-   echo"<br>";
-   echo "<script>alert('Clocked In Successfully');document.location='../../view/hr/attendance.php'</script>";
-
-  }
-
-else   
-  {
-   echo"Query failed";
-  }
-
-
-}
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
   <head>
-   
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard HR</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
 
@@ -55,25 +23,15 @@ else
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
+    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     
+    <!-- Style -->
+    <link rel="stylesheet" href="../../assets/css/login/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="../../assets/css/main.css" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/assetsdashboard/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,9 +40,12 @@ else
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/main.css" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
@@ -94,15 +55,13 @@ else
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <!-- Helpers -->
-    <script src="../../assets/assetsdashboard/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
+    <title>HR Daily Activity Report History</title>
   </head>
   <body>
   
@@ -154,7 +113,7 @@ else
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item ">
+          <li class="menu-item">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -163,7 +122,7 @@ else
 
           <!-- Attendance  -->
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/attendanceform.php" class="menu-link ">
               <i class="menu-icon tf-icons bi bi-card-checklist"></i> 
               <div data-i18n="Layouts">Attendance</div>
@@ -237,7 +196,7 @@ else
             </a>
           </li>
 
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/liststaff.php" class="menu-link ">
               <i class="menu-icon bi bi-people-fill"></i>
               <div data-i18n="Form Elements">Staffs </div>
@@ -254,92 +213,94 @@ else
 
       
       </aside>
+      <!-- / Menu -->
 
-	<!-- / Menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mt-5 mb-3 clearfix">
+                    <script>
+          // Real time and date
+          function display_ct5() {
+          var x = new Date()
+          var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
 
-	<!-- Layout container -->
-  <div class="container" style="background-image: url('../../assets/img/bgattendance.webp')" >
-	<div class="row">
-	<div id="main" >
-		<br><br><br><br><br><br><br><br><br><br>
+          var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+          x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
+          document.getElementById('ct5').innerHTML = x1;
+          display_c5();
+          }
+          function display_c5(){
+          var refresh=1000; // Refresh rate in milli seconds
+          mytime=setTimeout('display_ct5()',refresh)
+          }
+          display_c5()
+          </script>
+          <span id='ct5'></span>
+          <br>
+          <br>
+        <!-- Real time and date -->
+                        <h4 class="pull-left"><b>List of Staffs</b></h4>
+                    </div>
+                    <br>
+                    <div class="phppot-container">
+		<form method="post" action="">
+			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Staff Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Department</th>
+					</tr>
+				</thead>
+<?php
+$did=0;
+if (is_array($result) || is_object($result)) {
+    foreach ($result as $key => $value) {
+		$did++;
+        ?>
 		
-				<div class="col-md-4 offset-md-4">
-					<div class="card">
-						
-						<div class="card-body">
-							<div class="text-center">
-								<h4>Take Attendance</h4>
-							</div>
-						
-							<div class="col-md-20">
-			      
-								<form class="myForm" method = "POST"  autocomplete="off">  
-										<center>
-										<input type="hidden" name="latitude" value="">
-                                        <input type="hidden" name="longitude" value="">
-										<button  type="submit" name="submit"  class='btn btn-sm btn-primary log_now col-sm-5'>CLOCK IN</button>
-										</center>
-										<br>
-								</form>
-									<script>
-                            function getLocation(){
-                            if(navigator.geolocation){
-                            navigator.geolocation.getCurrentPosition(showPosition,showError);
-                            }
-                          }
-                           function showPosition(position){
-                           document.querySelector('.myForm input[name="latitude"]').value = position.coords.latitude;
-                           document.querySelector('.myForm input[name="longitude"]').value = position.coords.longitude;
-                           }
-                           function showError(error){
-                           switch(error.code){
-                           case error.PERMISSION_DENIED:
-                           alert("You Must Allow The Request For Geolocation To Fill Out The Form");
-                           location.reload();
-                          break;
-                           }
-                          }
-                               </script> 
-									
-							</div>
-							
-							<form action = "../../controller/hr/SubmitAttendanceClockOutController.php" method = "POST">  
-									<center>
-											<button type="submit" class='btn btn-sm btn-primary log_now col-sm-5' data-id="2">CLOCK OUT</button>
-										</center>
-										<div class="loading" style="display: none"><center>Please wait...</center></div>
-									</form>
+	         <tr>
+					<td><?php echo  $did ;?></td>
+					<td><?php echo $result[$key]["staffname"];?></td>
+					<td><?php echo $result[$key]["staffemail"];?></td>
+					<td><?php echo $result[$key]["staffphonenum"];?></td>
+					<td><?php echo $result[$key]["staffdepartment"];?></td>
+				</tr>
+ <?php
+    }
+}
+?>
+			</table>
+		</form>
+	</div>
+                </div>
+            </div>        
+        </div>
+    </div>
+  <!-- / Layout wrapper -->
 
-						
-						</div>
-					</div>
-				</div>
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../../assets/vendor/js/bootstrap.js"></script>
+  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-		
-	</body>  
-		  </div>
-	  </div>
-  </div>
-<!-- / Layout wrapper -->
-<script src = "https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-<script src="../../assets/vendor/libs/popper/popper.js"></script>
-<script src="../../assets/vendor/js/bootstrap.js"></script>
-<script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../../assets/vendor/js/menu.js"></script>
+  <!-- endbuild -->
 
-<script src="../../assets/vendor/js/menu.js"></script>
-<!-- endbuild -->
+  <!-- Vendors JS -->
+  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
-<!-- Vendors JS -->
-<script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <!-- Main JS -->
+  <script src="../../assets/js/main.js"></script>
 
-<!-- Main JS -->
-<script src="../../assets/js/main.js"></script>
+  <!-- Page JS -->
+  <script src="../../assets/js/dashboards-analytics.js"></script>
 
-<!-- Page JS -->
-<script src="../../assets/js/dashboards-analytics.js"></script>
-
-</body>
-</html>
+  </body>
+  </html>

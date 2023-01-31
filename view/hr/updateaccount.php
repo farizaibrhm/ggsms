@@ -37,6 +37,15 @@ $result = $database->select($sql, $paramType, $paramValue);
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
+    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
     
 
     <!-- Google Fonts -->
@@ -89,8 +98,8 @@ $result = $database->select($sql, $paramType, $paramValue);
   </head>
   <body>
   
-    <!-- ======= Header ======= -->
-  <section id="topbar" class="topbar d-flex align-items-center">
+   <!-- ======= Header ======= -->
+   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -129,6 +138,7 @@ $result = $database->select($sql, $paramType, $paramValue);
     <div class="layout-container">
       <!-- Menu -->
 
+    
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
         <div class="menu-inner-shadow"></div>
@@ -136,7 +146,7 @@ $result = $database->select($sql, $paramType, $paramValue);
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item active">
+          <li class="menu-item ">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -212,7 +222,7 @@ $result = $database->select($sql, $paramType, $paramValue);
             </a>
           </li>
       
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/account.php" class="menu-link ">
               <i class="menu-icon bi bi-person-circle"></i>
               <div data-i18n="Form Elements">Account </div>
@@ -220,18 +230,21 @@ $result = $database->select($sql, $paramType, $paramValue);
           </li>
 
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="../hr/liststaff.php" class="menu-link ">
               <i class="menu-icon bi bi-people-fill"></i>
               <div data-i18n="Form Elements">Staffs </div>
             </a>
           </li>
 
           <li class="menu-item">
-            <a href="hrregisterstaff.php" class="menu-link ">
+            <a href="../hr/registerstaff.php" class="menu-link ">
               <i class="menu-icon bi bi-person-plus"></i>
               <div data-i18n="Form Elements">Register Staff</div>
             </a>
           </li>
+          
+
+      
       </aside>
       <!-- / Menu -->
 

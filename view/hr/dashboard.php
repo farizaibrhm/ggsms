@@ -205,28 +205,20 @@ $sendsql=mysqli_query($connection,$sql);
           </li>
 
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="../hr/liststaff.php" class="menu-link ">
               <i class="menu-icon bi bi-people-fill"></i>
               <div data-i18n="Form Elements">Staffs </div>
             </a>
           </li>
 
           <li class="menu-item">
-            <a href="hrregisterstaff.php" class="menu-link ">
+            <a href="../hr/registerstaff.php" class="menu-link ">
               <i class="menu-icon bi bi-person-plus"></i>
               <div data-i18n="Form Elements">Register Staff</div>
             </a>
           </li>
           
 
-          <li class="menu-item">
-            <a href="" class="menu-link ">
-              <i class="menu-icon tf-icons bx bx-detail"></i>
-              <div data-i18n="Form Elements">Change Password</div>
-            </a>
-          </li>
-
-          
       
       </aside>
       <!-- / Menu -->

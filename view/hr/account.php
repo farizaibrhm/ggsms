@@ -75,8 +75,8 @@ $result = $database->select($sql);
   </head>
   <body>
   
-    <!-- ======= Header ======= -->
-  <section id="topbar" class="topbar d-flex align-items-center">
+   <!-- ======= Header ======= -->
+   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -115,6 +115,7 @@ $result = $database->select($sql);
     <div class="layout-container">
       <!-- Menu -->
 
+    
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
         <div class="menu-inner-shadow"></div>
@@ -122,7 +123,7 @@ $result = $database->select($sql);
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -198,26 +199,29 @@ $result = $database->select($sql);
             </a>
           </li>
       
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+          <li class="menu-item active">
+            <a href="../hr/account.php" class="menu-link ">
               <i class="menu-icon bi bi-person-circle"></i>
               <div data-i18n="Form Elements">Account </div>
             </a>
           </li>
 
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="../hr/liststaff.php" class="menu-link ">
               <i class="menu-icon bi bi-people-fill"></i>
               <div data-i18n="Form Elements">Staffs </div>
             </a>
           </li>
 
           <li class="menu-item">
-            <a href="hrregisterstaff.php" class="menu-link ">
+            <a href="../hr/registerstaff.php" class="menu-link ">
               <i class="menu-icon bi bi-person-plus"></i>
               <div data-i18n="Form Elements">Register Staff</div>
             </a>
           </li>
+          
+
+      
       </aside>
       <!-- / Menu -->
 

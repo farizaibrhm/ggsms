@@ -129,7 +129,7 @@ $sendsql=mysqli_query($connection,$sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -208,7 +208,7 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
       
       <!-- Layout container -->
-    <div class="container">
+    <div class="container" style="background-color: white;" >
    
       <div class="row">
         <div class="col-md-9 contents">
@@ -239,7 +239,7 @@ $sendsql=mysqli_query($connection,$sql);
           <br>
         <!-- Real time and date -->
 
-              <h3>Request Leave</h3><br>
+              <h4><b>Request Leave<b></h4><br>
             </div>
             <form action = "../../controller/hr/SubmitLeaveRequestController.php" method = "POST">  
             <label><b> Start Date:</b> </label>
@@ -251,17 +251,6 @@ $sendsql=mysqli_query($connection,$sql);
               <div class="form-group first">
                 <input type="date" class="form-control"  id="leaveenddate" name="leaveenddate">
               </div>
-              <br>
-              <label><b> Department:</b> </label>
-              <div class="form-group first">
-               <select name="department" id="department"  class="form-control" >
-               <option value="Marketing and Business Development">Marketing and Business Development</option>
-               <option value="Operation and Sales">Operation and Sales</option>
-               <option value="Graphic Design">Graphic Design</option>
-               <option value="Product Development">Product Development</option>
-               <option value="Informatiom Technology">Information Technology</option>
-               </select>
-                </div>
                 <br>
                 <label> <b>Leave Reason:</b> </label>
                 <div class="form-group first">
@@ -280,12 +269,12 @@ $sendsql=mysqli_query($connection,$sql);
                         </textarea>
                       <br>
                         <div class="form-group first">
-                             <select name="leavestatus" id="leavestatus"  class="form-control" >
+                             <select name="leavestatus" id="leavestatus"  class="form-control">
                              <option value="Requesting">Requesting</option>
                              </select>
                               </div>
 
-                      <input type="submit" value="Request Leave" name="submit" class="btn btn-block btn-success">
+                      <input type="submit" value="Request Leave" name="submit" class="btn btn-primary">
                       <button type="reset" value="Reset" class="btn btn-block btn-cancel">Reset</button>
               <br>
               <br>

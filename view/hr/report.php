@@ -138,7 +138,7 @@ $result = $database->select($sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -216,7 +216,7 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: white;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
@@ -241,13 +241,13 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h3 class="pull-left">Daily Activity Reports</h3>
+                        <h4><b>Daily Activity Reports</b></h4>
                     </div>
                     <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="striped">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>No</th>
@@ -274,7 +274,7 @@ if (is_array($result) || is_object($result)) {
 					<td><a
 						href="../hr/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/hr/deletereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>
+            <a href="../../controller/hr/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

@@ -4,7 +4,7 @@ $database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $employeename= $row['hrname'];
-$sql = "SELECT * FROM attendance where employeename='$employeename' order by clockintime desc, date desc";
+$sql = "SELECT * FROM attendance where employeename='$employeename' order by date desc";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -139,7 +139,7 @@ $result = $database->select($sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -220,22 +220,22 @@ $result = $database->select($sql);
 	<!-- Layout container -->
 
   
-  <div class="container" >
+  <div class="container" style="background-color: white;" >
 	<div class="row">
 	<div id="main" >
 	  <br>
 	  <br>
 	  <center>
         <h4><b> Attendance History </b></h4>
-      <table class="table table-sm" cellspacing = 0 cellpadding = 40 style="background-color: white;">
+      <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
       <tr>
-        <td>#</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Date </td>
-        <td>Clock In Time </td>
-        <td>Clock Out Time </td>
-        <td>Maps</td>
+        <td><b>#</b></td>
+        <td><b>Name</b></td>
+        <td><b>Email</b></td>
+        <td><b>Date </b></td>
+        <td><b>Clock In Time </b></td>
+        <td><b>Clock Out Time </b></td>
+        <td><b>Maps</b></td>
       </tr>
       <hr>
 
@@ -253,7 +253,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["date"];?></td>
 					<td><?php echo $result[$key]["clockintime"];?></td>
           <td><?php echo $result[$key]["clockouttime"];?></td>
-          <td style = "width: 200px; height: 200px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
+          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
 				</tr>
  <?php
     }

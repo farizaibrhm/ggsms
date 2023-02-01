@@ -1,12 +1,14 @@
 <?php
 include('../../controller/hr/HRController.php');
 require '../../model/db_connect.php';
-$sql= "select * from attendance";
+$sql="SELECT * from attendance";
 $sql="SELECT * FROM hrlogin";
 $sendsql=mysqli_query($connection,$sql);
+$date= date("y-m-d");
 if(isset($_POST["submit"])){
-	$latitude = $_POST["latitude"];
-	$longitude = $_POST["longitude"];
+
+$latitude = $_POST["latitude"];
+$longitude = $_POST["longitude"];
   
 $employeename= $row["hrname"];
 $employeeemail= $row["hremail"];
@@ -17,9 +19,10 @@ $clockouttime= date("0:0:0");
 $longitude =$_POST["longitude"];
 $latitude =$_POST["latitude"];
 
+$sql = "INSERT IGNORE INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
+VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude') SELECT FROM attendance WHERE date=curdate()";
 
-$sql = "INSERT INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
+$sql = "UPDATE attendance SET clockintime=NOW()";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";
@@ -32,7 +35,8 @@ if($sendsql)
 
 else   
   {
-   echo"Query failed";
+    echo "<script>alert('You have clocked in your time.');document.location='../../view/hr/attendance.php'</script>";
+
   }
 
 
@@ -178,7 +182,7 @@ else
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -258,25 +262,28 @@ else
 	<!-- / Menu -->
 
 	<!-- Layout container -->
-  <div class="container" style="background-image: url('../../assets/img/bgattendance.webp')" >
+  <div class="container" >
 	<div class="row">
 	<div id="main" >
-		<br><br><br><br><br><br><br><br><br><br>
-		
-				<div class="col-md-4 offset-md-4">
-					<div class="card">
-						
+		<br><br><br><br>
+					<center><div class="card" style="width:15cm;">
 						<div class="card-body">
 							<div class="text-center">
-								<h4>Take Attendance</h4>
+                <img src="../../assets/img/companylogo.jpg">
+              <h3><b>Take Attendance</b><h3>
+              <iframe src="https://free.timeanddate.com/clock/i8pa0rrx/n1228/fn7/fs20/tct/pct/ftb/th2" frameborder="0" width="128" height="30" allowtransparency="true"></iframe>
+<br>
+              <iframe src="https://free.timeanddate.com/clock/i8pa0oy2/n1228/tt1/tw0" frameborder="0" width="129" height="19"></iframe>
+								<br><br>
 							</div>
 						
 							<div class="col-md-20">
-			      
+			      <body onload="getLocation()">
 								<form class="myForm" method = "POST"  autocomplete="off">  
-										<center>
+										
+                    <input type="hidden" name="longitude" value="">
 										<input type="hidden" name="latitude" value="">
-                                        <input type="hidden" name="longitude" value="">
+                    <center>
 										<button  type="submit" name="submit"  class='btn btn-sm btn-primary log_now col-sm-5'>CLOCK IN</button>
 										</center>
 										<br>
@@ -314,7 +321,11 @@ else
 						</div>
 					</div>
 				</div>
-
+  </div>
+  </div>
+  </div>
+    </div>
+   </div>
 		
 	</body>  
 		  </div>

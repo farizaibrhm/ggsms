@@ -152,7 +152,7 @@ $result = $database->select($sql, $paramType, $paramValue);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -231,7 +231,7 @@ $result = $database->select($sql, $paramType, $paramValue);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page">
+      <div class="layout-page" style="background-color: white;">
  
     <div class="wrapper">
    
@@ -239,7 +239,7 @@ $result = $database->select($sql, $paramType, $paramValue);
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <h3 class="pull-left">Update Leave Request </h3>
+                        <h3><b>Update Leave Request</b> </h3>
                     </div>
                     <div class="phppot-container">
         <form name="frmUser" method="post" action="">
@@ -248,19 +248,21 @@ $result = $database->select($sql, $paramType, $paramValue);
                 <div class="row">
                     <label for="leavestartdate">Leave Start Date <span
                         class="error-color" id="leavestartdate_error"></span>
-                    </label>
-                    <input type="date" name="leavestartdate" id="leavestartdate" value="<?php echo $result[0]['leavestartdate']; ?>">
+                    </label><br>
+                    <input type="date" name="leavestartdate" id="leavestartdate"  class="form-control" value="<?php echo $result[0]['leavestartdate']; ?>">
                 </div>
             </div>
             <div>
-            <div>
+            <div><br>
                 <div class="row">
                     <label for="leaveenddate">Leave End Date<span
                         class="error-color" id="leaveend_error"></span>
                     </label>
-                    <input type="date" name="leaveenddate" id="leaveenddate" value="<?php echo $result[0]['leaveenddate']; ?>">
+                    <input type="date" name="leaveenddate" id="leaveenddate"  class="form-control" value="<?php echo $result[0]['leaveenddate']; ?>">
                 </div>
             </div>
+            </div>
+            <br>
             <div>
                 <div class="row">
                     <label for="leavenotes">Leave Reason <span
@@ -276,23 +278,20 @@ $result = $database->select($sql, $paramType, $paramValue);
                      </select>
                 </div>
             </div>
-            <div>
+            <div><br>
                 <div class="row">
                     <label for="leavenotes">Leave Notes <span
                         class="error-color" id="leavenotes_error"></span>
                     </label>
-                    <input type="text" name="leavenotes" id="leavenotes" value="<?php echo $result[0]['leavenotes']; ?>">
+                    <input type="text" name="leavenotes" id="leavenotes"  class="form-control" value="<?php echo $result[0]['leavenotes']; ?>">
                 </div>
             </div>
           <br>
-            <div class="row">
-                <input type="submit" name="submit" value="Save" class="btn btn-block btn-success">
-            </div>
+                <input type="submit" name="submit" value="Update" class="btn btn-primary">
+
             <br>
-            <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
-            <p>
-                <a href="../hr/leaverequest.php" class="font-bold"> View Leave Requests</a>
-            </p>
+            <div class="message"><?php if(isset($message)) { echo "<script>alert('Leave Request Updated Successfully');document.location='../../view/hr/leaverequest.php'</script>"; } ?></div>
+       
         </form>
     </div>
 <br>

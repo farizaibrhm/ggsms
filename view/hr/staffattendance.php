@@ -1,14 +1,18 @@
 <?php
-include('../../controller/hr/PasswordGeneratorController.php'); // Includes Login Script
+include('../../controller/hr/HRController.php');
+$sql="SELECT * FROM hrlogin";
+$employeename= $row['hrname'];
+$sendsql=mysqli_query($connection,$sql);
 ?>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-
-    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <title>Attendance History</title>
+
+	 <!-- Required meta tags -->
+	 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
 
@@ -17,7 +21,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
     <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,29 +38,13 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
     <!-- Template Main CSS File -->
     <link href="../../assets/css/main.css" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/assetsdashboard/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
@@ -68,21 +56,13 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
 
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
-    <script src="../../assets/assetsdashboard/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
-
-    <title>Login</title>
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
   </head>
   <body>
   
- <!-- ======= Header ======= -->
- <section id="topbar" class="topbar d-flex align-items-center">
+<!-- ======= Header ======= -->
+<section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -129,7 +109,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item">
+          <li class="menu-item ">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -145,7 +125,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
             </a>
           </li>
 
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/attendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-clock-history"></i>
               <div data-i18n="Account Settings">Attendance History</div>
@@ -219,7 +199,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/registerstaff.php" class="menu-link ">
               <i class="menu-icon bi bi-person-plus"></i>
               <div data-i18n="Form Elements">Register Staff</div>
@@ -229,73 +209,87 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
 
       
       </aside>
-      <!-- / Menu -->
+	<!-- / Menu -->
 
-      <!-- Layout container -->
-      <div class="layout-page" style="background-color: white;">
-        <!-- Navbar -->
+	<!-- Layout container -->
 
-
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
-        <div class="content-wrapper">
-          <!-- Content -->
-          <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="../../assets/img/staffregistericon.png" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4">
-              <h3><b>Register Staff</b></h3>
-            </div>
-            <form action = "hrregisterstaff.php" method = "POST">  
-              <div class="form-group first">
-                <label for="staffname">Name</label>
-                <input type = "text" class="form-control" id ="staffname" name  = "staffname" />  
-              </div>
-              <span class="error"><?php echo $nameError;?></span>
-              <div class="form-group last mb-4">
-                <label for="staffemail">Email</label>
-                <input type = "text" class="form-control" id ="staffemail" name  = "staffemail" />  
-              </div>
-              <span class="error"><?php echo $emailError;?></span>
-              <input type="submit" value="Sign Up" name="submit" class="btn btn-block btn-primary">
-              <span class="success"><?php echo $successMessage;?></span>
-              <span class="success"><?php echo $passwordMessage;?></span>
-            </form>
-            </div>
-          </div>
-          
-        </div>
-        
-      </div>
-    </div>
+  
+  <div class="container" style="background-color: white;" >
+	<div class="row">
+	<div id="main" >
+	  <br>
+	  <br>
+	  <center>
+        <h4><b> Staff Attendance </b></h4>
+        <?php
+                    // Include config file
+                    require_once "../../model/db_connect.php";
+                    
+                    // Attempt select query execution
+                    $sql = "SELECT * FROM attendance where employeename!='$employeename'";
+                    if($con = mysqli_query($con, $sql)){
+                        if(mysqli_num_rows($con) > 0){
+                            echo '<table class="table table-bordered">';
+                                echo "<thead>";
+                                    echo "<tr>";
+                                        echo "<th>No</th>";
+                                        echo "<th>Staff Name</th>";
+                                        echo "<th>Date</th>";
+                                        echo "<th size='5'>Ongoing Task</th>";
+                                        echo "<th size='5'>Done Task</th>";
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                $did=0;
+                                while($row = mysqli_fetch_array($con)){
+                                    $did++;
+                                    echo "<tr>";
+                                        echo "<td>" . $did . "</td>";
+                                        echo "<td>" . $row['staffname'] . "</td>";
+                                        echo "<td>" . $row['reportdate'] . "</td>";
+                                        echo "<td>" . $row['reportongoingtask'] . "</td>";
+                                        echo "<td>" . $row['reportdonetask'] . "</td>";
+                                    echo "</tr>";
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            mysqli_free_result($con);
+                        } else{
+                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                        }
+                    } else{
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+ 
+                    ?>
+    </table>
+    <br>
+  <br>
+					  
+		  </div>
+	  </div>
   </div>
-  <!-- / Layout wrapper -->
+<!-- / Layout wrapper -->
 
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../../assets/vendor/js/bootstrap.js"></script>
-  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+<script src="../../assets/vendor/libs/popper/popper.js"></script>
+<script src="../../assets/vendor/js/bootstrap.js"></script>
+<script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="../../assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
+<script src="../../assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
 
-  <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<!-- Vendors JS -->
+<script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
-  <!-- Main JS -->
-  <script src="../../assets/js/main.js"></script>
+<!-- Main JS -->
+<script src="../../assets/js/main.js"></script>
 
-  <!-- Page JS -->
-  <script src="../../assets/js/dashboards-analytics.js"></script>
+<!-- Page JS -->
+<script src="../../assets/js/dashboards-analytics.js"></script>
 
-  </body>
-  </html>
+</body>
+</html>

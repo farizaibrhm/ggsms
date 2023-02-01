@@ -7,7 +7,6 @@ $paramValue = array(
     $_GET["leaveid"]
 );
 $database->delete($sql, $paramType, $paramValue);
-$delmessage = "Leave request deleted successfully";
-header("Location:../hr/leaverequest.php");
+echo" <script>alert('Leave Request Deleted Successfully');document.location='../../view/hr/leaverequest.php'</script>";?>";
 exit();
 ?>

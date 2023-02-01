@@ -138,7 +138,7 @@ $result = $database->select($sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -217,7 +217,7 @@ $result = $database->select($sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page">
+      <div class="layout-page" style="background-color: white;">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -246,13 +246,13 @@ $result = $database->select($sql);
           <br>
         <!-- Real time and date -->
 
-                        <h3 class="pull-left">Staff Leave Requests </h3>
+                        <h4><b>Staff Leave Requests</b> </h4>
                     </div>
                     <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="striped">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>No</th>

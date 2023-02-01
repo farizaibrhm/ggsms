@@ -140,7 +140,7 @@ $result = $database->select($sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-clock-history"></i>
               <div data-i18n="Account Settings">Attendance History</div>
             </a>
@@ -232,7 +232,7 @@ $result = $database->select($sql);
         <div class="content-wrapper">
           
   <div class="container-xxl flex-grow-1 container-p-y">
-  <h6><b> Dashboard: Human Resources Officer</b> </h6>
+  <h6><b> Account </b> </h6>
   <script>
 
   // Real time and date

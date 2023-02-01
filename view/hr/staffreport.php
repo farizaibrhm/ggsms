@@ -131,7 +131,7 @@ $sendsql=mysqli_query($connection,$sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -209,7 +209,7 @@ $sendsql=mysqli_query($connection,$sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: white;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-4 mb-3 clearfix">
@@ -234,7 +234,7 @@ $sendsql=mysqli_query($connection,$sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h3 class="pull-left">Staff Daily Activity Reports</h3>
+                        <h3><b>Staff Daily Activity Reports</b></h3>
                     </div>
                     <br>
                     <?php
@@ -245,7 +245,7 @@ $sendsql=mysqli_query($connection,$sql);
                     $sql = "SELECT * FROM report where staffname!='$staffname'";
                     if($con = mysqli_query($con, $sql)){
                         if(mysqli_num_rows($con) > 0){
-                            echo '<table class="table table-bordered table-striped">';
+                            echo '<table class="table table-bordered">';
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>No</th>";

@@ -151,7 +151,7 @@ $result = $database->select($sql, $paramType, $paramValue);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -259,7 +259,7 @@ $result = $database->select($sql, $paramType, $paramValue);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h3 class="pull-left">Update Daily Activity Report </h3>
+                        <h3><b>Update Daily Activity Report</b> </h3>
                     </div>
                     <div class="phppot-container">
         <form name="frmUser" method="post" action="">
@@ -269,31 +269,31 @@ $result = $database->select($sql, $paramType, $paramValue);
                     <label for="reportdate">Report Date <span
                         class="error-color" id="reportdate_error"></span>
                     </label>
-                    <input type="date" name="reportdate" id="reportdate" value="<?php echo $result[0]['reportdate']; ?>">
+                    <input type="date" name="reportdate" id="reportdate" class="form-control"  value="<?php echo $result[0]['reportdate']; ?>">
                 </div>
             </div>
-            <div>
+            <div><br>
                 <div class="row">
                     <label for="reportongoingtask">Ongoing Task<span
                         class="error-color" id="reportongoingtask_error"></span>
                     </label>
-                    <input type="text" name="reportongoingtask" id="reportongoingtask" value="<?php echo $result[0]['reportongoingtask']; ?>">
+                    <input type="text" name="reportongoingtask" id="reportongoingtask" class="form-control"  value="<?php echo $result[0]['reportongoingtask']; ?>">
                 </div>
             </div>
-            <div>
+            <div><br>
                 <div class="row">
                     <label for="reportdonetask">Done Task <span
                         class="error-color" id="reportdonetask_error"></span>
                     </label>
-                    <input type="text" name="reportdonetask" id="reportdonetask" value="<?php echo $result[0]['reportdonetask']; ?>">
+                    <input type="text" name="reportdonetask" id="reportdonetask" class="form-control"  value="<?php echo $result[0]['reportdonetask']; ?>">
                 </div>
             </div>
           <br>
             <div class="row">
-                <input type="submit" name="submit" value="Save" class="btn btn-block btn-success">
+                <input type="submit" name="submit" value="Save" class="btn btn-block btn-primary">
             </div>
             <br>
-            <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
+            <div class="message"><?php if(isset($message)) { echo "<script>alert('Report Updated Successfully');document.location='../../view/hr/report.php'</script>"; } ?></div>
           
         </form>
     </div>

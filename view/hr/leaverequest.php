@@ -4,6 +4,8 @@ $database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $staffname= $row['hrname'];
+$hremail= $row['hremail'];
+$hrdeptname= $row['hrdeptname'];
 $sql = "SELECT * FROM leaverequest where staffname='$staffname'";
 $result = $database->select($sql);
 ?>
@@ -137,7 +139,7 @@ $result = $database->select($sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -210,12 +212,10 @@ $result = $database->select($sql);
             </a>
           </li>
           
-
-      
       </aside>
       <!-- / Menu -->
       <!-- Layout container -->
-      <div class="layout-page">
+      <div class="layout-page" style="background-color: white;">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -242,14 +242,20 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h3><b>Leave Requests Details</b></h3>
-                        <h6 >Staff Name: <?php echo $login_name?></h6>
+                        <h4><b>Leave Requests Details</b></h4><br>
+                        <table class="table-light">
+                          <tr>
+                        <td><h6 >Name: <?php echo $staffname?></h6>
+                        <h6 >Email: <?php echo $hremail?></h6>
+                        <h6 >Department Name: <?php echo $hrdeptname?></h6></td>
+                          </tr>
+                        </table>
                     </div>
                     <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="striped">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>No</th>
@@ -258,7 +264,7 @@ $result = $database->select($sql);
 						<th>Leave Reason</th>
 						<th>Leave Notes</th>
 						<th>Leave Status</th>
-						<th>Actions</th>
+            <th>Actions</th>
 					</tr>
 				</thead>
 <?php
@@ -275,7 +281,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["leavereason"];?></td>
 					<td><?php echo $result[$key]["leavenotes"];?></td>
 					<td><?php echo $result[$key]["leavestatus"];?></td>
-					<td><a
+          <td><a
 						href="../hr/updateleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
             <a href="../../controller/hr/DeleteLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>

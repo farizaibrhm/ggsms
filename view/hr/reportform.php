@@ -129,7 +129,7 @@ $sendsql=mysqli_query($connection,$sql);
           </li>
 
           <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
+            <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
@@ -208,16 +208,37 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-    <div class="container">
+    <div class="container" style="background-color: white;">
       <div class="row">
         <div class="col-md-9 contents">
           <div class="row justify-content-center">
             <div class="col-md-15">
               <div class="mb-8">
                 <br>
-              <h3>Daily Activity Report</h3>
+                <script>
+          // Real time and date
+          function display_ct5() {
+          var x = new Date()
+          var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
+
+          var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+          x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
+          document.getElementById('ct5').innerHTML = x1;
+          display_c5();
+          }
+          function display_c5(){
+          var refresh=1000; // Refresh rate in milli seconds
+          mytime=setTimeout('display_ct5()',refresh)
+          }
+          display_c5()
+          </script>
+          <span id='ct5'></span>
+          <br>
+          <br>
+        <!-- Real time and date -->
+              <h4><b>Daily Activity Report<b></h4>
             </div>
-            <form action = "hrsubmitdailyactivityreport.php" method = "POST">  
+            <form action = "../../controller/hr/SubmitReportController.php" method = "POST">  
             <label> Date: </label>
               <div class="form-group first">
                 <input type="date" class="form-control"  id="reportdate" name="reportdate">
@@ -227,12 +248,12 @@ $sendsql=mysqli_query($connection,$sql);
                       <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20">
                         </textarea>
                         <br>
-                      <label> Date Task: </label>
+                      <label> Done Task: </label>
                       <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20">
                         </textarea>
                         <br>
               
-                      <input type="submit" value="Submit Report" name="submit" class="btn btn-block btn-success">
+                      <input type="submit" value="Submit Report" name="submit" class="btn btn-primary">
                       <button type="reset" value="Reset" class="btn btn-block btn-cancel">Reset</button>
               <br>
               <br>

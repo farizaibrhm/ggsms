@@ -253,7 +253,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
               <div class="mb-4">
               <h3><b>Register Staff</b></h3>
             </div>
-            <form action = "hrregisterstaff.php" method = "POST">  
+            <form action = "../hr/registerstaff.php" method = "POST">  
               <div class="form-group first">
                 <label for="staffname">Name</label>
                 <input type = "text" class="form-control" id ="staffname" name  = "staffname" />  
@@ -264,7 +264,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
                 <input type = "text" class="form-control" id ="staffemail" name  = "staffemail" />  
               </div>
               <span class="error"><?php echo $emailError;?></span>
-              <input type="submit" value="Sign Up" name="submit" class="btn btn-block btn-primary">
+              <input type="submit" value="Register" name="submit" class="btn btn-block btn-primary">
               <span class="success"><?php echo $successMessage;?></span>
               <span class="success"><?php echo $passwordMessage;?></span>
             </form>

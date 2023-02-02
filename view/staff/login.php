@@ -72,6 +72,7 @@ include('D:\xampp\htdocs\ggsms\controller\staff\LoginController.php');
             <ul>
               <li><a href="../hr/login.php">HR</a></li>
               <li><a href="../staff/login.php">Staff</a></li>
+              <li><a href="view/manager/login.php">Manager</a></li>
             </ul>
           </li>
           
@@ -90,7 +91,7 @@ include('D:\xampp\htdocs\ggsms\controller\staff\LoginController.php');
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="../../assets/img/staffregistericon.png" alt="Image" class="img-fluid">
+          <img src="../../assets/img/stafflogin.jpg" alt="Image" class="img-fluid" width="90%">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">

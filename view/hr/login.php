@@ -70,8 +70,9 @@ include('D:\xampp\htdocs\ggsms\controller\hr\LoginController.php'); // Includes 
           <li><a href="../../index.php">Home</a></li>
           <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="../hr/login.php">HR</a></li>
+              <li><a href="view/hr/login.php">HR</a></li>
               <li><a href="../staff/login.php">Staff</a></li>
+              <li><a href="view/manager/login.php">Manager</a></li>
             </ul>
           </li>
           
@@ -90,7 +91,7 @@ include('D:\xampp\htdocs\ggsms\controller\hr\LoginController.php'); // Includes 
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="../../assets/img/login/loginimg.png" alt="Image" class="img-fluid">
+          <img src="../../assets/img/login/loginimg.png" alt="Image" class="img-fluid" width="100%">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">

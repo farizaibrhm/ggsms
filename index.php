@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="assets/img/companylogo.jpg" type="image/icon type">
   <title>Global Grandeur Sdn Bhd Staff Management System</title>
   <meta content="" name="description">
@@ -48,7 +48,6 @@
   </section><!-- End Top Bar -->
 
   <header id="header" class="header d-flex align-items-center">
-
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="../ggsms/index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -61,6 +60,8 @@
             <ul>
               <li><a href="view/hr/login.php">HR</a></li>
               <li><a href="view/staff/login.php">Staff</a></li>
+              <li><a href="view/manager/login.php">Manager</a></li>
+
             </ul>
             
           </li>
@@ -76,12 +77,12 @@
   <section id="hero" class="hero">
     <div class="container position-relative">
       <div class="row gy-5" data-aos="fade-in">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+        <div class="col-lg-6 order-4 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
           <h2>Welcome to <span>Global Grandeur Sdn Bhd</span></h2>
           <h3>Staff Management System</h3>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
-          <img src="assets/img/track.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+          <img src="assets/img/track.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" width="200%">
         </div>
       </div>
     </div>
@@ -89,8 +90,6 @@
     </div>
   </section>
   
-  <!-- End Hero Section -->
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>

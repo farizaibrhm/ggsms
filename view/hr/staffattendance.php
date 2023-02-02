@@ -125,14 +125,14 @@ $sendsql=mysqli_query($connection,$sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item ">
             <a href="../hr/attendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-clock-history"></i>
               <div data-i18n="Account Settings">Attendance History</div>
             </a>
           </li>
 
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>

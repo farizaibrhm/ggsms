@@ -1,24 +1,35 @@
 <?php
+include('../../controller/staff/StaffController.php');
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM staffregistration";
-$employeename= $row['hrname'];
-$sql = "SELECT * FROM attendance where employeename!='$employeename' order by date desc";
-$sendsql=mysqli_query($connection,$sql);
-$result = $database->select($sql);
-
-
+if (count($_POST) > 0) {
+    $sql = "UPDATE staffregistration set staffphonenum=?, staffdeptname=? WHERE staffid=?";
+    $paramType = 'ssi';
+    $paramValue = array(
+        $_POST["staffphonenum"],
+        $_POST["staffdeptname"],
+        $_GET["staffid"]
+    );
+    $database->execute($sql, $paramType, $paramValue);
+    $message = "<script>alert('Account Updated Successfully');document.location='../../view/staff/account.php'</script>";
+}
+$sql = "select * from staffregistration where staffid=?";
+$paramType = 'i';
+$paramValue = array(
+    $_GET["staffid"]
+);
+$result = $database->select($sql, $paramType, $paramValue);
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Attendance History</title>
 
-	 <!-- Required meta tags -->
-	 <meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
+    <title>Dashboard HR</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
 
@@ -27,7 +38,7 @@ $result = $database->select($sql);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
     <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,21 +47,35 @@ $result = $database->select($sql);
       rel="stylesheet"
     />
     
-    <!-- Style -->
-    <link rel="stylesheet" href="../../assets/css/login/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+    <!-- Vendor CSS Files -->
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <!-- Template Main CSS File -->
     <link href="../../assets/css/main.css" rel="stylesheet">
 
-    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/assetsdashboard/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
@@ -60,15 +85,21 @@ $result = $database->select($sql);
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../../assets/assetsdashboard/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
-    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
+
   </head>
   <body>
   
-<!-- ======= Header ======= -->
-<section id="topbar" class="topbar d-flex align-items-center">
+   <!-- ======= Header ======= -->
+   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -87,12 +118,12 @@ $result = $database->select($sql);
   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="../staff/dashboard.php" class="logo d-flex align-items-left">
+      <a href="../hr/dashboard.php" class="logo d-flex align-items-left">
         <img src="../../assets/img/companylogo.jpg" alt="Company's Logo">
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/staff/StaffController.php">Sign Out</a></li>
+          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -131,7 +162,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/attendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-clock-history"></i>
               <div data-i18n="Account Settings">Attendance History</div>
@@ -191,7 +222,7 @@ $result = $database->select($sql);
             </a>
           </li>
       
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/account.php" class="menu-link ">
               <i class="menu-icon bi bi-person-circle"></i>
               <div data-i18n="Form Elements">Account </div>
@@ -215,77 +246,134 @@ $result = $database->select($sql);
 
       
       </aside>
-	<!-- / Menu -->
+      <!-- / Menu -->
 
-	<!-- Layout container -->
+      <!-- Layout container -->
+      <div class="layout-page">
 
-  
-  <div class="container" style="background-color: white;" >
-	<div class="row">
-	<div id="main" >
-	  <br>
-	  <br>
-	  <center>
-        <h4><b> Attendance History </b></h4>
-      <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
-      <tr>
-        <td><b>#</b></td>
-        <td><b>Name</b></td>
-        <td><b>Email</b></td>
-        <td><b>Date </b></td>
-        <td><b>Clock In Time </b></td>
-        <td><b>Clock Out Time </b></td>
-        <td><b>Maps</b></td>
-      </tr>
-      <hr>
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          
+  <div class="container-xxl flex-grow-1 container-p-y">
+  <h6><b> Dashboard: Human Resources Officer</b> </h6>
+  <script>
 
-      <?php
-$did=0;
-if (is_array($result) || is_object($result)) {
-    foreach ($result as $key => $value) {
-		$did++;
-        ?>
-		
-	         <tr>
-					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["employeename"];?></td>
-					<td><?php echo $result[$key]["employeeemail"];?></td>
-					<td><?php echo $result[$key]["date"];?></td>
-					<td><?php echo $result[$key]["clockintime"];?></td>
-          <td><?php echo $result[$key]["clockouttime"];?></td>
-          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
-				</tr>
- <?php
-    }
-}
-?>
-    </table>
-    <br>
+  // Real time and date
+  function display_ct5() {
+  var x = new Date()
+  var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
+
+  var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+  x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
+  document.getElementById('ct5').innerHTML = x1;
+  display_c5();
+  }
+  function display_c5(){
+  var refresh=1000; // Refresh rate in milli seconds
+  mytime=setTimeout('display_ct5()',refresh)
+  }
+  display_c5()
+  </script>
+  <span id='ct5'></span>
   <br>
-					  
-		  </div>
-	  </div>
+  <br>
+<!-- Real time and date -->
+          <!-- Content -->
+    <div class="row">
+    <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+
+<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3"><?php echo $staffname?></h5>
+            <p class="text-muted mb-1"><?php echo $staffdeptname?></p>
+            <div>
+              <br>
+  
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+          <form name="frmUser" method="post" action="">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Name</p>
+              </div>
+              <div class="col-sm-9">
+              <?php echo $staffname; ?>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+              <?php echo $staffemail; ?>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+              <input type="text" name="staffphonenum" id="staffphonenum"  class="form-control" value="<?php echo $result[0]['staffphonenum']; ?>">
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Department Name</p>
+              </div>
+              <div class="col-sm-9">
+              <select name="staffdeptname" id="staffdeptname"  class="form-control" value="<?php echo $result[0]['staffdeptname']; ?>" >
+                     <option value="Manager">Manager</option>
+                     <option value="Human Resources">Human Resources</option>
+                     <option value="Operation and Sales">Operation and Sales</option>
+                     <option value="Marketing and Business Development">Marketing and Business Development</option>
+                     <option value="Product Development">Product Development</option>
+                     <option value="Operation Executive"> Operation Executive</option>
+                     <option value="Marketing Executive">Marketing Executive</option>
+                     <option value="Information Technology">Information Technology</option>
+                     <option value="Others">Others</option>
+                     </select>
+              </div>
+           
+              </div>
+              <br>
+              <br>
+
+              <div class="row">
+                <input type="submit" name="submit" value="Save" class="btn btn-primary">
+            </div>
+            <br>
+            <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
+            </form>
+          </div>
+         
+          
+        </div>
+      </div>
   </div>
-<!-- / Layout wrapper -->
+</section>
 
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-<script src="../../assets/vendor/libs/popper/popper.js"></script>
-<script src="../../assets/vendor/js/bootstrap.js"></script>
-<script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-<script src="../../assets/vendor/js/menu.js"></script>
-<!-- endbuild -->
+  <script src="../../assets/vendor/js/menu.js"></script>
+  <!-- endbuild -->
 
-<!-- Vendors JS -->
-<script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <!-- Vendors JS -->
+  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
-<!-- Main JS -->
-<script src="../../assets/js/main.js"></script>
+  <!-- Main JS -->
+  <script src="../../assets/js/main.js"></script>
 
-<!-- Page JS -->
-<script src="../../assets/js/dashboards-analytics.js"></script>
+  <!-- Page JS -->
+  <script src="../../assets/js/dashboards-analytics.js"></script>
 
-</body>
-</html>
+  </body>
+  </html>

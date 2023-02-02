@@ -1,5 +1,5 @@
 <?php
-include('D:\xampp\htdocs\ggsms\controller\staff\LoginController.php'); 
+include('../../controller/staff/LoginController.php'); 
 ?>
 <!doctype html>
 <html lang="en">

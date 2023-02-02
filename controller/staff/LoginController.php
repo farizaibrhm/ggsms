@@ -19,7 +19,7 @@ $result = mysqli_query($connection,"SELECT * FROM staffregistration WHERE staffe
 $data = mysqli_num_rows($result);
 if($data==1){
 $_SESSION['login_user']=$staffemail; // Initializing Session
-header('Location: dashboardstaff.php');
+header('Location:../staff/dashboard.php');
 }
 else{
 $Error ="Email or Password is wrong.";

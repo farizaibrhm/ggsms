@@ -1,10 +1,10 @@
 <?php
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
+include('../../controller/staff/StaffController.php');
 $sql="SELECT * FROM staffregistration";
-$employeename= $row['hrname'];
-$sql = "SELECT * FROM attendance where employeename!='$employeename' order by date desc";
+$employeename= $row['staffname'];
+$sql = "SELECT * FROM attendance where employeename='$employeename' order by date desc";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 

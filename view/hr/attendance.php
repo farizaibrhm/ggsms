@@ -228,14 +228,13 @@ $result = $database->select($sql);
 	  <center>
         <h4><b> Attendance History </b></h4>
       <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
-      <tr>
+      <tr style="background-color: aquamarine;">
         <td><b>#</b></td>
         <td><b>Name</b></td>
         <td><b>Email</b></td>
         <td><b>Date </b></td>
         <td><b>Clock In Time </b></td>
         <td><b>Clock Out Time </b></td>
-        <td><b>Maps</b></td>
       </tr>
       <hr>
 
@@ -253,7 +252,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["date"];?></td>
 					<td><?php echo $result[$key]["clockintime"];?></td>
           <td><?php echo $result[$key]["clockouttime"];?></td>
-          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
+         
 				</tr>
  <?php
     }

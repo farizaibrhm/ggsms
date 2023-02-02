@@ -266,21 +266,11 @@ $result = $database->select($sql);
             <p class="text-muted mb-1"><?php echo $hrdeptname?></p>
             <div>
               <br>
-            <?php
-$did=0;
-if (is_array($result) || is_object($result)) {
-    foreach ($result as $key => $value) {
-        ?>
-					<a
-						href="../hr/updateaccount.php?hrid=<?php echo $result[$key]["hrid"]; ?>"
-						><button class="btn btn-primary">Update Account</button></a>
- <?php
-    }
-}
-?>
+              <a href="../hr/updateaccount.php?hrid=<?php echo $hrid;?>">
+              <button class="btn btn-primary">Update Account</button></a>
 <br>
 <br>
-					<a href="../hr/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
+					<a href="../staff/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
 
             </div>
             

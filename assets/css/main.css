@@ -246,6 +246,7 @@
     color: #fff;
     padding: 0;
   }
+
   
   .topbar .contact-info i {
     font-style: normal;
@@ -287,6 +288,8 @@
   .topbar .social-links a:hover {
     color: #fff;
   }
+
+  
   
   .header {
     transition: all 0.5s;

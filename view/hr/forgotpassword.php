@@ -31,7 +31,7 @@
 <title>PHP Forgot Password</title>
 <link href="css/password.css" rel="stylesheet">
 </head>
-<body style="background-image:url('../../assets/img/resetpass.png');">
+<body>
 
 
 <section id="topbar" class="topbar d-flex align-items-center">
@@ -50,22 +50,31 @@
   </section>
   <!-- End Top Bar -->
 
-  <header id="header" class="header d-flex align-items-center">
 
+  <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="../hr/dashboard.php" class="logo d-flex align-items-left">
-        <img src="../../assets/img/companylogo.jpg" alt="Company's Logo">
+      <a href="../../index.php" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="../../assets/img/companylogo.jpg" alt="">
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../index.php">Home</a></li>
+          <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="../hr/login.php">HR</a></li>
+              <li><a href="../staff/login.php">Staff</a></li>
+              <li><a href="view/manager/login.php">Manager</a></li>
+
+            </ul>
+            
+          </li>
           
         </ul>
-      </nav>
+      </nav><!-- .navbar -->
 
     </div>
-
-  </header>
+  </header><!-- End Header -->
 <center>
 <br>
 <br>
@@ -75,7 +84,7 @@
 <br>
 <div class="container main" >
 <h2>Forgot Password</h2>
-<form action="forgotpassword.php" method="post">
+<form action="../hr/forgotpassword.php" method="post">
 <label class="heading">Email :</label>
 <input name="hremail" type="text">
 <input name="submit" type="submit" value="Resend Password">
@@ -84,7 +93,7 @@
 <span class="success"><?php echo $successMessage;?></span>
 </form>
 <p><b>Note :</b> Enter your email, password will be send to your email address.</p>
-<a class="login" href="loginhr.php">SignIn</a>
+<a class="login" href="../hr/login.php">SignIn</a>
 </div>
 </body>
 </html>

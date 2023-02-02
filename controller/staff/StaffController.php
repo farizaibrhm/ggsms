@@ -8,12 +8,14 @@ $email_check=$_SESSION['login_user'];  // Storing Session
 //  SQL Query to Fetch Complete Information of User.
 $ses_sql=mysqli_query( $connection,"select * from staffregistration where staffemail='$email_check'");
 $row = mysqli_fetch_assoc($ses_sql);
-$login_session =$row['staffname'];
-$login_email =$row['staffemail'];
-$login_password =$row['staffpassword'];
-if(!isset($login_session))
+$staffname =$row['staffname'];
+$staffemail =$row['staffemail'];
+$staffpassword =$row['staffpassword'];
+$staffphonenum =$row['staffphonenum'];
+$staffdeptname =$row['staffdeptname'];
+if(!isset($staffemail))
 {
 mysqli_close($connection); // Closing Connection
-header('Location:dashboardstaff.php'); // Redirecting to Home Page
+header('Location:../staff/dashboard.php'); // Redirecting to Home Page
 }
 ?>

@@ -17,6 +17,6 @@ $hrphonenum= $row['hrphonenum'];
 $hrdeptname= $row['hrdeptname'];
 if(!isset($hremail)){
 mysqli_close($connection); // Closing Connection
-header('Location: dashboardhr.php'); // Redirecting To Home Page
+header('Location: ../hr/dashboard.php'); // Redirecting To Home Page
 }
 ?>

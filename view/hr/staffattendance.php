@@ -231,7 +231,7 @@ $result = $database->select($sql);
       <tr>
         <td><b>#</b></td>
         <td><b>Name</b></td>
-        <td><b>Email</b></td>
+        <!-- <td><b>Email</b></td> -->
         <td><b>Date </b></td>
         <td><b>Clock In Time </b></td>
         <td><b>Clock Out Time </b></td>
@@ -249,7 +249,7 @@ if (is_array($result) || is_object($result)) {
 	         <tr>
 					<td><?php echo  $did ;?></td>
 					<td><?php echo $result[$key]["employeename"];?></td>
-					<td><?php echo $result[$key]["employeeemail"];?></td>
+					<!-- <td><?php echo $result[$key]["employeeemail"];?></td> -->
 					<td><?php echo $result[$key]["date"];?></td>
 					<td><?php echo $result[$key]["clockintime"];?></td>
           <td><?php echo $result[$key]["clockouttime"];?></td>

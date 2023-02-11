@@ -247,12 +247,15 @@ $result = $database->select($sql, $paramType, $paramValue);
                     <label for="leavestatus">Leave Status <span
                         class="error-color" id="leavestatus_error"></span>
                     </label>
-                    <input type="text" name="leavestatus" id="leavestatus" value="<?php echo $result[0]['leavestatus']; ?>">
+                    <select name="leavestatus" id="leavestatus"  class="form-control" value="<?php echo $result[0]['leavestatus']; ?>">
+                             <option value="Requesting">Requesting</option>
+                             <option value="Requesting">Approved</option>
+                             </select>
                 </div>
             </div>
           <br>
             <div class="row">
-                <input type="submit" name="submit" value="Save" class="btn btn-block btn-success">
+                <input type="submit" name="submit" value="Save" class="btn btn-primary">
             </div>
             <br>
             <div class="message"><?php if(isset($message)) { echo $message; } ?></div>

@@ -8,10 +8,10 @@ $sendsql=mysqli_query($connection,$sql);
 $staffname= $row["hrname"];
 $reportdate= $_POST["reportdate"];
 $reportongoingtask= $_POST["reportongoingtask"];
-$reportdonetask= $POST["reportdonetask"];
+$reportdonetask= $_POST["reportdonetask"];
 
 $sql = "INSERT INTO report(staffname,reportdate,reportongoingtask,reportdonetask)
-VALUES ('$staffname','$reportdate','$reportongointask','$reportdonetask')";
+VALUES ('$staffname','$reportdate','$reportongoingtask','$reportdonetask')";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/report.php";

@@ -268,7 +268,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["staffemail"];?></td>
 					<td><?php echo $result[$key]["staffphonenum"];?></td>
-					<td><?php echo $result[$key]["staffdepartment"];?></td>
+					<td><?php echo $result[$key]["staffdeptname"];?></td>
 				</tr>
  <?php
     }

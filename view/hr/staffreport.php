@@ -1,8 +1,11 @@
 <?php
+require_once '../../model/DataSource.php';
+$database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $staffname= $row['hrname'];
-$sendsql=mysqli_query($connection,$sql);
+$sql = "SELECT * FROM leaverequest where staffname!='$staffname'";
+$result = $database->select($sql);
 
 ?>
 <!doctype html>
@@ -13,14 +16,17 @@ $sendsql=mysqli_query($connection,$sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="assets/fonts/login/icomoon/style.css">
+    <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
 
-    <link rel="stylesheet" href="assets/css/login/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/css/login/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/login/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
     <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     
+    <!-- Style -->
+    <link rel="stylesheet" href="../../assets/css/login/style.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,9 +35,6 @@ $sendsql=mysqli_query($connection,$sql);
       rel="stylesheet"
     />
     
-    <!-- Style -->
-    <link rel="stylesheet" href="assets/css/login/style.css">
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +44,7 @@ $sendsql=mysqli_query($connection,$sql);
     <link href="../../assets/css/main.css" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="assets/assetsdashboard/vendor/fonts/boxicons.css"/>
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
@@ -55,12 +58,16 @@ $sendsql=mysqli_query($connection,$sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
+
+    <title>Dashboard Staff</title>
+
   </head>
   <body>
   
-  <!-- ======= Header ======= -->
-  <section id="topbar" class="topbar d-flex align-items-center">
+ <!-- ======= Header ======= -->
+ <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -107,7 +114,7 @@ $sendsql=mysqli_query($connection,$sql);
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item ">
+          <li class="menu-item">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -153,7 +160,7 @@ $sendsql=mysqli_query($connection,$sql);
             </a>
           </li>
 
-          <li class="menu-item ">
+          <li class="menu-item active ">
             <a href="../hr/staffleaverequest.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-stickies"></i>
               <div data-i18n="Basic">Staff's Leave Request</div>
@@ -176,7 +183,7 @@ $sendsql=mysqli_query($connection,$sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item ">
             <a href="../hr/staffreport.php" class="menu-link">
               <i class="menu-icon bi bi-person-lines-fill"></i>
               <div data-i18n="Basic">Staff Activity Reports</div>
@@ -209,11 +216,15 @@ $sendsql=mysqli_query($connection,$sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-color: white;">
+      <!-- Layout container -->
+      <div class="layout-page" style="background-color: white;">
+    <div class="wrapper">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="mt-4 mb-3 clearfix">
-                    <script>
+                    <div class="mt-6 mb-3 clearfix">
+                      <br>
+                        <script>
           // Real time and date
           function display_ct5() {
           var x = new Date()
@@ -234,75 +245,79 @@ $sendsql=mysqli_query($connection,$sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h3><b>Staff Daily Activity Reports</b></h3>
+
+                        <h4><b>Staff Leave Requests</b> </h4>
                     </div>
                     <br>
-                    <?php
-                    // Include config file
-                    require_once "../../model/db_connect.php";
-                    
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM report where staffname!='$staffname'";
-                    if($con = mysqli_query($con, $sql)){
-                        if(mysqli_num_rows($con) > 0){
-                            echo '<table class="table table-bordered">';
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th>No</th>";
-                                        echo "<th>Staff Name</th>";
-                                        echo "<th>Date</th>";
-                                        echo "<th size='5'>Ongoing Task</th>";
-                                        echo "<th size='5'>Done Task</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                $did=0;
-                                while($row = mysqli_fetch_array($con)){
-                                    $did++;
-                                    echo "<tr>";
-                                        echo "<td>" . $did . "</td>";
-                                        echo "<td>" . $row['staffname'] . "</td>";
-                                        echo "<td>" . $row['reportdate'] . "</td>";
-                                        echo "<td>" . $row['reportongoingtask'] . "</td>";
-                                        echo "<td>" . $row['reportdonetask'] . "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($con);
-                        } else{
-                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
-                        }
-                    } else{
-                        echo "Oops! Something went wrong. Please try again later.";
-                    }
- 
-                    ?>
-                </div>
-            </div>        
-        </div>
-    </div>
+                    <div class="phppot-container">
+		<form method="post" action="">
+			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Staff Name</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th>Department</th>
+						<th>Leave Reason</th>
+						<th>Leave Notes</th>
+						<th>Leave Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+<?php
+$did=0;
+if (is_array($result) || is_object($result)) {
+    foreach ($result as $key => $value) {
+		$did++;
+        ?>
+		
+	         <tr>
+					<td><?php echo  $did ;?></td>
+					<td><?php echo $result[$key]["staffname"];?></td>
+					<td><?php echo $result[$key]["leavestartdate"];?></td>
+					<td><?php echo $result[$key]["leaveenddate"];?></td>
+					<td><?php echo $result[$key]["department"];?></td>
+					<td><?php echo $result[$key]["leavereason"];?></td>
+					<td><?php echo $result[$key]["leavenotes"];?></td>
+					<td><?php echo $result[$key]["leavestatus"];?></td>
+					<td><a
+						href="../hr/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+						class="mr-20">Update</a> &nbsp;
+            <a href="../../controller/hr/DeleteStaffLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+				</tr>
+ <?php
+    }
+}
+?>
+			</table>
+		</form>
+	</div>
+<br>
+<br>
+
+
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
-  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../../assets/vendor/js/bootstrap.js"></script>
-  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="../../assets/vendor/js/menu.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
-  <script src="../../assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  <script src="../../assets/js/dashboards-analytics.js"></script>
+  <script src="../assets/js/dashboards-analytics.js"></script>
 
   </body>
   </html>

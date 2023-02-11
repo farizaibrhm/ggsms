@@ -4,7 +4,7 @@ $database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
+$sql = "SELECT * FROM report where staffname!='$staffname'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -241,7 +241,7 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
+                        <h4><b>Staff's Daily Activity Reports</b></h4>
                     </div>
                     <br>
                     <div class="phppot-container">

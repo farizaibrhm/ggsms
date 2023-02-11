@@ -136,13 +136,6 @@ $sendsql=mysqli_query($connection,$sql);
             </a>
           </li>
 
-          <li class="menu-item ">
-            <a href="../staff/staffleaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-stickies"></i>
-              <div data-i18n="Basic">Staff's Leave Request</div>
-            </a>
-          </li>
-
          <!-- Daily Activity Reports -->
 
           <li class="menu-item">

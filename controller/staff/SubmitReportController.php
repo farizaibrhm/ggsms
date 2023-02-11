@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php
-include('staffsession.php');
+include('../../controller/staff/StaffController.php');
 $sql="SELECT staffname FROM staffregistration";
 $sendsql=mysqli_query($connection,$sql);
 
@@ -10,16 +10,15 @@ $reportdate= $_POST["reportdate"];
 $reportongoingtask= $_POST["reportongoingtask"];
 $reportdonetask= $_POST["reportdonetask"];
 
+$sql = "INSERT INTO report VALUES ('','$staffname','$reportdate','$reportongoingtask','$reportdonetask')";
 
-$sql = "INSERT INTO report (staffname,reportdate,reportongoingtask,reportdonetask)
-VALUES ('$staffname','$reportdate','$reportongoingtask','$reportdonetask')";
-$sendsql=mysqli_query($connection,$sql);
-$link="staffviewdailyactivityreport.php";
+$sendsql = mysqli_query($connection, $sql);
+$link="../staff/report.php";
 if($sendsql) 
 {
    echo"<br>";
-   echo"Leave Request Application Submitted";
-   echo"<a href='".$link."'>View the data</a>";
+   echo" <script>alert('Report Submitted Successfully');document.location='../../view/staff/report.php'</script>"; } ?>";
+
   }
 else   
   {

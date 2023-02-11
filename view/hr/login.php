@@ -1,5 +1,5 @@
 <?php
-include('D:\xampp\htdocs\ggsms\controller\hr\LoginController.php'); // Includes Login Script
+include('../../controller/hr/LoginController.php');  // Includes Login Script
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,17 +100,17 @@ include('D:\xampp\htdocs\ggsms\controller\hr\LoginController.php'); // Includes 
               <h3>Sign In</h3>
               <h6><b> Human Resource Officer</b></h6>
             </div>
-            <form name="f1" action = "../hr/login.php" onsubmit = "return validation()" method = "POST">  
+            <form action = "../hr/login.php" method = "POST">  
               <div class="form-group first">
                 <input type = "text" class="form-control" name  = "hremail" placeholder="Email"/>  
 
               </div>
               <div class="form-group last mb-4">
                 <input type = "password" class="form-control" name  = "hrpassword" placeholder="password" />  
-                
               </div>
-              <input type="submit" value="login" name="submit" class="btn btn-block btn-primary">
-
+              <input type="submit" value="Sign In" name="submit" class="btn btn-block btn-primary">
+              <span class="error"><?php echo $error;?></span>
+              <span class="success"><?php echo $successMessage;?></span>
             </form>
             <a class="forgot" href="../hr/forgotpassword.php">forgot password ?</a>
             </div>
@@ -122,28 +122,6 @@ include('D:\xampp\htdocs\ggsms\controller\hr\LoginController.php'); // Includes 
     </div>
   </div>
 
-  <script>  
-    function validation()  
-    {  
-        var hremail=document.f1.hremail.value;  
-        var hrpassword=document.f1.hrpassword.value;  
-        if(hremail.length=="" && hrpassword.length=="") {  
-            alert("Email and Password fields are empty");  
-            return false;  
-        }  
-        else  
-        {  
-            if(hremail.length=="") {  
-                alert("Email is empty");  
-                return false;  
-            }   
-            if (hrpassword.length=="") {  
-            alert("Password field is empty");  
-            return false;  
-            }  
-        }                             
-    }  
-</script>  
 
 
   <div id="preloader"></div>

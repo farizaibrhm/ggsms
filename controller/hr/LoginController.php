@@ -1,6 +1,7 @@
 <?php
 session_start(); // Starting Session
-$error=''; // Variable To Store Error Message
+$error =""; // Initialize Variables To Null.
+$successMessage ="";
 if (isset($_POST['submit'])) {
 if (empty($_POST['hremail']) || empty($_POST['hrpassword'])) {
 $error = "Username or Password is invalid";
@@ -25,9 +26,9 @@ $rows = mysqli_num_rows($query);
 
 if ($rows == 1) {
 $_SESSION['login_user']=$hremail; // Initializing Session
-header("location:../hr/dashboard.php"); // Redirecting To Other Page
+header('Location:../hr/dashboard.php'); // Redirecting To Other Page
 } else {
-header("location:view/hr/login.php");
+header('Location:../hr/login.php');
 echo '<script>alert("Login failed. Invalid username or password")</script>'; 
 }
 

@@ -3,8 +3,9 @@ require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM attendance";
 $employeename= $row['hrname'];
-$sql = "SELECT * FROM attendance where employeename='$employeename' order by date desc";
+$sql = "SELECT * FROM attendance where employeename='$employeename' order by date desc,clockintime desc";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -65,7 +66,7 @@ $result = $database->select($sql);
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
   </head>
-  <body>
+  <body style="background-image: url('../../assets/img/bgattendance.avif');">
   
 <!-- ======= Header ======= -->
 <section id="topbar" class="topbar d-flex align-items-center">
@@ -218,9 +219,7 @@ $result = $database->select($sql);
 	<!-- / Menu -->
 
 	<!-- Layout container -->
-
-  
-  <div class="container" style="background-color: white;" >
+  <div class="container" style="background-image: url('../../assets/img/bgattendance.avif');">
 	<div class="row">
 	<div id="main" >
 	  <br>
@@ -228,13 +227,13 @@ $result = $database->select($sql);
 	  <center>
         <h4><b> Attendance History </b></h4>
       <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
-      <tr>
-        <td><b>#</b></td>
+      <tr style="background-color:#008d7d;">
+        <td style="color: white;"><b>#</b></td>
         <!-- <td><b>Name</b></td>
         <td><b>Email</b></td> -->
-        <td><b>Date </b></td>
-        <td><b>Clock In Time </b></td>
-        <td><b>Clock Out Time </b></td>
+        <td style="color: white;"><b>Date </b></td>
+        <td style="color: white;"><b>Clock In Time </b></td>
+        <td style="color: white;"><b>Clock Out Time </b></td>
       </tr>
       <hr>
 

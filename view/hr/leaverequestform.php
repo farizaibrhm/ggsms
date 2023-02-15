@@ -208,7 +208,7 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
       
       <!-- Layout container -->
-    <div class="container" style="background-color: white;" >
+    <div class="container" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white" >
    
       <div class="row">
         <div class="col-md-9 contents">

@@ -11,7 +11,7 @@ if (count($_POST) > 0) {
         $_GET["hrid"]
     );
     $database->execute($sql, $paramType, $paramValue);
-    $message = "Account updated successfully";
+    $message = "<script>alert('Account Updated Successfully');document.location='../../view/hr/account.php'</script>";
 }
 $sql = "select * from hrlogin where hrid=?";
 $paramType = 'i';

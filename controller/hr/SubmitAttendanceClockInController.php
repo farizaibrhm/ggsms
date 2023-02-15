@@ -10,7 +10,7 @@ $sendsql=mysqli_query($connection,$sql);
 $employeename= $row["hrname"];
 $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
+$date= date("dd-mm-yyyy");
 $clockintime= date("h:i:s");
 $clockouttime= date("0:0:0");
 $longitude =$_POST["longitude"];
@@ -19,6 +19,8 @@ $latitude =$_POST["latitude"];
 
 $sql = "INSERT INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
 VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
+
+
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";

@@ -217,7 +217,7 @@ $result = $database->select($sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page" style="background-color: white;">
+      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -249,21 +249,21 @@ $result = $database->select($sql);
                         <h4><b>Staff Leave Requests</b> </h4>
                     </div>
                     <br>
-                    <div class="phppot-container">
+                    <div>
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered">
-				<thead>
+			<table class="table table-bordered" style="background-color: white;">
+				<thead style="background-color:#008d7d;">
 					<tr>
-						<th>No</th>
-						<th>Staff Name</th>
-						<th>Start Date</th>
-						<th>End Date</th>
-						<th>Department</th>
-						<th>Leave Reason</th>
-						<th>Leave Notes</th>
-						<th>Leave Status</th>
-						<th>Actions</th>
+						<th style="color: white;">No</th>
+						<th style="color: white;">Staff Name</th>
+						<th style="color: white;">Start Date</th>
+						<th style="color: white;">End Date</th>
+						<th style="color: white;">Department</th>
+						<th style="color: white;">Leave Reason</th>
+						<th style="color: white;">Leave Notes</th>
+						<th style="color: white;">Leave Status</th>
+						<th style="color: white;">Actions</th>
 					</tr>
 				</thead>
 <?php

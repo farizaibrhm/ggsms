@@ -215,7 +215,7 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-color: white;">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
@@ -246,14 +246,14 @@ $result = $database->select($sql);
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-striped">
-				<thead>
+			<table class="table table-bordered" style="background-color: white;">
+      <thead style="background-color:#008d7d;">
 					<tr>
-						<th>No</th>
-						<th>Staff Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Department</th>
+						<th style="color: white;">No</th>
+						<th style="color: white;">Staff Name</th>
+                        <th style="color: white;">Email</th>
+                        <th style="color: white;">Phone Number</th>
+                        <th style="color: white;">Department</th>
 					</tr>
 				</thead>
 <?php

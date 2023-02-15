@@ -71,7 +71,7 @@ $sendsql=mysqli_query($connection,$sql);
     <script src="../../assets/assetsdashboard/js/config.js"></script>
 
   </head>
-  <body>
+  <body style="background-image: url('../../assets/img/bgattendance.avif');">
   
     <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">

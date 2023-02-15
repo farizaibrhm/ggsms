@@ -131,14 +131,14 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item ">
             <a href="../hr/attendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-clock-history"></i>
               <div data-i18n="Account Settings">Attendance History</div>
             </a>
           </li>
 
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
@@ -220,22 +220,24 @@ $result = $database->select($sql);
 	<!-- Layout container -->
 
   
-  <div class="container" style="background-color: white;" >
+  <div class="container"style="background-image: url('../../assets/img/bgattendance.avif');" >
 	<div class="row">
 	<div id="main" >
 	  <br>
 	  <br>
 	  <center>
         <h4><b> Attendance History </b></h4>
-      <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
-      <tr>
-        <td><b>#</b></td>
-        <td><b>Name</b></td>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff's name" title="Type in a name" class="form-control">
+        
+        <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
+      <tr  style="background-color:#008d7d;">
+        <td style="color: white;"><b>#</b></td>
+        <td  style="color: white;"><b>Name</b></td>
         <!-- <td><b>Email</b></td> -->
-        <td><b>Date </b></td>
-        <td><b>Clock In Time </b></td>
-        <td><b>Clock Out Time </b></td>
-        <td><b>Maps</b></td>
+        <td  style="color: white;"><b>Date </b></td>
+        <td  style="color: white;"><b>Clock In Time </b></td>
+        <td  style="color: white;"><b>Clock Out Time </b></td>
+        <td  style="color: white;"><b>Maps</b></td>
       </tr>
       <hr>
 
@@ -260,6 +262,26 @@ if (is_array($result) || is_object($result)) {
 }
 ?>
     </table>
+    <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("staffname")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
     <br>
   <br>
 					  

@@ -4,7 +4,7 @@ $database = new DataSource();
 include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $staffname= $row['hrname'];
-$sql = "SELECT * FROM leaverequest where staffname!='$staffname'";
+$sql = "SELECT * FROM report where staffname!='$staffname'";
 $result = $database->select($sql);
 
 ?>
@@ -160,7 +160,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active ">
+          <li class="menu-item">
             <a href="../hr/staffleaverequest.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-stickies"></i>
               <div data-i18n="Basic">Staff's Leave Request</div>
@@ -183,7 +183,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item ">
+          <li class="menu-item active">
             <a href="../hr/staffreport.php" class="menu-link">
               <i class="menu-icon bi bi-person-lines-fill"></i>
               <div data-i18n="Basic">Staff Activity Reports</div>
@@ -217,7 +217,7 @@ $result = $database->select($sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page" style="background-color: white;">
+      <div class="layout-page" style="background-image: url('../../assets/img/bgreport.jpg');">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -246,24 +246,21 @@ $result = $database->select($sql);
           <br>
         <!-- Real time and date -->
 
-                        <h4><b>Staff Leave Requests</b> </h4>
+                        <h4><b>Staff Daily Activity Reports</b> </h4>
                     </div>
                     <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
 			<table class="table table-bordered">
-				<thead>
+      <thead style="background-color:#008d7d;">
 					<tr>
-						<th>No</th>
-						<th>Staff Name</th>
-						<th>Start Date</th>
-						<th>End Date</th>
-						<th>Department</th>
-						<th>Leave Reason</th>
-						<th>Leave Notes</th>
-						<th>Leave Status</th>
-						<th>Actions</th>
+						<th style="color: white;">No</th>
+						<th style="color: white;">Staff Name</th>
+						<th style="color: white;">Report Date</th>
+						<th style="color: white;">Ongoing Task</th>
+						<th style="color: white;">Done Task</th>
+						<th style="color: white;">Actions</th>
 					</tr>
 				</thead>
 <?php
@@ -276,16 +273,13 @@ if (is_array($result) || is_object($result)) {
 	         <tr>
 					<td><?php echo  $did ;?></td>
 					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["leavestartdate"];?></td>
-					<td><?php echo $result[$key]["leaveenddate"];?></td>
-					<td><?php echo $result[$key]["department"];?></td>
-					<td><?php echo $result[$key]["leavereason"];?></td>
-					<td><?php echo $result[$key]["leavenotes"];?></td>
-					<td><?php echo $result[$key]["leavestatus"];?></td>
+					<td><?php echo $result[$key]["reportdate"];?></td>
+					<td><?php echo $result[$key]["reportongoingtask"];?></td>
+					<td><?php echo $result[$key]["reportdonetask"];?></td>
 					<td><a
-						href="../hr/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+						href="../hr/updatestaffleaverequest.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/hr/DeleteStaffLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+            <a href="../../controller/hr/DeleteStaffLeaveRequestController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

@@ -264,7 +264,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
                 <input type = "text" class="form-control" id ="staffemail" name  = "staffemail" />  
               </div>
               <span class="error"><?php echo $emailError;?></span>
-              <input type="submit" value="Register" name="submit" class="btn btn-block btn-primary">
+              <input type="submit" value="Register" name="submit" class="btn btn-block btn-primary" >
               <span class="success"><?php echo $successMessage;?></span>
               <span class="success"><?php echo $passwordMessage;?></span>
             </form>

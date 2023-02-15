@@ -14,7 +14,7 @@ $clockouttime= date("h:i:s");
 // $latitude =$_POST["latitude"];
 
 
-$sql = "UPDATE attendance SET clockouttime=NOW()";
+$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate()";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";

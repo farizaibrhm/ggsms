@@ -65,7 +65,7 @@ $result = $database->select($sql);
 
     <title>Dashboard Staff</title>
   </head>
-  <body>
+  <body >
   
  <!-- ======= Header ======= -->
  <section id="topbar" class="topbar d-flex align-items-center">
@@ -215,7 +215,7 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
       <!-- Layout container -->
-      <div class="layout-page" style="background-color: white;">
+      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -243,7 +243,7 @@ $result = $database->select($sql);
           <br>
         <!-- Real time and date -->
                         <h4><b>Leave Requests Details</b></h4><br>
-                        <table class="table-light">
+                        <table class="table table-bordered" style="background-color: white;">
                           <tr>
                         <td><h6 >Name: <?php echo $staffname?></h6>
                         <h6 >Email: <?php echo $hremail?></h6>
@@ -252,19 +252,19 @@ $result = $database->select($sql);
                         </table>
                     </div>
                     <br>
-                    <div class="phppot-container">
+                    <div>
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered">
-				<thead>
+			<table class="table table-bordered" style="background-color: white;">
+				<thead style="background-color:#008d7d;">
 					<tr>
-						<th>No</th>
-						<th>Start Date</th>
-						<th>End Date</th>
-						<th>Leave Reason</th>
-						<th>Leave Notes</th>
-						<th>Leave Status</th>
-            <th>Actions</th>
+						<th style="color:white">No</th>
+						<th style="color:white">Start Date</th>
+						<th style="color:white">End Date</th>
+						<th style="color:white">Leave Reason</th>
+						<th style="color:white">Leave Notes</th>
+						<th style="color:white">Leave Status</th>
+            <th style="color:white">Actions</th>
 					</tr>
 				</thead>
 <?php

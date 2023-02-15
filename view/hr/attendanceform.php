@@ -4,7 +4,7 @@ require '../../model/db_connect.php';
 $sql="SELECT * from attendance";
 $sql="SELECT * FROM hrlogin";
 $sendsql=mysqli_query($connection,$sql);
-$date= date("y-m-d");
+$date= date("dd-mm-yyyy");
 if(isset($_POST["submit"])){
 
 $latitude = $_POST["latitude"];
@@ -13,16 +13,17 @@ $longitude = $_POST["longitude"];
 $employeename= $row["hrname"];
 $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
+$date= date("d-m-y");
+$newDate = date("d-m-y", strtotime($date)); 
 $clockintime= date("h:i:s");
 $clockouttime= date("0:0:0");
 $longitude =$_POST["longitude"];
 $latitude =$_POST["latitude"];
 
 $sql = "INSERT IGNORE INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude') SELECT FROM attendance WHERE date=curdate()";
+VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
 
-$sql = "UPDATE attendance SET clockintime=NOW()";
+// $sql = "UPDATE attendance SET clockintime=NOW()";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";
@@ -108,7 +109,7 @@ else
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
   </head>
-  <body>
+  <body style="background-image: url('../../assets/img/bgattendance.avif');">
   
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">

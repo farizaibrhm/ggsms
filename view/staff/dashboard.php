@@ -35,7 +35,7 @@ $sendsql=mysqli_query($connection,$sql);
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="../../assets/css/main.css" rel="stylesheet">
+    <link href="../../assets/assetsdashboard/vendor/staff/main.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/assetsdashboard/img/favicon/favicon.ico" />
@@ -52,8 +52,8 @@ $sendsql=mysqli_query($connection,$sql);
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/staff/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/staff/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="../../assets/assetsdashboard/css/demo.css" />
 
     <!-- Vendors CSS -->
@@ -65,14 +65,12 @@ $sendsql=mysqli_query($connection,$sql);
     <!-- Helpers -->
     <script src="../../assets/assetsdashboard/vendor/js/helpers.js"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <title>Dashboard Staff</title>
   </head>
   <body>
  <!-- ======= Header ======= -->
- <section id="topbar" class="topbar d-flex align-items-center">
+ <section id="topbar" class="topbar d-flex align-items-center" >
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>

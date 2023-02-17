@@ -1,5 +1,5 @@
 <?php
-include('../../controller/staff/LoginController.php'); 
+include('../../controller/manager/LoginController.php');  // Includes Login Script
 ?>
 <!doctype html>
 <html lang="en">
@@ -8,6 +8,8 @@ include('../../controller/staff/LoginController.php');
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
+    <title>Sign In: HR</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
@@ -21,8 +23,7 @@ include('../../controller/staff/LoginController.php');
     <link rel="stylesheet" href="../../assets/css/login/style.css">
    
     <!-- Favicons -->
-    <link href="../../assets/img/companylogo.jpg" rel="icon">
-    <link href="../../assets/img/companylogo.jpg" rel="apple-touch-icon">
+    <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,9 +37,8 @@ include('../../controller/staff/LoginController.php');
     <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-   
-    <link href="../../assets/css/main.css"  rel="stylesheet" >
-    <title>Sign In: Staff</title>
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/main.css" rel="stylesheet">
   </head>
   <body>
   
@@ -68,11 +68,11 @@ include('../../controller/staff/LoginController.php');
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="../../index.php">Home</a></li>
-          <li class="dropdown"><a href=""><span>Sign In</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="../hr/login.php">HR</a></li>
+              <li><a href="view/hr/login.php">HR</a></li>
               <li><a href="../staff/login.php">Staff</a></li>
-              <li><a href="../manager/login.php">Manager</a></li>
+              <li><a href="view/manager/login.php">Manager</a></li>
             </ul>
           </li>
           
@@ -88,30 +88,31 @@ include('../../controller/staff/LoginController.php');
 
   
   <div class="content">
-    <div class="container" >
+    <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="../../assets/img/bgstaff.png" alt="Image" class="img-fluid" width="90%">
+          <img src="../../assets/img/login/loginbg.png" alt="Image" class="img-fluid" width="100%">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4">
               <h3>Sign In</h3>
-              <h6><b> Staff</b></h6>
+              <h6><b> Manager</b></h6>
             </div>
-            <form action = "../staff/login.php" method = "POST">  
+            <form action = "../manager/login.php" method = "POST">  
               <div class="form-group first">
-                <input type = "text" class="form-control" name  = "staffemail" placeholder="Email" />  
+                <input type = "text" class="form-control" name  ="mngr_email" placeholder="Email"/>  
+
               </div>
               <div class="form-group last mb-4">
-                <input type = "password" class="form-control"  name  = "staffpassword" placeholder="Password"/>  
+                <input type = "password" class="form-control" name  ="mngr_password" placeholder="password" />  
               </div>
               <input type="submit" value="Sign In" name="submit" class="btn btn-block btn-primary">
-              <span class="error"><?php echo $Error;?></span>
+              <span class="error"><?php echo $error;?></span>
               <span class="success"><?php echo $successMessage;?></span>
-              </form><a class="forgot" href="../staff/forgotpassword.php">forgot password ?</a>
             </form>
+            <a class="forgot" href="../manager/forgotpassword.php">forgot password ?</a>
             </div>
           </div>
           
@@ -120,7 +121,7 @@ include('../../controller/staff/LoginController.php');
       </div>
     </div>
   </div>
- 
+
 
 
   <div id="preloader"></div>

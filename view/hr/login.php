@@ -72,7 +72,7 @@ include('../../controller/hr/LoginController.php');  // Includes Login Script
             <ul>
               <li><a href="view/hr/login.php">HR</a></li>
               <li><a href="../staff/login.php">Staff</a></li>
-              <li><a href="view/manager/login.php">Manager</a></li>
+              <li><a href="../manager/login.php">Manager</a></li>
             </ul>
           </li>
           

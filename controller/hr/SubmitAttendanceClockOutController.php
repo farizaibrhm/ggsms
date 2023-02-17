@@ -2,10 +2,11 @@
 <body>
 <?php
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
+
+$employeename= $row["hrname"];
+$sql="SELECT * FROM hrlogin where hrname='$hrname'";
 $sendsql=mysqli_query($connection,$sql);
 
-// $employeename= $row["hrname"];
 // $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $date= date("y-m-d");

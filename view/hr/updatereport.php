@@ -277,7 +277,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                     <label for="reportongoingtask">Ongoing Task<span
                         class="error-color" id="reportongoingtask_error"></span>
                     </label>
-                    <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20"  value="<?php echo $result[0]['reportongoingtask']; ?>"></textarea>
+                    <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportongoingtask']; ?></textarea>
                 </div>
             </div>
             <div><br>
@@ -285,7 +285,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                     <label for="reportdonetask">Done Task <span
                         class="error-color" id="reportdonetask_error"></span>
                     </label>
-                    <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20"  value="<?php echo $result[0]['reportdonetask']; ?>"></textarea>
+                    <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportdonetask']; ?></textarea>
                 </div>
             </div>
           <br>

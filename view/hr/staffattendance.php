@@ -229,7 +229,7 @@ $result = $database->select($sql);
         <h4><b> Attendance History </b></h4>
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff's name" title="Type in a name" class="form-control">
         
-        <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
+        <table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
       <tr  style="background-color:#008d7d;">
         <td style="color: white;"><b>#</b></td>
         <td  style="color: white;"><b>Name</b></td>

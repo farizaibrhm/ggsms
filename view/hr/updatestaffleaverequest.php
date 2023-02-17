@@ -10,7 +10,7 @@ if (count($_POST) > 0) {
         $_GET["leaveid"]
     );
     $database->execute($sql, $paramType, $paramValue);
-    $message = "Leave status updated successfully";
+    $message = "<script>alert('Leave status Updated Successfully');document.location='../../view/hr/staffleaverequest.php'</script>";
 }
 $sql = "select * from leaverequest where leaveid=? ";
 $paramType = 'i';
@@ -249,7 +249,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                     </label>
                     <select name="leavestatus" id="leavestatus"  class="form-control" value="<?php echo $result[0]['leavestatus']; ?>">
                              <option value="Requesting">Requesting</option>
-                             <option value="Requesting">Approved</option>
+                             <option value="Approved">Approved</option>
                              </select>
                 </div>
             </div>

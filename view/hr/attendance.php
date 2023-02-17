@@ -226,7 +226,7 @@ $result = $database->select($sql);
 	  <br>
 	  <center>
         <h4><b> Attendance History </b></h4>
-      <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
+      <table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;">
       <tr style="background-color:#008d7d;">
         <td style="color: white;"><b>#</b></td>
         <!-- <td><b>Name</b></td>

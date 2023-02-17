@@ -245,12 +245,12 @@ $sendsql=mysqli_query($connection,$sql);
               </div>
                       <br>
                       <label> Ongoing Task: </label>
-                      <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20">
-                        </textarea>
+                      <span><textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20">
+                        </textarea></span>
                         <br>
                       <label> Done Task: </label>
-                      <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20">
-                        </textarea>
+                      <span><textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20">
+                        </textarea></span>
                         <br>
               
                       <input type="submit" value="Submit Report" name="submit" class="btn btn-primary">

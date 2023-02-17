@@ -4,7 +4,7 @@ require '../../model/db_connect.php';
 $sql="SELECT * from attendance";
 $sql="SELECT * FROM hrlogin";
 $sendsql=mysqli_query($connection,$sql);
-$date= date("dd-mm-yyyy");
+$date= date("y-m-d");
 if(isset($_POST["submit"])){
 
 $latitude = $_POST["latitude"];
@@ -13,8 +13,7 @@ $longitude = $_POST["longitude"];
 $employeename= $row["hrname"];
 $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("d-m-y");
-$newDate = date("d-m-y", strtotime($date)); 
+$date= date("y-m-d");
 $clockintime= date("h:i:s");
 $clockouttime= date("0:0:0");
 $longitude =$_POST["longitude"];

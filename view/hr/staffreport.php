@@ -252,7 +252,7 @@ $result = $database->select($sql);
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered">
+			<table class="table table-bordered-20">
       <thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color: white;">No</th>
@@ -279,7 +279,7 @@ if (is_array($result) || is_object($result)) {
 					<td><a
 						href="../hr/updatestaffleaverequest.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/hr/DeleteStaffLeaveRequestController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>
+           </td>
 				</tr>
  <?php
     }

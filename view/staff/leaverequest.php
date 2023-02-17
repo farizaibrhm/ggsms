@@ -281,10 +281,9 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["leavereason"];?></td>
 					<td><?php echo $result[$key]["leavenotes"];?></td>
 					<td><?php echo $result[$key]["leavestatus"];?></td>
-          <td><a
-						staffef="../staff/updateleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+          <td><a href="../staff/updateleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a staffef="../../controller/staff/DeleteLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+            <a href="../../controller/staff/DeleteLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

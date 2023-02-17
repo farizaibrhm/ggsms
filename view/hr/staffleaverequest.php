@@ -252,7 +252,7 @@ $result = $database->select($sql);
                     <div>
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered" style="background-color: white;">
+			<table class="table table-bordered-20" style="background-color: white;">
 				<thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color: white;">No</th>
@@ -275,7 +275,7 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
+					<td><b><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["leavestartdate"];?></td>
 					<td><?php echo $result[$key]["leaveenddate"];?></td>
 					<td><?php echo $result[$key]["department"];?></td>
@@ -285,7 +285,7 @@ if (is_array($result) || is_object($result)) {
 					<td><a
 						href="../hr/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/hr/DeleteStaffLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+          </td>
 				</tr>
  <?php
     }

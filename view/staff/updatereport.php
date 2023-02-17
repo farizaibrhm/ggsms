@@ -1,14 +1,25 @@
 <?php
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
-$sendsql=mysqli_query($connection,$sql);
-$result = $database->select($sql);
 
-
+if (count($_POST) > 0) {
+    $sql = "UPDATE report set reportdate=?, reportongoingtask=?, reportdonetask=? WHERE reportid=?";
+    $paramType = 'sssi';
+    $paramValue = array(
+        $_POST["reportdate"],
+        $_POST["reportongoingtask"],
+        $_POST["reportdonetask"],
+        $_GET["reportid"]
+    );
+    $database->execute($sql, $paramType, $paramValue);
+    $message = "Report updated successfully";
+}
+$sql = "select * from report where reportid=? ";
+$paramType = 'i';
+$paramValue = array(
+    $_GET["reportid"]
+);
+$result = $database->select($sql, $paramType, $paramValue);
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,12 +33,6 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/css/login/owl.carousel.min.css">
 
-    
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
-    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,6 +40,10 @@ $result = $database->select($sql);
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
+    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Style -->
     <link rel="stylesheet" href="../../assets/css/login/style.css">
@@ -60,15 +69,17 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
-
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
+
+    <title>Dashboard Staff</title>
+
   </head>
   <body>
   
-    <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -116,7 +127,7 @@ $result = $database->select($sql);
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item">
+          <li class="menu-item ">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -178,14 +189,14 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/report.php" class="menu-link">
               <i class="menu-icon bi bi-list-columns-reverse"></i>
               <div data-i18n="Basic">Daily Activity Reports History</div>
             </a>
           </li>
 
-          <li class="menu-item ">
+          <li class="menu-item active ">
             <a href="../hr/staffreport.php" class="menu-link">
               <i class="menu-icon bi bi-person-lines-fill"></i>
               <div data-i18n="Basic">Staff Activity Reports</div>
@@ -218,7 +229,12 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-image: url('../../assets/img/bgreport.jpg');">
+      <!-- Layout container -->
+      <div class="layout-page">
+ 
+    <div class="wrapper">
+   
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
@@ -243,107 +259,68 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
+                        <h3><b>Update Daily Activity Report</b> </h3>
                     </div>
-                    <br>
                     <div class="phppot-container">
-		<form method="post" action="">
-			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered-20">
-				<thead style="background-color:#008d7d;">
-					<tr>
-						<th style="color:white">No</th>
-						<th style="color:white">Staff Name</th>
-            <th style="color:white">Date</th>
-						<th style="color:white" size='5'>Ongoing Task</th>
-						<th style="color:white" size='5'>Done Task</th>
-            <th style="color:white">Actions</th>
-					</tr>
-				</thead>
-<?php
-$did=0;
-if (is_array($result) || is_object($result)) {
-    foreach ($result as $key => $value) {
-		$did++;
-        ?>
-		
-	         <tr>
-					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
-					<td><a
-						href="../hr/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $result[$key]["reportid"]; ?>">View</button>
-            &nbsp;
-            <a href="../../controller/hr/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>&nbsp;
-        
-
-				</tr>
-        <div id="myModal<?php echo $result[$key]["reportid"]; ?>" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-			    <div class="modal-content">
-					<div class="modal-header">
-						 <button type="button" class="close" data-dismiss="modal">&times;</button>
-						    <h4 class="modal-title">Details</h4>
-				    </div>
-				    <div class="modal-body">
-              <br>
-              <br>
-              <br>
-						 <h6>Name : <?php echo $result[$key]["staffname"];?></h6>
-						 <h6>Mobile Number : <?php echo $result[$key]["reportdate"]; ?></h6>
-						 <h6>Email : <?php echo $result[$key]["reportongoingtask"]; ?></h6>
-				    </div>
-				</div>
-			</div>
-		</div>
-        
- <?php
-    }
-}
-?>
-
-
-
-
-  
-			</table>
-		</form>
-	</div>
+        <form name="frmUser" method="post" action="">
+           
+            <div>
+                <div class="row">
+                    <label for="reportdate">Report Date <span
+                        class="error-color" id="reportdate_error"></span>
+                    </label>
+                    <input type="date" name="reportdate" id="reportdate" class="form-control"  value="<?php echo $result[0]['reportdate']; ?>">
                 </div>
-            </div>        
-        </div>
+            </div>
+            <div><br>
+                <div class="row">
+                    <label for="reportongoingtask">Ongoing Task<span
+                        class="error-color" id="reportongoingtask_error"></span>
+                    </label>
+                    <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportongoingtask']; ?></textarea>
+                </div>
+            </div>
+            <div><br>
+                <div class="row">
+                    <label for="reportdonetask">Done Task <span
+                        class="error-color" id="reportdonetask_error"></span>
+                    </label>
+                    <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportdonetask']; ?></textarea>
+                </div>
+            </div>
+          <br>
+            <div class="row">
+                <input type="submit" name="submit" value="Save" class="btn btn-block btn-primary">
+            </div>
+            <br>
+            <div class="message"><?php if(isset($message)) { echo "<script>alert('Report Updated Successfully');document.location='../../view/staff/report.php'</script>"; } ?></div>
+          
+        </form>
     </div>
-  
+<br>
+<br>
+
+
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
-  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../../assets/vendor/js/bootstrap.js"></script>
-  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  <script src="../../assets/vendor/js/menu.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
-  <script src="../../assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  
-  <script src="../../assets/js/dashboards-analytics.js"></script>
-  
+  <script src="../assets/js/dashboards-analytics.js"></script>
 
   </body>
   </html>
-  

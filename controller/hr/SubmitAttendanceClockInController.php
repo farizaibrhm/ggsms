@@ -10,7 +10,9 @@ $sendsql=mysqli_query($connection,$sql);
 $employeename= $row["hrname"];
 $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("dd-mm-yyyy");
+$date= "d-m-Y";
+$timestamp = strtotime($date);
+$new_date = date("d-m-y", $timestamp);
 $clockintime= date("h:i:s");
 $clockouttime= date("0:0:0");
 $longitude =$_POST["longitude"];
@@ -18,7 +20,7 @@ $latitude =$_POST["latitude"];
 
 
 $sql = "INSERT INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
+VALUES ('$employeename','$employeeemail','$new_date','$clockintime','$clockouttime','$longitude','$latitude')";
 
 
 

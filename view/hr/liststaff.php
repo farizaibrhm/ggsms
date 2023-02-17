@@ -246,7 +246,7 @@ $result = $database->select($sql);
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered" style="background-color: white;">
+			<table class="table table-bordered-20" style="background-color: white;">
       <thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color: white;">No</th>

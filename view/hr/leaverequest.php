@@ -243,7 +243,7 @@ $result = $database->select($sql);
           <br>
         <!-- Real time and date -->
                         <h4><b>Leave Requests Details</b></h4><br>
-                        <table class="table table-bordered" style="background-color: white;">
+                        <table class="table table-bordered-20" style="background-color: white;">
                           <tr>
                         <td><h6 >Name: <?php echo $staffname?></h6>
                         <h6 >Email: <?php echo $hremail?></h6>
@@ -255,10 +255,11 @@ $result = $database->select($sql);
                     <div>
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered" style="background-color: white;">
+			<table class="table table-bordered-20" style="background-color: white;">
 				<thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color:white">No</th>
+            <th style="color:white">Request Date</th>
 						<th style="color:white">Start Date</th>
 						<th style="color:white">End Date</th>
 						<th style="color:white">Leave Reason</th>
@@ -276,6 +277,7 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
+          <td><?php echo $result[$key]["requestdate"];?></td>
 					<td><?php echo $result[$key]["leavestartdate"];?></td>
 					<td><?php echo $result[$key]["leaveenddate"];?></td>
 					<td><?php echo $result[$key]["leavereason"];?></td>

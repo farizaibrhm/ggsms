@@ -1,14 +1,26 @@
 <?php
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
-$sendsql=mysqli_query($connection,$sql);
-$result = $database->select($sql);
 
-
+if (count($_POST) > 0) {
+    $sql = "UPDATE leaverequest set leavestartdate=?,leaveenddate=? ,leavereason=?,leavenotes=?  WHERE leaveid=?";
+    $paramType = 'ssssi';
+    $paramValue = array(
+        $_POST["leavestartdate"],
+        $_POST["leaveenddate"],
+        $_POST["leavereason"],
+        $_POST["leavenotes"],
+        $_GET["leaveid"]
+    );
+    $database->execute($sql, $paramType, $paramValue);
+    $message = "Leave status updated successfully";
+}
+$sql = "select * from leaverequest where leaveid=? ";
+$paramType = 'i';
+$paramValue = array(
+    $_GET["leaveid"]
+);
+$result = $database->select($sql, $paramType, $paramValue);
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,19 +34,9 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/css/login/owl.carousel.min.css">
 
-    
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
     <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
     
     <!-- Style -->
     <link rel="stylesheet" href="../../assets/css/login/style.css">
@@ -50,6 +52,14 @@ $result = $database->select($sql);
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/theme-default.css" class="template-customizer-theme-css" />
@@ -60,15 +70,17 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
-
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
+
+    <title>Dashboard Staff</title>
+
   </head>
   <body>
   
-    <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -116,7 +128,7 @@ $result = $database->select($sql);
         <ul class="menu-inner py-1">
 
           <!-- Dashboard -->
-          <li class="menu-item">
+          <li class="menu-item ">
             <a href="../hr/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -162,7 +174,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item ">
+          <li class="menu-item active ">
             <a href="../hr/staffleaverequest.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-stickies"></i>
               <div data-i18n="Basic">Staff's Leave Request</div>
@@ -178,7 +190,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/report.php" class="menu-link">
               <i class="menu-icon bi bi-list-columns-reverse"></i>
               <div data-i18n="Basic">Daily Activity Reports History</div>
@@ -218,132 +230,94 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-image: url('../../assets/img/bgreport.jpg');">
+      <!-- Layout container -->
+      <div class="layout-page" style="background-color: white;">
+ 
+    <div class="wrapper">
+   
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                    <script>
-          // Real time and date
-          function display_ct5() {
-          var x = new Date()
-          var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
-
-          var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-          x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
-          document.getElementById('ct5').innerHTML = x1;
-          display_c5();
-          }
-          function display_c5(){
-          var refresh=1000; // Refresh rate in milli seconds
-          mytime=setTimeout('display_ct5()',refresh)
-          }
-          display_c5()
-          </script>
-          <span id='ct5'></span>
-          <br>
-          <br>
-        <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
+                        <h3><b>Update Leave Request</b> </h3>
                     </div>
-                    <br>
                     <div class="phppot-container">
-		<form method="post" action="">
-			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered-20">
-				<thead style="background-color:#008d7d;">
-					<tr>
-						<th style="color:white">No</th>
-						<th style="color:white">Staff Name</th>
-            <th style="color:white">Date</th>
-						<th style="color:white" size='5'>Ongoing Task</th>
-						<th style="color:white" size='5'>Done Task</th>
-            <th style="color:white">Actions</th>
-					</tr>
-				</thead>
-<?php
-$did=0;
-if (is_array($result) || is_object($result)) {
-    foreach ($result as $key => $value) {
-		$did++;
-        ?>
-		
-	         <tr>
-					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
-					<td><a
-						href="../hr/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $result[$key]["reportid"]; ?>">View</button>
-            &nbsp;
-            <a href="../../controller/hr/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>&nbsp;
-        
-
-				</tr>
-        <div id="myModal<?php echo $result[$key]["reportid"]; ?>" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-			    <div class="modal-content">
-					<div class="modal-header">
-						 <button type="button" class="close" data-dismiss="modal">&times;</button>
-						    <h4 class="modal-title">Details</h4>
-				    </div>
-				    <div class="modal-body">
-              <br>
-              <br>
-              <br>
-						 <h6>Name : <?php echo $result[$key]["staffname"];?></h6>
-						 <h6>Mobile Number : <?php echo $result[$key]["reportdate"]; ?></h6>
-						 <h6>Email : <?php echo $result[$key]["reportongoingtask"]; ?></h6>
-				    </div>
-				</div>
-			</div>
-		</div>
-        
- <?php
-    }
-}
-?>
-
-
-
-
-  
-			</table>
-		</form>
-	</div>
+        <form name="frmUser" method="post" action="">
+           
+            <div>
+                <div class="row">
+                    <label for="leavestartdate">Leave Start Date <span
+                        class="error-color" id="leavestartdate_error"></span>
+                    </label><br>
+                    <input type="date" name="leavestartdate" id="leavestartdate"  class="form-control" value="<?php echo $result[0]['leavestartdate']; ?>">
                 </div>
-            </div>        
-        </div>
+            </div>
+            <div>
+            <div><br>
+                <div class="row">
+                    <label for="leaveenddate">Leave End Date<span
+                        class="error-color" id="leaveend_error"></span>
+                    </label>
+                    <input type="date" name="leaveenddate" id="leaveenddate"  class="form-control" value="<?php echo $result[0]['leaveenddate']; ?>">
+                </div>
+            </div>
+            </div>
+            <br>
+            <div>
+                <div class="row">
+                    <label for="leavenotes">Leave Reason <span
+                        class="error-color" id="leavereason_error"></span>
+                    </label>
+                    <select name="leavereason" id="leavereason"  class="form-control" value="<?php echo $result[0]['leavereason']; ?>" >
+                     <option value="Public Holidays">Public Holidays</option>
+                     <option value="Annual Leave">Annual Leave</option>
+                     <option value="Sick Leave">Sick Leave</option>
+                     <option value="Maternity Leave">Maternity Leave</option>
+                     <option value="Bereavement Leave">Bereavement Leave</option>
+                     <option value="Others">Others</option>
+                     </select>
+                </div>
+            </div>
+            <div><br>
+                <div class="row">
+                    <label for="leavenotes">Leave Notes <span
+                        class="error-color" id="leavenotes_error"></span>
+                    </label>
+                    <input type="text" name="leavenotes" id="leavenotes"  class="form-control" value="<?php echo $result[0]['leavenotes']; ?>">
+                </div>
+            </div>
+          <br>
+                <input type="submit" name="submit" value="Update" class="btn btn-primary">
+
+            <br>
+            <div class="message"><?php if(isset($message)) { echo "<script>alert('Leave Request Updated Successfully');document.location='../../view/staff/leaverequest.php'</script>"; } ?></div>
+       
+        </form>
     </div>
-  
+<br>
+<br>
+
+
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
-  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../../assets/vendor/js/bootstrap.js"></script>
-  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  <script src="../../assets/vendor/js/menu.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
-  <script src="../../assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  
-  <script src="../../assets/js/dashboards-analytics.js"></script>
-  
+  <script src="../assets/js/dashboards-analytics.js"></script>
 
   </body>
   </html>
-  

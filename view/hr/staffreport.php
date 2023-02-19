@@ -260,7 +260,6 @@ $result = $database->select($sql);
 						<th style="color: white;">Report Date</th>
 						<th style="color: white;">Ongoing Task</th>
 						<th style="color: white;">Done Task</th>
-						<th style="color: white;">Actions</th>
 					</tr>
 				</thead>
 <?php
@@ -270,16 +269,12 @@ if (is_array($result) || is_object($result)) {
 		$did++;
         ?>
 		
-	         <tr>
+	         <tr style="background-color:white;">
 					<td><?php echo  $did ;?></td>
 					<td><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["reportdate"];?></td>
 					<td><?php echo $result[$key]["reportongoingtask"];?></td>
 					<td><?php echo $result[$key]["reportdonetask"];?></td>
-					<td><a
-						href="../hr/updatestaffleaverequest.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-           </td>
 				</tr>
  <?php
     }

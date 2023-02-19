@@ -68,7 +68,7 @@ $sendsql=mysqli_query($connection,$sql);
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <title>Dashboard Staff</title>
   </head>
-  <body>
+  <body style="background-image: url('../../assets/img/bgattendance.png');" >
  <!-- ======= Header ======= -->
  <section id="topbar" class="topbar d-flex align-items-center" >
     <div class="container d-flex justify-content-center justify-content-md-between">

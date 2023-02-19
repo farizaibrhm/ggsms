@@ -70,7 +70,7 @@ $result = $database->select($sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
   </head>
-  <body>
+  <body >
   
    <!-- ======= Header ======= -->
    <section id="topbar" class="topbar d-flex align-items-center">
@@ -232,7 +232,7 @@ $result = $database->select($sql);
         
 <br>
 <br>
-<a href="../staff/forgotpassword.php?staffid=<?php echo $staffid;?>"><button class="btn btn-error">Change Password</button></a>
+<a href="../staff/changepassword.php"><button class="btn btn-error">Change Password</button></a>
 
             </div>
             

@@ -1,14 +1,5 @@
 <?php
-require_once '../../model/DataSource.php';
-$database = new DataSource();
-include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
-$sendsql=mysqli_query($connection,$sql);
-$result = $database->select($sql);
-
-
+include('../../controller/hr/ChangePasswordController.php'); // Includes Login Script
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,12 +8,11 @@ $result = $database->select($sql);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
 
     <link rel="stylesheet" href="../../assets/css/login/owl.carousel.min.css">
-
-    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/login/bootstrap.min.css">
@@ -44,11 +34,29 @@ $result = $database->select($sql);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+    <!-- Vendor CSS Files -->
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <!-- Template Main CSS File -->
     <link href="../../assets/css/main.css" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/assetsdashboard/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css"/>
+    <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/css/core.css" class="template-customizer-core-css" />
@@ -60,16 +68,23 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
+    <!-- Page CSS -->
 
+    <!-- Helpers -->
+    <script src="../../assets/assetsdashboard/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
-    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+
+    <title>Login</title>
+
+    
   </head>
   <body>
   
-    <!-- ======= Header ======= -->
-  <section id="topbar" class="topbar d-flex align-items-center">
+ <!-- ======= Header ======= -->
+ <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -178,7 +193,7 @@ $result = $database->select($sql);
             </a>
           </li>
 
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="../hr/report.php" class="menu-link">
               <i class="menu-icon bi bi-list-columns-reverse"></i>
               <div data-i18n="Basic">Daily Activity Reports History</div>
@@ -192,7 +207,7 @@ $result = $database->select($sql);
             </a>
           </li>
       
-          <li class="menu-item">
+          <li class="menu-item active">
             <a href="../hr/account.php" class="menu-link ">
               <i class="menu-icon bi bi-person-circle"></i>
               <div data-i18n="Form Elements">Account </div>
@@ -218,104 +233,45 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-image: url('../../assets/img/bgreport.jpg');">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="mt-5 mb-3 clearfix">
-                    <script>
-          // Real time and date
-          function display_ct5() {
-          var x = new Date()
-          var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
-
-          var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
-          x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
-          document.getElementById('ct5').innerHTML = x1;
-          display_c5();
-          }
-          function display_c5(){
-          var refresh=1000; // Refresh rate in milli seconds
-          mytime=setTimeout('display_ct5()',refresh)
-          }
-          display_c5()
-          </script>
-          <span id='ct5'></span>
-          <br>
-          <br>
-        <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
-                        <h6><?php echo $row["hrname"];?></h6>
-                    </div>
-                    <br>
-                    <div class="phppot-container">
-		<form method="post" action="">
-			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered-20">
-				<thead style="background-color:#008d7d;">
-					<tr>
-						<th style="color:white">No</th>
-            <th style="color:white">Date</th>
-						<th style="color:white">Ongoing Task</th>
-						<th style="color:white">Done Task</th>
-            <th style="color:white">Actions</th>
-					</tr>
-				</thead>
-<?php
-$did=0;
-if (is_array($result) || is_object($result)) {
-    foreach ($result as $key => $value) {
-		$did++;
-        ?>
-		
-	         <tr style="background-color:white;">
-					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
-					<td><a
-						href="../hr/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-           
-            <a href="../../controller/hr/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>&nbsp;
-        
-
-				</tr>
-        <div id="myModal<?php echo $result[$key]["reportid"]; ?>" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-			    <div class="modal-content">
-					<div class="modal-header">
-						 <button type="button" class="close" data-dismiss="modal">&times;</button>
-						    <h4 class="modal-title">Details</h4>
-				    </div>
-				    <div class="modal-body">
-              <br>
-              <br>
-              <br>
-						 <h6>Name : <?php echo $result[$key]["staffname"];?></h6>
-						 <h6>Mobile Number : <?php echo $result[$key]["reportdate"]; ?></h6>
-						 <h6>Email : <?php echo $result[$key]["reportongoingtask"]; ?></h6>
-				    </div>
-				</div>
-			</div>
-		</div>
-        
- <?php
-    }
-}
-?>
+      <!-- Layout container -->
+      <div class="layout-page" style="background-color: white;">
+        <!-- Navbar -->
 
 
+        <!-- / Navbar -->
 
-
-  
-			</table>
-		</form>
-	</div>
-                </div>
-            </div>        
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="content">
+          <div class="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3><b>Change Password</b></h3>
+            </div>
+            <form action="../hr/changepassword.php" method="post">
+<label>New Password :</label>
+<input name="newpassword" type="password" class="form-control">
+<label>Confirm New Password :</label>
+<input name="cnewpassword" type="password" class="form-control"><br>
+<input name="submit" type="submit" value="Change Password" class="btn btn-primary">
+<br>
+<span class="error"><?php echo $Error;?></span>
+<span class="success"><?php echo $successMessage;?></span>
+</form>
+            </div>
+          </div>
+          
         </div>
+        
+      </div>
     </div>
-  
+          </div>
+  </div>
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
@@ -325,9 +281,6 @@ if (is_array($result) || is_object($result)) {
   <script src="../../assets/vendor/js/bootstrap.js"></script>
   <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
   <script src="../../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
 
@@ -338,10 +291,7 @@ if (is_array($result) || is_object($result)) {
   <script src="../../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  
   <script src="../../assets/js/dashboards-analytics.js"></script>
-  
 
   </body>
   </html>
-  

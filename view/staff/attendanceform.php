@@ -223,7 +223,7 @@ else
 	<!-- / Menu -->
 
 	<!-- Layout container -->
-  <div class="container" style="background-image: url('../../assets/img/att.avif');" >
+  <div class="container" style="background-image: url('../../assets/img/bgattendance.png');" >
 	<div class="row">
 	<div id="main" >
 		<br><br><br><br>
@@ -245,7 +245,7 @@ else
                     <input type="hidden" name="longitude" value="">
 										<input type="hidden" name="latitude" value="">
                     <center>
-										<button  type="submit" name="submit"  class='btn btn-sm btn-primary log_now col-sm-5'>CLOCK IN</button>
+										<button  type="submit" name="submit"  class='btn btn-sm btn-primary'>CLOCK IN</button>
 										</center>
 										<br>
 								</form>
@@ -273,7 +273,7 @@ else
 							
 							<form action = "../../controller/staff/SubmitAttendanceClockOutController.php" method = "POST">  
 									<center>
-											<button type="submit" class='btn btn-sm btn-primary log_now col-sm-5' data-id="2">CLOCK OUT</button>
+											<button type="submit" class='btn btn-sm btn-primary'>CLOCK OUT</button>
 										</center>
 										<div class="loading" style="display: none"><center>Please wait...</center></div>
 									</form>

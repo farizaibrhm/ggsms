@@ -215,21 +215,20 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
+                        <h4><b>Daily Activity Reports History</b></h4>
                     </div>
                     <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered">
-				<thead>
+			<table class="table table-bordered-20">
+				<thead style="background-color:#008d7d;">
 					<tr>
-						<th>No</th>
-						<th>Staff Name</th>
-            <th>Date</th>
-						<th size='5'>Ongoing Task</th>
-						<th size='5'>Done Task</th>
-            <th>Actions</th>
+						<td style="color:white"><b>No</b></td>
+            <td style="color:white"><b>Date</b></td>
+						<td style="color:white"><b>Ongoing Task</b></td>
+						<td style="color:white"><b>Done Task</b></td>
+            <td style="color:white"><b>Actions</b></td>
 					</tr>
 				</thead>
 <?php
@@ -239,9 +238,8 @@ if (is_array($result) || is_object($result)) {
 		$did++;
         ?>
 		
-	         <tr>
+	         <tr  style="background-color:white;">
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["reportdate"];?></td>
 					<td><?php echo $result[$key]["reportongoingtask"];?></td>
 					<td><?php echo $result[$key]["reportdonetask"];?></td>

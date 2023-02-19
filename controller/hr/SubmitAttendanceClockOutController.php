@@ -10,12 +10,12 @@ $sendsql=mysqli_query($connection,$sql);
 // $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $date= date("y-m-d");
-$clockouttime= date("h:i:s");
+$clockouttime= date("h:i:sa");
 // $longitude =$_POST["longitude"];
 // $latitude =$_POST["latitude"];
 
 
-$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate()";
+$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate() AND employeename='$employeename'";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";

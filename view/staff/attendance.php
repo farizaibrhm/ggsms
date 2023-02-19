@@ -202,13 +202,13 @@ $result = $database->select($sql);
 	  <br>
 	  <center>
         <h4><b> Attendance History </b></h4>
-      <table class="table table-bordered" cellspacing = 0 cellpadding = 40 style="background-color: white;">
-      <tr>
-        <td><b>#</b></td>
-        <td><b>Date </b></td>
-        <td><b>Clock In Time </b></td>
-        <td><b>Clock Out Time </b></td>
-        <td><b>Maps</b></td>
+      <table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;">
+      <tr style="background-color:#008d7d;">
+        <td style="color: white;"><b>#</b></td>
+        <td style="color: white;"><b>Date </b></td>
+        <td style="color: white;"><b>Clock In Time </b></td>
+        <td style="color: white;"><b>Clock Out Time </b></td>
+        <td style="color: white;"><b>Maps</b></td>
       </tr>
       <hr>
 

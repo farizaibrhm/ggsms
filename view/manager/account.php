@@ -1,9 +1,9 @@
 <?php
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$hrid= $row['hrid'];
+include('../../controller/manager/ManagerController.php');
+$sql="SELECT * FROM manager";
+$mngr_id= $row['mngr_id'];
 $result = $database->select($sql);
 ?>
 <!doctype html>
@@ -118,111 +118,56 @@ $result = $database->select($sql);
     
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
-        <div class="menu-inner-shadow"></div>
+<div class="menu-inner-shadow"></div>
 
-        <ul class="menu-inner py-1">
+<ul class="menu-inner py-1">
 
-          <!-- Dashboard -->
-          <li class="menu-item">
-            <a href="../hr/dashboard.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
-          </li>
+  <!-- Dashboard -->
+  <li class="menu-item active">
+    <a href="../manager/dashboard.php" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+      <div data-i18n="Analytics">Dashboard</div>
+    </a>
+  </li>
 
-          <!-- Attendance  -->
+  <li class="menu-item">
+    <a href="../manager/staffattendance.php" class="menu-link">
+      <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
+      <div data-i18n="Account Settings">Staff's Attendance</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/attendanceform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-card-checklist"></i> 
-              <div data-i18n="Layouts">Attendance</div>
-            </a>
-          </li>
+  <li class="menu-item ">
+    <a href="../manager/staffleaverequest.php" class="menu-link">
+      <i class="menu-icon tf-icons bi bi-stickies"></i>
+      <div data-i18n="Basic">Staff's Leave Request</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/staffattendance.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-clock-history"></i>
-              <div data-i18n="Account Settings">Attendance History</div>
-            </a>
-          </li>
+  <li class="menu-item ">
+    <a href="../manager/staffreport.php" class="menu-link">
+      <i class="menu-icon bi bi-person-lines-fill"></i>
+      <div data-i18n="Basic">Staff Activity Reports</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
-              <div data-i18n="Account Settings">Staff's Attendance</div>
-            </a>
-          </li>
+  <li class="menu-item">
+    <a href="../manager/liststaff.php" class="menu-link ">
+      <i class="menu-icon bi bi-people-fill"></i>
+      <div data-i18n="Form Elements">Staffs </div>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="../manager/account.php" class="menu-link ">
+      <i class="menu-icon bi bi-person-circle"></i>
+      <div data-i18n="Form Elements">Account </div>
+    </a>
+  </li>
 
-          <!-- Leave Request -->
+  
 
-          <li class="menu-item">
-            <a href="../hr/leaverequestform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-calendar-week"></i>
-              <div data-i18n="Basic">Leave Request</div>
-            </a>
-          </li>
 
-          <li class="menu-item ">
-            <a href="../hr/leaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-card-list"></i>
-              <div data-i18n="Basic">Leave Request History</div>
-            </a>
-          </li>
-
-          <li class="menu-item ">
-            <a href="../hr/staffleaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-stickies"></i>
-              <div data-i18n="Basic">Staff's Leave Request</div>
-            </a>
-          </li>
-
-         <!-- Daily Activity Reports -->
-
-          <li class="menu-item">
-            <a href="../hr/reportform.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-pencil-square"></i>
-              <div data-i18n="Basic">Daily Activity Reports</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/report.php" class="menu-link">
-              <i class="menu-icon bi bi-list-columns-reverse"></i>
-              <div data-i18n="Basic">Daily Activity Reports History</div>
-            </a>
-          </li>
-
-          <li class="menu-item ">
-            <a href="../hr/staffreport.php" class="menu-link">
-              <i class="menu-icon bi bi-person-lines-fill"></i>
-              <div data-i18n="Basic">Staff Activity Reports</div>
-            </a>
-          </li>
-      
-          <li class="menu-item active">
-            <a href="../hr/account.php" class="menu-link ">
-              <i class="menu-icon bi bi-person-circle"></i>
-              <div data-i18n="Form Elements">Account </div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/liststaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-people-fill"></i>
-              <div data-i18n="Form Elements">Staffs </div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/registerstaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-person-plus"></i>
-              <div data-i18n="Form Elements">Register Staff</div>
-            </a>
-          </li>
-          
-
-      
-      </aside>
+</aside>
       <!-- / Menu -->
 
       <!-- Layout container -->
@@ -262,15 +207,15 @@ $result = $database->select($sql);
           <div class="card-body text-center">
 
 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?php echo $hrname?></h5>
-            <p class="text-muted mb-1"><?php echo $hrdeptname?></p>
+            <h5 class="my-3"><?php echo $mngr_name?></h5>
+            <p class="text-muted mb-1"><?php echo $mngr_deptName?></p>
             <div>
               <br>
-              <a href="../hr/updateaccount.php?hrid=<?php echo $hrid;?>">
+              <a href="../manager/updateaccount.php?mngr_id=<?php echo $mngr_id;?>">
               <button class="btn btn-primary">Update Account</button></a>
 <br>
 <br>
-					<a href="../staff/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
+					<a href="../manager/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
 
             </div>
             
@@ -285,7 +230,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Name</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrname?></p>
+                <p class="text-muted mb-0"><?php echo $mngr_name?></p>
               </div>
             </div>
             <hr>
@@ -294,7 +239,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hremail?></p>
+                <p class="text-muted mb-0"><?php echo $mngr_email?></p>
               </div>
             </div>
             <hr>
@@ -303,7 +248,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrphonenum?></p>
+                <p class="text-muted mb-0"><?php echo $mngr_phoneNum?></p>
               </div>
             </div>
             <hr>
@@ -312,7 +257,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Department Name</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrdeptname?></p>
+                <p class="text-muted mb-0"><?php echo $mngr_deptName?></p>
               </div>
             </div>
           </div>

@@ -270,7 +270,7 @@ $result = $database->select($sql);
               <button class="btn btn-primary">Update Account</button></a>
 <br>
 <br>
-					<a href="../staff/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
+					<a href="../hr/changepassword.php"><button class="btn btn-error">Change Password</button></a>
 
             </div>
             

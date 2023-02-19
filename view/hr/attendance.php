@@ -234,6 +234,8 @@ $result = $database->select($sql);
         <td style="color: white;"><b>Date </b></td>
         <td style="color: white;"><b>Clock In Time </b></td>
         <td style="color: white;"><b>Clock Out Time </b></td>
+        <td style="color: white;"><b>Maps</b></td>
+       
       </tr>
       <hr>
 
@@ -251,7 +253,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["date"];?></td>
 					<td><?php echo $result[$key]["clockintime"];?></td>
           <td><?php echo $result[$key]["clockouttime"];?></td>
-         
+          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
 				</tr>
  <?php
     }

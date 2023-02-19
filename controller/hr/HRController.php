@@ -15,6 +15,7 @@ $hremail =$row['hremail'];
 $hrname= $row['hrname'];
 $hrphonenum= $row['hrphonenum'];
 $hrdeptname= $row['hrdeptname'];
+$hrpassword= $row['hrpassword'];
 if(!isset($hremail)){
 mysqli_close($connection); // Closing Connection
 header('Location: ../hr/dashboard.php'); // Redirecting To Home Page

@@ -219,7 +219,7 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Leave Requests Details</b></h4><br>
+                        <h4><b>Leave Requests History</b></h4><br>
                         <table class="table-light">
                           <tr>
                         <td><h6 >Name: <?php echo $staffname?></h6>
@@ -228,20 +228,19 @@ $result = $database->select($sql);
                           </tr>
                         </table>
                     </div>
-                    <br>
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered">
+			<table class="table table-bordered-20">
 				<thead>
-					<tr>
-						<th>No</th>
-						<th>Start Date</th>
-						<th>End Date</th>
-						<th>Leave Reason</th>
-						<th>Leave Notes</th>
-						<th>Leave Status</th>
-            <th>Actions</th>
+        <tr style="background-color:#008d7d;">
+						<td style="color: white;"><b>No</b></td>
+						<td style="color: white;"><b>Start Date</b></td>
+						<td style="color: white;"><b>End Date</b></td>
+						<td style="color: white;"><b>Leave Reason</b></td>
+						<td style="color: white;"><b>Leave Notes</b></td>
+						<td style="color: white;"><b>Leave Status</b></td>
+            <td style="color: white;"><b>Actions</td></b></br>
 					</tr>
 				</thead>
 <?php

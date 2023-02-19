@@ -223,11 +223,11 @@ $sendsql=mysqli_query($connection,$sql);
               
                       <br>
                       <label> Ongoing Task: </label>
-                      <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" >
+                      <textarea id="reportongoingtask" name="reportongoingtask" class="form-control"  rows="5" cols="20">
                         </textarea>
                         <br>
                       <label> Done Task: </label>
-                      <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="4" cols="50" >
+                      <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20" >
                         </textarea>
                         <br>
               

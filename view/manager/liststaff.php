@@ -2,10 +2,13 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/manager/ManagerController.php');
+$sql="SELECT * FROM staffregistration";
+$employeename= $row['mngr_name'];
 $sql="SELECT * FROM hrlogin";
-$staffname= $row['mngr_name'];
-$sql = "SELECT * FROM leaverequest where staffname!='$staffname'";
+$sql = "SELECT * FROM staffregistration  where staffname!='$employeename'";
+$sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
+
 
 ?>
 <!doctype html>
@@ -27,6 +30,11 @@ $result = $database->select($sql);
     <!-- Style -->
     <link rel="stylesheet" href="../../assets/css/login/style.css">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,11 +43,6 @@ $result = $database->select($sql);
       rel="stylesheet"
     />
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
     <!-- Template Main CSS File -->
     <link href="../../assets/css/main.css" rel="stylesheet">
 
@@ -56,18 +59,16 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" href="../../assets/assetsdashboard/vendor/libs/apex-charts/apex-charts.css" />
 
-    <script src="../../assets/assetsdashboard/js/config.js"></script>
-    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <title>Dashboard Staff</title>
-
+    <script src="../../assets/assetsdashboard/js/config.js"></script>
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
+    <title>HR Daily Activity Report History</title>
   </head>
   <body>
   
- <!-- ======= Header ======= -->
- <section id="topbar" class="topbar d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:operationsales.globalgrandeur@gmail.com ">operationsales.globalgrandeur@gmail.com </a></i>
@@ -107,7 +108,7 @@ $result = $database->select($sql);
       <!-- Menu -->
 
     
-      
+   
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
 <div class="menu-inner-shadow"></div>
@@ -162,15 +163,11 @@ $result = $database->select($sql);
 </aside>
       <!-- / Menu -->
 
-      <!-- Layout container -->
-      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
-    <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="mt-6 mb-3 clearfix">
-                      <br>
-                        <script>
+                    <div class="mt-5 mb-3 clearfix">
+                    <script>
           // Real time and date
           function display_ct5() {
           var x = new Date()
@@ -191,25 +188,20 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-
-                        <h4><b>Staff Leave Requests</b> </h4>
+                        <h3><b>List of Staffs</b></h3>
                     </div>
                     <br>
-                    <div>
+                    <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
 			<table class="table table-bordered-20" style="background-color: white;">
-				<thead style="background-color:#008d7d;">
+      <thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color: white;">No</th>
 						<th style="color: white;">Staff Name</th>
-						<th style="color: white;">Start Date</th>
-						<th style="color: white;">End Date</th>
-						<th style="color: white;">Department</th>
-						<th style="color: white;">Leave Reason</th>
-						<th style="color: white;">Leave Notes</th>
-						<th style="color: white;">Leave Status</th>
-						<th style="color: white;">Actions</th>
+                        <th style="color: white;">Email</th>
+                        <th style="color: white;">Phone Number</th>
+                        <th style="color: white;">Department</th>
 					</tr>
 				</thead>
 <?php
@@ -221,17 +213,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><b><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["leavestartdate"];?></td>
-					<td><?php echo $result[$key]["leaveenddate"];?></td>
-					<td><?php echo $result[$key]["department"];?></td>
-					<td><?php echo $result[$key]["leavereason"];?></td>
-					<td><?php echo $result[$key]["leavenotes"];?></td>
-					<td><?php echo $result[$key]["leavestatus"];?></td>
-					<td><a
-						href="../hr/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-          </td>
+          <td><?php echo $result[$key]["staffname"];?></td>
+					<td><?php echo $result[$key]["staffemail"];?></td>
+					<td><?php echo $result[$key]["staffphonenum"];?></td>
+					<td><?php echo $result[$key]["staffdeptname"];?></td>
 				</tr>
  <?php
     }
@@ -240,30 +225,30 @@ if (is_array($result) || is_object($result)) {
 			</table>
 		</form>
 	</div>
-<br>
-<br>
-
-
+                </div>
+            </div>        
+        </div>
+    </div>
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
-  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../assets/vendor/js/bootstrap.js"></script>
-  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../../assets/vendor/js/bootstrap.js"></script>
+  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-  <script src="../assets/vendor/js/menu.js"></script>
+  <script src="../../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+  <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
-  <script src="../assets/js/main.js"></script>
+  <script src="../../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  <script src="../assets/js/dashboards-analytics.js"></script>
+  <script src="../../assets/js/dashboards-analytics.js"></script>
 
   </body>
   </html>

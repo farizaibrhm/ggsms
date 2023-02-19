@@ -1,9 +1,9 @@
 <?php
 require_once '../../model/DataSource.php';
 $database = new DataSource();
-include('../../controller/hr/HRController.php');
+include('../../controller/manager/ManagerController.php');
 $sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
+$staffname= $row['mngr_name'];
 $sql = "SELECT * FROM report where staffname!='$staffname'";
 $result = $database->select($sql);
 
@@ -109,111 +109,56 @@ $result = $database->select($sql);
     
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
-        <div class="menu-inner-shadow"></div>
+<div class="menu-inner-shadow"></div>
 
-        <ul class="menu-inner py-1">
+<ul class="menu-inner py-1">
 
-          <!-- Dashboard -->
-          <li class="menu-item">
-            <a href="../hr/dashboard.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
-          </li>
+  <!-- Dashboard -->
+  <li class="menu-item active">
+    <a href="../manager/dashboard.php" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+      <div data-i18n="Analytics">Dashboard</div>
+    </a>
+  </li>
 
-          <!-- Attendance  -->
+  <li class="menu-item">
+    <a href="../manager/staffattendance.php" class="menu-link">
+      <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
+      <div data-i18n="Account Settings">Staff's Attendance</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/attendanceform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-card-checklist"></i> 
-              <div data-i18n="Layouts">Attendance</div>
-            </a>
-          </li>
+  <li class="menu-item ">
+    <a href="../manager/staffleaverequest.php" class="menu-link">
+      <i class="menu-icon tf-icons bi bi-stickies"></i>
+      <div data-i18n="Basic">Staff's Leave Request</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-clock-history"></i>
-              <div data-i18n="Account Settings">Attendance History</div>
-            </a>
-          </li>
+  <li class="menu-item ">
+    <a href="../manager/staffreport.php" class="menu-link">
+      <i class="menu-icon bi bi-person-lines-fill"></i>
+      <div data-i18n="Basic">Staff Activity Reports</div>
+    </a>
+  </li>
 
-          <li class="menu-item">
-            <a href="../hr/staffattendance.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
-              <div data-i18n="Account Settings">Staff's Attendance</div>
-            </a>
-          </li>
+  <li class="menu-item">
+    <a href="../manager/liststaff.php" class="menu-link ">
+      <i class="menu-icon bi bi-people-fill"></i>
+      <div data-i18n="Form Elements">Staffs </div>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="../manager/account.php" class="menu-link ">
+      <i class="menu-icon bi bi-person-circle"></i>
+      <div data-i18n="Form Elements">Account </div>
+    </a>
+  </li>
 
-          <!-- Leave Request -->
+  
 
-          <li class="menu-item">
-            <a href="../hr/leaverequestform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-calendar-week"></i>
-              <div data-i18n="Basic">Leave Request</div>
-            </a>
-          </li>
 
-          <li class="menu-item ">
-            <a href="../hr/leaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-card-list"></i>
-              <div data-i18n="Basic">Leave Request History</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/staffleaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-stickies"></i>
-              <div data-i18n="Basic">Staff's Leave Request</div>
-            </a>
-          </li>
-
-         <!-- Daily Activity Reports -->
-
-          <li class="menu-item">
-            <a href="../hr/reportform.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-pencil-square"></i>
-              <div data-i18n="Basic">Daily Activity Reports</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/report.php" class="menu-link">
-              <i class="menu-icon bi bi-list-columns-reverse"></i>
-              <div data-i18n="Basic">Daily Activity Reports History</div>
-            </a>
-          </li>
-
-          <li class="menu-item active">
-            <a href="../hr/staffreport.php" class="menu-link">
-              <i class="menu-icon bi bi-person-lines-fill"></i>
-              <div data-i18n="Basic">Staff Activity Reports</div>
-            </a>
-          </li>
-      
-          <li class="menu-item">
-            <a href="../hr/account.php" class="menu-link ">
-              <i class="menu-icon bi bi-person-circle"></i>
-              <div data-i18n="Form Elements">Account </div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/liststaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-people-fill"></i>
-              <div data-i18n="Form Elements">Staffs </div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/registerstaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-person-plus"></i>
-              <div data-i18n="Form Elements">Register Staff</div>
-            </a>
-          </li>
-          
-
-      
-      </aside>
+</aside>
       <!-- / Menu -->
 
       <!-- Layout container -->
@@ -252,7 +197,7 @@ $result = $database->select($sql);
                     <div class="phppot-container">
 		<form method="post" action="">
 			<div id="message"><?php if(isset($message)) { echo $message; } ?></div>
-			<table class="table table-bordered-20">
+			<table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
       <thead style="background-color:#008d7d;">
 					<tr>
 						<th style="color: white;">No</th>

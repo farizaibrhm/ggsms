@@ -12,7 +12,7 @@ $sendsql=mysqli_query($connection,$sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard HR</title>
+    <title>Dashboard Manager</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
@@ -71,7 +71,7 @@ $sendsql=mysqli_query($connection,$sql);
     <script src="../../assets/assetsdashboard/js/config.js"></script>
 
   </head>
-  <body style="background-image: url('../../assets/img/bgattendance.avif');">
+  <body style="background-image: url('../../assets/img/default.avif');">
   
     <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
@@ -122,101 +122,46 @@ $sendsql=mysqli_query($connection,$sql);
 
           <!-- Dashboard -->
           <li class="menu-item active">
-            <a href="../hr/dashboard.php" class="menu-link">
+            <a href="../manager/dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
           </li>
 
-          <!-- Attendance  -->
-
           <li class="menu-item">
-            <a href="../hr/attendanceform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-card-checklist"></i> 
-              <div data-i18n="Layouts">Attendance</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/attendance.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-clock-history"></i>
-              <div data-i18n="Account Settings">Attendance History</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/staffattendance.php" class="menu-link">
+            <a href="../manager/staffattendance.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-calendar-check-fill"></i>
               <div data-i18n="Account Settings">Staff's Attendance</div>
             </a>
           </li>
 
-          <!-- Leave Request -->
-
-          <li class="menu-item">
-            <a href="../hr/leaverequestform.php" class="menu-link ">
-              <i class="menu-icon tf-icons bi bi-calendar-week"></i>
-              <div data-i18n="Basic">Leave Request</div>
-            </a>
-          </li>
-
           <li class="menu-item ">
-            <a href="../hr/leaverequest.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-card-list"></i>
-              <div data-i18n="Basic">Leave Request History</div>
-            </a>
-          </li>
-
-          <li class="menu-item ">
-            <a href="../hr/staffleaverequest.php" class="menu-link">
+            <a href="../manager/staffleaverequest.php" class="menu-link">
               <i class="menu-icon tf-icons bi bi-stickies"></i>
               <div data-i18n="Basic">Staff's Leave Request</div>
             </a>
           </li>
 
-         <!-- Daily Activity Reports -->
-
-          <li class="menu-item">
-            <a href="../hr/reportform.php" class="menu-link">
-              <i class="menu-icon tf-icons bi bi-pencil-square"></i>
-              <div data-i18n="Basic">Daily Activity Reports</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/report.php" class="menu-link">
-              <i class="menu-icon bi bi-list-columns-reverse"></i>
-              <div data-i18n="Basic">Daily Activity Reports History</div>
-            </a>
-          </li>
-
           <li class="menu-item ">
-            <a href="../hr/staffreport.php" class="menu-link">
+            <a href="../manager/staffreport.php" class="menu-link">
               <i class="menu-icon bi bi-person-lines-fill"></i>
               <div data-i18n="Basic">Staff Activity Reports</div>
             </a>
           </li>
       
           <li class="menu-item">
-            <a href="../hr/account.php" class="menu-link ">
+            <a href="../manager/liststaff.php" class="menu-link ">
+              <i class="menu-icon bi bi-people-fill"></i>
+              <div data-i18n="Form Elements">Staffs </div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="../manager/account.php" class="menu-link ">
               <i class="menu-icon bi bi-person-circle"></i>
               <div data-i18n="Form Elements">Account </div>
             </a>
           </li>
 
-          <li class="menu-item">
-            <a href="../hr/liststaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-people-fill"></i>
-              <div data-i18n="Form Elements">Staffs </div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="../hr/registerstaff.php" class="menu-link ">
-              <i class="menu-icon bi bi-person-plus"></i>
-              <div data-i18n="Form Elements">Register Staff</div>
-            </a>
-          </li>
           
 
       
@@ -224,7 +169,7 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page">
+      <div class="layout-page" >
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
@@ -257,49 +202,14 @@ $sendsql=mysqli_query($connection,$sql);
         <!-- Real time and date -->
 
             <div class="row">
-              <div class="col-lg-6 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome <?php echo $hrname?>!</h5>
-                        <p class="mb-4">
-                          Don't forget to take your attendance, <span class="fw-bold"><?php echo $hrname?>.</span> 
-                        </p>
-
-                        <a href="../hr/attendanceform.php" class="btn btn-sm btn-primary">Clock In Now</a>
-                      </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img
-                          src="../../assets/assetsdashboard/img/illustrations/man-with-laptop-light.png"
-                          height="140"
-                          alt="View Badge User"
-                          data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                          data-app-light-img="illustrations/man-with-laptop-light.png"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="col-lg-3 mb-4 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Total Number of Staffs</h5>
-                        <h4>
-                        <?php
-                        require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM staffregistration"; 
-                        if ($result=mysqli_query($con,$sql)) {
-                        $rowcount=mysqli_num_rows($result);
-                        echo $rowcount; 
-                        }
-                        ?>
-                        </h4>
+                        <h5 class="card-title text-primary">Staff Attendance</h5>
+                        <br>
+                        <br>
                         <a href="../hr/liststaff.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
@@ -310,36 +220,53 @@ $sendsql=mysqli_query($connection,$sql);
                 <div class="card">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
+                      
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Number of Leave Requests</h5>
-                        <h4>
-                        <?php
-                        require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM leaverequest"; 
-                        if ($result=mysqli_query($con,$sql)) {
-                        $rowcount=mysqli_num_rows($result);
-                        echo $rowcount; 
-                        }
-                        ?>
-                        </h4>
+                        <h5 class="card-title text-primary">Staff Leave Request</h5>
+                        <br>
                         <a href="../hr/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 order-1">
-                <div class="row">
-                  <div class="col-lg-6 col-md-12 col-6 mb-4">
+              <div class="col-lg-3 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Staff Activity Report</h5>
+                        <br>
+                        <a href="../hr/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                <div class="row">
-                  <div class="col-6 mb-4">
+              <div class="col-lg-3 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Number of Staffs</h5>
+                        <h4>
+                        <?php
+                        require_once '../../model/db_connect.php';
+                        $sql = "SELECT * FROM staffregistration"; 
+                        if ($result=mysqli_query($con,$sql)) {
+                        $rowcount=mysqli_num_rows($result);
+                        echo $rowcount; 
+                        }
+                        ?>
+                        </h4>
+                        <br>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+                </div>
+                
               <h6> Office Location </h6>
               <div class="col-lg-15 mb-4 order-0">
                 <div class="card">

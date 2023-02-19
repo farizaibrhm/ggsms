@@ -169,7 +169,7 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page" >
+      <div class="layout-page" style="background-image: url('../../assets/img/bgreport.jpg');" >
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
@@ -177,6 +177,7 @@ $sendsql=mysqli_query($connection,$sql);
 
         
           <div class="container-xxl flex-grow-1 container-p-y">
+          <h6> Welcome <i><?php echo $row["mngr_name"]?>!</i></h6>
           <h6><b> Dashboard: Human Resources Officer</b> </h6>
           <script>
 
@@ -210,7 +211,7 @@ $sendsql=mysqli_query($connection,$sql);
                         <h5 class="card-title text-primary">Staff Attendance</h5>
                         <br>
                         <br>
-                        <a href="../hr/liststaff.php" class="btn btn-sm btn-primary">View</a>
+                        <a href="../manager/staffattendance.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>
@@ -224,7 +225,8 @@ $sendsql=mysqli_query($connection,$sql);
                       <div class="card-body">
                         <h5 class="card-title text-primary">Staff Leave Request</h5>
                         <br>
-                        <a href="../hr/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
+                        <br>
+                        <a href="../manager/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>
@@ -237,7 +239,7 @@ $sendsql=mysqli_query($connection,$sql);
                       <div class="card-body">
                         <h5 class="card-title text-primary">Staff Activity Report</h5>
                         <br>
-                        <a href="../hr/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
+                        <a href="../manager/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>
@@ -259,7 +261,7 @@ $sendsql=mysqli_query($connection,$sql);
                         }
                         ?>
                         </h4>
-                        <br>
+                        <a href="../manager/liststaff.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>

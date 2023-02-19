@@ -115,7 +115,7 @@ $result = $database->select($sql);
 <ul class="menu-inner py-1">
 
   <!-- Dashboard -->
-  <li class="menu-item active">
+  <li class="menu-item ">
     <a href="../manager/dashboard.php" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
@@ -129,7 +129,7 @@ $result = $database->select($sql);
     </a>
   </li>
 
-  <li class="menu-item ">
+  <li class="menu-item active ">
     <a href="../manager/staffleaverequest.php" class="menu-link">
       <i class="menu-icon tf-icons bi bi-stickies"></i>
       <div data-i18n="Basic">Staff's Leave Request</div>
@@ -163,7 +163,7 @@ $result = $database->select($sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
+      <div class="layout-page" style="background-image: url('../../assets/img/bgreport.jpg');">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -201,15 +201,15 @@ $result = $database->select($sql);
 			<table class="table table-bordered-20" style="background-color: white;">
 				<thead style="background-color:#008d7d;">
 					<tr>
-						<th style="color: white;">No</th>
-						<th style="color: white;">Staff Name</th>
-						<th style="color: white;">Start Date</th>
-						<th style="color: white;">End Date</th>
-						<th style="color: white;">Department</th>
-						<th style="color: white;">Leave Reason</th>
-						<th style="color: white;">Leave Notes</th>
-						<th style="color: white;">Leave Status</th>
-						<th style="color: white;">Actions</th>
+						<td style="color: white;"><b>No</b></td>
+						<td style="color: white;"><b>Staff Name</b></td>
+						<td style="color: white;"><b>Start Date</b></td>
+						<td style="color: white;"><b>End Date</b></td>
+						<td style="color: white;"><b>Department</b></td>
+						<td style="color: white;"><b>Leave Reason</b></td>
+						<td style="color: white;"><b>Leave Notes</b></td>
+						<td style="color: white;"><b>Leave Status</b></td>
+						<td style="color: white;"><b>Actions</b></td>
 					</tr>
 				</thead>
 <?php
@@ -221,7 +221,7 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><b><?php echo $result[$key]["staffname"];?></td>
+					<td><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["leavestartdate"];?></td>
 					<td><?php echo $result[$key]["leaveenddate"];?></td>
 					<td><?php echo $result[$key]["department"];?></td>

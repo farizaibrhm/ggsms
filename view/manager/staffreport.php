@@ -114,7 +114,7 @@ $result = $database->select($sql);
 <ul class="menu-inner py-1">
 
   <!-- Dashboard -->
-  <li class="menu-item active">
+  <li class="menu-item">
     <a href="../manager/dashboard.php" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
@@ -135,7 +135,7 @@ $result = $database->select($sql);
     </a>
   </li>
 
-  <li class="menu-item ">
+  <li class="menu-item active ">
     <a href="../manager/staffreport.php" class="menu-link">
       <i class="menu-icon bi bi-person-lines-fill"></i>
       <div data-i18n="Basic">Staff Activity Reports</div>
@@ -200,12 +200,12 @@ $result = $database->select($sql);
 			<table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
       <thead style="background-color:#008d7d;">
 					<tr>
-						<th style="color: white;">No</th>
-						<th style="color: white;">Staff Name</th>
-						<th style="color: white;">Report Date</th>
-						<th style="color: white;">Ongoing Task</th>
-						<th style="color: white;">Done Task</th>
-						<th style="color: white;">Actions</th>
+						<td style="color: white;"><b>No</b></td >
+						<td  style="color: white;"><b>Staff Name</b></td >
+						<td style="color: white;"><b>Report Date</b></td >
+						<td  style="color: white;"><b>Ongoing Task</b></td >
+						<td  style="color: white;"><b>Done Task</b></td >
+						<td  style="color: white;"><b>Actions</b></td >
 					</tr>
 				</thead>
 <?php

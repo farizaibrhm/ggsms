@@ -3,9 +3,10 @@ require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/manager/ManagerController.php');
 $sql="SELECT * FROM staffregistration";
-$employeename= $row['mngr_name'];
 $sql="SELECT * FROM hrlogin";
-$sql = "SELECT * FROM staffregistration  where staffname!='$employeename'";
+$employeename= $row['mngr_name'];
+$staffname= $row['staffname'];
+$sql = "SELECT * FROM staffregistration,hrlogin  where staffname!='$employeename'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -116,7 +117,7 @@ $result = $database->select($sql);
 <ul class="menu-inner py-1">
 
   <!-- Dashboard -->
-  <li class="menu-item active">
+  <li class="menu-item">
     <a href="../manager/dashboard.php" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
@@ -144,7 +145,7 @@ $result = $database->select($sql);
     </a>
   </li>
 
-  <li class="menu-item">
+  <li class="menu-item active">
     <a href="../manager/liststaff.php" class="menu-link ">
       <i class="menu-icon bi bi-people-fill"></i>
       <div data-i18n="Form Elements">Staffs </div>
@@ -163,7 +164,7 @@ $result = $database->select($sql);
 </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-image: url('../../assets/img/bgreport.jpg');" >
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
@@ -197,11 +198,11 @@ $result = $database->select($sql);
 			<table class="table table-bordered-20" style="background-color: white;">
       <thead style="background-color:#008d7d;">
 					<tr>
-						<th style="color: white;">No</th>
-						<th style="color: white;">Staff Name</th>
-                        <th style="color: white;">Email</th>
-                        <th style="color: white;">Phone Number</th>
-                        <th style="color: white;">Department</th>
+						<td style="color: white;"><b>No</b></td>
+						<td style="color: white;"><b>Staff Name</b></td>
+            <td style="color: white;"><b>Email</b></td>
+            <td style="color: white;"><b>Phone Number</b></td>
+            <td style="color: white;"><b>Department</b></td>
 					</tr>
 				</thead>
 <?php

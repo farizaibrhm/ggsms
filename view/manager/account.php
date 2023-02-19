@@ -123,7 +123,7 @@ $result = $database->select($sql);
 <ul class="menu-inner py-1">
 
   <!-- Dashboard -->
-  <li class="menu-item active">
+  <li class="menu-item">
     <a href="../manager/dashboard.php" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
@@ -157,7 +157,7 @@ $result = $database->select($sql);
       <div data-i18n="Form Elements">Staffs </div>
     </a>
   </li>
-  <li class="menu-item">
+  <li class="menu-item active">
     <a href="../manager/account.php" class="menu-link ">
       <i class="menu-icon bi bi-person-circle"></i>
       <div data-i18n="Form Elements">Account </div>
@@ -215,7 +215,7 @@ $result = $database->select($sql);
               <button class="btn btn-primary">Update Account</button></a>
 <br>
 <br>
-					<a href="../manager/forgotpassword.php"><button class="btn btn-error">Change Password</button></a>
+					<a href="../manager/changepassword.php"><button class="btn btn-error">Change Password</button></a>
 
             </div>
             

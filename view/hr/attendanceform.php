@@ -50,7 +50,7 @@ else
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard HR</title>
+    <title>Attendance</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
@@ -108,7 +108,7 @@ else
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
   </head>
-  <body style="background-image: url('../../assets/img/bgattendance.avif');">
+  <body  style="background-image: url('../../assets/img/bgreport.jpg');">
   
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">

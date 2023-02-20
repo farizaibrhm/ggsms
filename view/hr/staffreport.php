@@ -61,7 +61,7 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <title>Dashboard Staff</title>
+    <title>Staff Reports</title>
 
   </head>
   <body>

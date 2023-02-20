@@ -14,7 +14,7 @@ $result = $database->select($sql);
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Attendance History</title>
+    <title>Staff Attendance</title>
 
 	 <!-- Required meta tags -->
 	 <meta charset="utf-8">
@@ -220,14 +220,13 @@ $result = $database->select($sql);
 	<!-- Layout container -->
 
   
-  <div class="container"style="background-image: url('../../assets/img/bgattendance.avif');" >
+  <div class="container"  style="background-image: url('../../assets/img/bgreport.jpg');" >
 	<div class="row">
 	<div id="main" >
 	  <br>
 	  <br>
 	  <center>
         <h4><b> Attendance History </b></h4>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff's name" title="Type in a name" class="form-control">
         
         <table class="table table-bordered-20" cellspacing = 0 cellpadding = 40 style="background-color: white;" id="myTable">
       <tr  style="background-color:#008d7d;">

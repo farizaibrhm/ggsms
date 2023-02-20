@@ -10,7 +10,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 $date= date("y-m-d");
 $clockouttime= date("h:i:s");
 
-$sql = "UPDATE attendance SET clockouttime=NOW()";
+$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate() AND employeename='$employeename'";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../staff/attendance.php";

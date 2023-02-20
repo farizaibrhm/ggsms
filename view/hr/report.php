@@ -64,7 +64,7 @@ $result = $database->select($sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+    <title>Daily Activity Report History</title>
   </head>
   <body>
   
@@ -243,8 +243,7 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Daily Activity Reports</b></h4>
-                        <h6><?php echo $row["hrname"];?></h6>
+                        <h4><b>Daily Activity Reports History</b></h4>
                     </div>
                     <br>
                     <div class="phppot-container">

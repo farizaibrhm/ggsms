@@ -53,7 +53,7 @@ $sendsql=mysqli_query($connection,$sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard Staff</title>
+    <title>Daily Activity Report</title>
   </head>
   <body>
   
@@ -208,7 +208,7 @@ $sendsql=mysqli_query($connection,$sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-    <div class="container"  style="background-image: url('../../assets/img/bgreport.jpg');">
+    <div class="container" style="background-color: white;">
       <div class="row">
         <div class="col-md-9 contents">
           <div class="row justify-content-center">

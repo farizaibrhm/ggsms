@@ -73,7 +73,7 @@ $result = $database->select($sql, $paramType, $paramValue);
 
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <title>Dashboard Staff</title>
+    <title>Update Staff Leave Request</title>
 
   </head>
   <body>

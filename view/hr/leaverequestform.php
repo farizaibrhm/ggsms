@@ -53,7 +53,7 @@ $sendsql=mysqli_query($connection,$sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard Staff</title>
+    <title>Request Leave</title>
   </head>
   <body>
   
@@ -265,7 +265,7 @@ $sendsql=mysqli_query($connection,$sql);
                       </div>
                       <br>
                       <label><b> Leave Notes:</b> </label>
-                      <textarea id="leavenotes" name="leavenotes" class="form-control" rows="4" maxlength="200">
+                      <textarea style="justify-content: baseline;" id="leavenotes" name="leavenotes" class="form-control" >
                         </textarea>
                       <br>
                         <div class="form-group first">
@@ -275,7 +275,7 @@ $sendsql=mysqli_query($connection,$sql);
                               </div>
 
                       <input type="submit" value="Request Leave" name="submit" class="btn btn-primary">
-                      <button type="reset" value="Reset" class="btn btn-block btn-cancel">Reset</button>
+                      <button type="reset" value="Reset" class="btn btn-red">Reset</button>
               <br>
               <br>
               <br>

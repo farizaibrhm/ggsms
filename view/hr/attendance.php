@@ -219,7 +219,7 @@ $result = $database->select($sql);
 	<!-- / Menu -->
 
 	<!-- Layout container -->
-  <div class="container" style="background-image: url('../../assets/img/bgattendance.avif');">
+  <div class="container"  style="background-image: url('../../assets/img/bgreport.jpg');">
 	<div class="row">
 	<div id="main" >
 	  <br>
@@ -240,6 +240,7 @@ $result = $database->select($sql);
       <hr>
 
       <?php
+      $date=date_create("d-m-y");
 $did=0;
 if (is_array($result) || is_object($result)) {
     foreach ($result as $key => $value) {
@@ -248,8 +249,6 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<!-- <td><?php echo $result[$key]["employeename"];?></td>
-					<td><?php echo $result[$key]["employeeemail"];?></td> -->
 					<td><?php echo $result[$key]["date"];?></td>
 					<td><?php echo $result[$key]["clockintime"];?></td>
           <td><?php echo $result[$key]["clockouttime"];?></td>

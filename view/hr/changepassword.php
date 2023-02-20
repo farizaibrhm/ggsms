@@ -77,7 +77,7 @@ include('../../controller/hr/ChangePasswordController.php'); // Includes Login S
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
 
-    <title>Login</title>
+    <title>Change Password</title>
 
     
   </head>

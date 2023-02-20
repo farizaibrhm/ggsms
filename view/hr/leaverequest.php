@@ -63,7 +63,7 @@ $result = $database->select($sql);
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
     
 
-    <title>Dashboard Staff</title>
+    <title>Leave Requests History</title>
   </head>
   <body >
   
@@ -215,7 +215,7 @@ $result = $database->select($sql);
       </aside>
       <!-- / Menu -->
       <!-- Layout container -->
-      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
+      <div class="layout-page"  style="background-image: url('../../assets/img/bgreport.jpg');">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -242,14 +242,7 @@ $result = $database->select($sql);
           <br>
           <br>
         <!-- Real time and date -->
-                        <h4><b>Leave Requests Details</b></h4><br>
-                        <table class="table table-bordered-20" style="background-color: white;">
-                          <tr>
-                        <td><h6 >Name: <?php echo $staffname?></h6>
-                        <h6 >Email: <?php echo $hremail?></h6>
-                        <h6 >Department Name: <?php echo $hrdeptname?></h6></td>
-                          </tr>
-                        </table>
+                        <h4><b>Leave Requests History</b></h4>
                     </div>
                     <br>
                     <div>

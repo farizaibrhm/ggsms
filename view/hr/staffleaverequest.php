@@ -61,7 +61,7 @@ $result = $database->select($sql);
 
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <title>Dashboard Staff</title>
+    <title>Staff Leave Requests</title>
 
   </head>
   <body>
@@ -217,7 +217,7 @@ $result = $database->select($sql);
       <!-- / Menu -->
 
       <!-- Layout container -->
-      <div class="layout-page" style="background-image: url('../../assets/img/bgleaverequest.png');background-color:white">
+      <div class="layout-page"  style="background-image: url('../../assets/img/bgreport.jpg');">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">

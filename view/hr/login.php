@@ -9,7 +9,7 @@ include('../../controller/hr/LoginController.php');  // Includes Login Script
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Sign In: HR</title>
+    <title>Login HR</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">

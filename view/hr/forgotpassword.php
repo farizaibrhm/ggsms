@@ -28,7 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="../../assets/css/main.css" rel="stylesheet">
 
-<title>PHP Forgot Password</title>
+<title>Forgot Password</title>
 <link href="css/password.css" rel="stylesheet">
 </head>
 <body>

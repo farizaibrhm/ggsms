@@ -61,7 +61,7 @@ $result = $database->select($sql);
 
     <script src="../../assets/assetsdashboard/js/config.js"></script>
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>HR Daily Activity Report History</title>
+    <title>Staff List</title>
   </head>
   <body>
   

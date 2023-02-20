@@ -252,7 +252,7 @@ $sendsql=mysqli_query($connection,$sql);
                               </div>
 
                       <input type="submit" value="Request Leave" name="submit" class="btn btn-primary">
-                      <button type="reset" value="Reset" class="btn btn-block btn-cancel">Reset</button>
+                      <button type="reset" value="Reset" class="btn btn-red">Reset</button>
               <br>
               <br>
               <br>

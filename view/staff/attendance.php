@@ -195,7 +195,7 @@ $result = $database->select($sql);
 	<!-- Layout container -->
 
   
-  <div class="container" style="background-color: white;" >
+  <div class="container"style="background-image: url('../../assets/img/bgstaff.png');" >
 	<div class="row">
 	<div id="main" >
 	  <br>

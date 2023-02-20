@@ -192,7 +192,7 @@ $result = $database->select($sql);
 </aside>
       <!-- / Menu -->
       <!-- Layout container -->
-      <div class="layout-page" style="background-color: white;">
+      <div class="layout-page"style="background-image: url('../../assets/img/bgstaff.png');">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -250,7 +250,7 @@ if (is_array($result) || is_object($result)) {
 		$did++;
         ?>
 		
-	         <tr>
+	         <tr style="background-color: white;">
 					<td><?php echo  $did ;?></td>
 					<td><?php echo $result[$key]["leavestartdate"];?></td>
 					<td><?php echo $result[$key]["leaveenddate"];?></td>

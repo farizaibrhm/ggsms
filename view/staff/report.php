@@ -190,7 +190,7 @@ $result = $database->select($sql);
 </aside>
       <!-- / Menu -->
 
-        <div class="container-fluid" style="background-color: white;">
+        <div class="container-fluid" style="background-image: url('../../assets/img/bgstaff.png');">
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">

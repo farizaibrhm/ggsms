@@ -232,7 +232,7 @@ $sendsql=mysqli_query($connection,$sql);
                         <br>
               
                       <input type="submit" value="Submit Report" name="submit" class="btn btn-primary">
-                      <button type="reset" value="Reset" class="btn btn-block btn-cancel">Reset</button>
+                      <button type="reset" value="Reset" class="btn btn-red">Reset</button>
                       </div>
               <br>
               <br>

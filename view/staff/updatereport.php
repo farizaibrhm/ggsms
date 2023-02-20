@@ -77,7 +77,7 @@ $result = $database->select($sql, $paramType, $paramValue);
     <title>Dashboard Staff</title>
 
   </head>
-  <body>
+  <body style="background-color: white;">
   
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">

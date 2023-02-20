@@ -223,7 +223,7 @@ else
 	<!-- / Menu -->
 
 	<!-- Layout container -->
-  <div class="container" style="background-image: url('../../assets/img/bgattendance.png');" >
+  <div class="container" style="background-image: url('../../assets/img/bgstaff.png');" >
 	<div class="row">
 	<div id="main" >
 		<br><br><br><br>

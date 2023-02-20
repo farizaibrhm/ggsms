@@ -3,6 +3,7 @@ include('../../controller/hr/HRController.php');
 $sql="SELECT * FROM hrlogin";
 $sql="SELECT * FROM staffregistration";
 $sendsql=mysqli_query($connection,$sql);
+$staffname=$row["hrname"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -311,11 +312,11 @@ $sendsql=mysqli_query($connection,$sql);
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Number of Leave Requests</h5>
+                        <h5 class="card-title text-primary">Staff's Leave Requests</h5>
                         <h4>
                         <?php
                         require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM leaverequest"; 
+                        $sql = "SELECT * FROM leaverequest where staffname!='$staffname'"; 
                         if ($result=mysqli_query($con,$sql)) {
                         $rowcount=mysqli_num_rows($result);
                         echo $rowcount; 

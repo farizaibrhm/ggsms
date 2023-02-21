@@ -275,7 +275,7 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><b><?php echo $result[$key]["staffname"];?></td>
+					<td><?php echo $result[$key]["staffname"];?></td>
 					<td><?php echo $result[$key]["leavestartdate"];?></td>
 					<td><?php echo $result[$key]["leaveenddate"];?></td>
 					<td><?php echo $result[$key]["department"];?></td>

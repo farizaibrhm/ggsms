@@ -76,7 +76,7 @@ include('../../controller/hr/PasswordGeneratorController.php'); // Includes Logi
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/assetsdashboard/js/config.js"></script>
-
+    <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
     <title>Register Staff</title>
   </head>
   <body>

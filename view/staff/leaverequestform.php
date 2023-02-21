@@ -11,7 +11,7 @@ $sendsql=mysqli_query($connection,$sql);
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard HR</title>
+    <title>Request Leave</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">

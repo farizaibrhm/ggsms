@@ -229,7 +229,7 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["leavenotes"];?></td>
 					<td><?php echo $result[$key]["leavestatus"];?></td>
 					<td><a
-						href="../hr/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+						href="../manager/updatestaffleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
 						class="mr-20">Update</a> &nbsp;
           </td>
 				</tr>

@@ -205,7 +205,6 @@ $result = $database->select($sql);
 						<td style="color: white;"><b>Report Date</b></td >
 						<td  style="color: white;"><b>Ongoing Task</b></td >
 						<td  style="color: white;"><b>Done Task</b></td >
-						<td  style="color: white;"><b>Actions</b></td >
 					</tr>
 				</thead>
 <?php
@@ -221,10 +220,6 @@ if (is_array($result) || is_object($result)) {
 					<td><?php echo $result[$key]["reportdate"];?></td>
 					<td><?php echo $result[$key]["reportongoingtask"];?></td>
 					<td><?php echo $result[$key]["reportdonetask"];?></td>
-					<td><a
-						href="../hr/updatestaffleaverequest.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
-						class="mr-20">Update</a> &nbsp;
-           </td>
 				</tr>
  <?php
     }

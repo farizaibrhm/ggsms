@@ -239,7 +239,7 @@ $sendsql=mysqli_query($connection,$sql);
                       <div class="card-body">
                         <h5 class="card-title text-primary">Staff Activity Report</h5>
                         <br>
-                        <a href="../manager/staffleaverequest.php" class="btn btn-sm btn-primary">View</a>
+                        <a href="../manager/staffreport.php" class="btn btn-sm btn-primary">View</a>
                       </div>
                     </div>
                   </div>

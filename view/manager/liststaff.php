@@ -5,8 +5,8 @@ include('../../controller/manager/ManagerController.php');
 $sql="SELECT * FROM staffregistration";
 $sql="SELECT * FROM hrlogin";
 $employeename= $row['mngr_name'];
-$staffname= $row['staffname'];
-$sql = "SELECT * FROM staffregistration,hrlogin  where staffname!='$employeename'";
+$staffname= $row['mngr_name'];
+$sql = "SELECT * FROM staffregistration where staffname!='$employeename'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 

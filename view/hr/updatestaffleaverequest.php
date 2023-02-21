@@ -76,7 +76,7 @@ $result = $database->select($sql, $paramType, $paramValue);
     <title>Update Staff Leave Request</title>
 
   </head>
-  <body>
+  <body style="background-color:white">
   
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">

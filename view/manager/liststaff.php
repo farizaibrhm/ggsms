@@ -2,11 +2,10 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/manager/ManagerController.php');
-$sql="SELECT * FROM staffregistration";
-$sql="SELECT * FROM hrlogin";
-$employeename= $row['mngr_name'];
-$staffname= $row['mngr_name'];
-$sql = "SELECT * FROM staffregistration where staffname!='$employeename'";
+$sql="SELECT * FROM staff";
+$sql="SELECT * FROM hr";
+$employee_name= $row['mngr_name'];
+$sql = "SELECT * FROM staff where staff_name!='$employee_name'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -93,7 +92,7 @@ $result = $database->select($sql);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/manager/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -214,10 +213,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-          <td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["staffemail"];?></td>
-					<td><?php echo $result[$key]["staffphonenum"];?></td>
-					<td><?php echo $result[$key]["staffdeptname"];?></td>
+          <td><?php echo $result[$key]["staff_name"];?></td>
+					<td><?php echo $result[$key]["staff_email"];?></td>
+					<td><?php echo $result[$key]["staff_phoneNum"];?></td>
+					<td><?php echo $result[$key]["staff_deptName"];?></td>
 				</tr>
  <?php
     }

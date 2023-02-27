@@ -2,20 +2,20 @@
 <body>
 <?php
 include('../../controller/staff/StaffController.php');
-$sql="SELECT staffname FROM staffregistration";
+$sql="SELECT staff_name FROM staff";
 $sendsql=mysqli_query($connection,$sql);
 
-$staffname= $row["staffname"];
-$leavestartdate= $_POST["leavestartdate"];
-$leaveenddate= $_POST["leaveenddate"];
-$department= $row["staffdeptname"];
-$leavereason =$_POST["leavereason"];
-$leavenotes =$_POST["leavenotes"];
-$leavestatus =$_POST["leavestatus"];
+$employee_name= $row["staff_name"];
+$leave_startdate= $_POST["leave_startdate"];
+$leave_enddate= $_POST["leave_enddate"];
+$department_name= $row["staff_deptName"];
+$leave_reason =$_POST["leave_reason"];
+$leave_notes =$_POST["leave_notes"];
+$leave_status =$_POST["leave_status"];
 
 
-$sql = "INSERT INTO leaverequest(staffname,leavestartdate,leaveenddate,department,leavereason,leavenotes,leavestatus)
-VALUES ('$staffname','$leavestartdate','$leaveenddate','$department','$leavereason','$leavenotes','$leavestatus')";
+$sql = "INSERT INTO leaverequest(employee_name,leave_startdate,leave_enddate,department_name,leave_reason,leave_notes,leave_status)
+VALUES ('$employee_name','$leave_startdate','$leave_enddate','$department_name','$leave_reason','$leave_notes','$leave_status')";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../staff/leaverequest.php";

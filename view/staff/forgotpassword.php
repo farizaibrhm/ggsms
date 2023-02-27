@@ -86,7 +86,7 @@
 <h2>Forgot Password</h2>
 <form action="../staff/forgotpassword.php" method="post">
 <label class="heading">Email :</label>
-<input name="staffemail" type="text">
+<input name="staff_email" type="text">
 <input name="submit" type="submit" value="Resend Password">
 <br>
 <span class="error"><?php echo $Error;?></span>

@@ -2,16 +2,16 @@
 <body>
 <?php
 include('../../controller/staff/StaffController.php');
-$sql="SELECT staffname FROM staffregistration";
+$sql="SELECT staff_name FROM staff";
 $sendsql=mysqli_query($connection,$sql);
 
-$staffname= $row["staffname"];
-$reportdate= $_POST["reportdate"];
-$reportongoingtask= $_POST["reportongoingtask"];
-$reportdonetask= $_POST["reportdonetask"];
+$employee_name= $row["staff_name"];
+$report_date= $_POST["report_date"];
+$report_ongoingtask= $_POST["report_ongoingtask"];
+$report_donetask= $_POST["report_donetask"];
 
-$sql = "INSERT INTO report(staffname,reportdate,reportongoingtask,reportdonetask)
-VALUES ('$staffname','$reportdate','$reportongoingtask','$reportdonetask')";
+$sql = "INSERT INTO report(employee_name,report_date,report_ongoingtask,report_donetask)
+VALUES ('$employee_name','$report_date','$report_ongoingtask','$report_donetask')";
 $sendsql = mysqli_query($connection, $sql);
 $link="../staff/report.php";
 if($sendsql) 

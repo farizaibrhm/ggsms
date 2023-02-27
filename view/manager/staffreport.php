@@ -2,9 +2,9 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/manager/ManagerController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['mngr_name'];
-$sql = "SELECT * FROM report where staffname!='$staffname'";
+$sql="SELECT * FROM hr";
+$employee_name= $row['mngr_name'];
+$sql = "SELECT * FROM report where employee_name!='$employee_name'";
 $result = $database->select($sql);
 
 ?>
@@ -91,7 +91,7 @@ $result = $database->select($sql);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/manager/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -216,10 +216,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
+					<td><?php echo $result[$key]["employee_name"];?></td>
+					<td><?php echo $result[$key]["report_date"];?></td>
+					<td><?php echo $result[$key]["report_ongoingtask"];?></td>
+					<td><?php echo $result[$key]["report_donetask"];?></td>
 				</tr>
  <?php
     }

@@ -2,27 +2,22 @@
 include('../../controller/hr/HRController.php');
 require '../../model/db_connect.php';
 $sql="SELECT * from attendance";
-$sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM hr";
 $sendsql=mysqli_query($connection,$sql);
-$date= date("y-m-d");
+$att_date= date("y-m-d");
 if(isset($_POST["submit"])){
 
-$latitude = $_POST["latitude"];
-$longitude = $_POST["longitude"];
-  
-$employeename= $row["hrname"];
-$employeeemail= $row["hremail"];
+$employee_name= $row["hr_name"];
+$employee_email= $row["hr_email"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
-$clockintime= date("h:i:s");
-$clockouttime= date("0:0:0");
-$longitude =$_POST["longitude"];
-$latitude =$_POST["latitude"];
+$att_date= date("y-m-d");
+$att_clockintime= date("h:i:s");
+$att_clockouttime= date("0:0:0");
+$att_longitude =$_POST["att_longitude"];
+$att_latitude =$_POST["att_latitude"];
 
-$sql = "INSERT IGNORE INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
-
-// $sql = "UPDATE attendance SET clockintime=NOW()";
+$sql = "INSERT IGNORE INTO attendance(employee_name,employee_email,att_date,att_clockintime,att_clockouttime,att_longitude,att_latitude)
+VALUES ('$employee_name','$employee_email','$att_date','$att_clockintime','$att_clockouttime','$att_longitude','$att_latitude')";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";
@@ -32,14 +27,11 @@ if($sendsql)
    echo "<script>alert('Clocked In Successfully');document.location='../../view/hr/attendance.php'</script>";
 
   }
-
 else   
   {
     echo "<script>alert('You have clocked in your time.');document.location='../../view/hr/attendance.php'</script>";
 
   }
-
-
 }
 ?>
 <!DOCTYPE html>
@@ -281,8 +273,8 @@ else
 			      <body onload="getLocation()">
 								<form class="myForm" method = "POST"  autocomplete="off">  
 										
-                    <input type="hidden" name="longitude" value="">
-										<input type="hidden" name="latitude" value="">
+                    <input type="hidden" name="att_longitude" value="">
+										<input type="hidden" name="att_latitude" value="">
                     <center>
 										<button  type="submit" name="submit"  class='btn btn-sm btn-primary log_now col-sm-5'>CLOCK IN</button>
 										</center>
@@ -295,8 +287,8 @@ else
                             }
                           }
                            function showPosition(position){
-                           document.querySelector('.myForm input[name="latitude"]').value = position.coords.latitude;
-                           document.querySelector('.myForm input[name="longitude"]').value = position.coords.longitude;
+                           document.querySelector('.myForm input[name="att_latitude"]').value = position.coords.latitude;
+                           document.querySelector('.myForm input[name="att_longitude"]').value = position.coords.longitude;
                            }
                            function showError(error){
                            switch(error.code){

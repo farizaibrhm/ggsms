@@ -10,10 +10,10 @@ $newpassword=$_POST['newpassword'];  // Fetching Values from URL
 $cnewpassword=$_POST['cnewpassword'];
 if( $newpassword == $cnewpassword )
 {
-$staffpassword= sha1($cnewpassword);
+$staff_password= sha1($cnewpassword);
 $connection = mysqli_connect("127.0.0.1", "root", "");  // Establishing Connection with Server..
 $db = mysqli_select_db($connection,"ggsms");  // Selecting Database
-$query = mysqli_query($connection,"UPDATE staffregistration SET staffpassword='$staffpassword' WHERE staffpassword='$login_password'");
+$query = mysqli_query($connection,"UPDATE staff SET staff_password='$staff_password' WHERE staff_password='$login_password'");
 if($query)
 {
 $successMessage ="Password Changed Successfully.";

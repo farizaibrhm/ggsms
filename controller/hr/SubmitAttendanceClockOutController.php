@@ -1,21 +1,16 @@
-<html>
-<body>
 <?php
 include('../../controller/hr/HRController.php');
 
-$employeename= $row["hrname"];
-$sql="SELECT * FROM hrlogin where hrname='$hrname'";
+$employee_name= $row["hr_name"];
+$sql="SELECT * FROM hr where hr_name='$hr_name'";
 $sendsql=mysqli_query($connection,$sql);
 
-// $employeeemail= $row["hremail"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
-$clockouttime= date("h:i:sa");
-// $longitude =$_POST["longitude"];
-// $latitude =$_POST["latitude"];
+$att_date= date("y-m-d");
+$att_clockouttime= date("h:i:sa");
 
 
-$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate() AND employeename='$employeename'";
+$sql = "UPDATE attendance SET att_clockouttime=NOW() WHERE att_date=curdate() AND employee_name='$employee_name'";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../hr/attendance.php";
@@ -30,6 +25,3 @@ else
    echo"Query failed";
   }
  ?>
-
-</body>
-</html>

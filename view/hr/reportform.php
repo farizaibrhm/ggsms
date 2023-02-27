@@ -1,6 +1,6 @@
 <?php
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM hr";
 $sendsql=mysqli_query($connection,$sql);
 ?>
 <!doctype html>
@@ -241,16 +241,16 @@ $sendsql=mysqli_query($connection,$sql);
             <form action = "../../controller/hr/SubmitReportController.php" method = "POST">  
             <label> Date: </label>
               <div class="form-group first">
-                <input type="date" class="form-control"  id="reportdate" name="reportdate">
+                <input type="date" class="form-control"  id="report_date" name="report_date">
               </div>
                       <br>
                       <label> Ongoing Task: </label>
-                      <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20">
+                      <textarea id="report_ongoingtask" name="report_ongoingtask" class="form-control" rows="5" cols="20">
                         </textarea>
 
                         <br>
                       <label> Done Task: </label>
-                      <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20">
+                      <textarea id="report_donetask" name="report_donetask" class="form-control" rows="5" cols="20">
                         </textarea>
                         <br>
               

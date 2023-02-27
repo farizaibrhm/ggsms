@@ -1,9 +1,9 @@
 <?php
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$sql="SELECT * FROM staffregistration";
+$sql="SELECT * FROM hr";
+$sql="SELECT * FROM staff";
 $sendsql=mysqli_query($connection,$sql);
-$staffname=$row["hrname"];
+$employee_name=$row["hr_name"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -263,9 +263,9 @@ $staffname=$row["hrname"];
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome <?php echo $hrname?>!</h5>
+                        <h5 class="card-title text-primary">Welcome <?php echo $hr_name?>!</h5>
                         <p class="mb-4">
-                          Don't forget to take your attendance, <span class="fw-bold"><?php echo $hrname?>.</span> 
+                          Don't forget to take your attendance, <span class="fw-bold"><?php echo $hr_name?>.</span> 
                         </p>
 
                         <a href="../hr/attendanceform.php" class="btn btn-sm btn-primary">Clock In Now</a>
@@ -294,7 +294,7 @@ $staffname=$row["hrname"];
                         <h4>
                         <?php
                         require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM staffregistration"; 
+                        $sql = "SELECT * FROM staff"; 
                         if ($result=mysqli_query($con,$sql)) {
                         $rowcount=mysqli_num_rows($result);
                         echo $rowcount; 
@@ -316,7 +316,7 @@ $staffname=$row["hrname"];
                         <h4>
                         <?php
                         require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM leaverequest where staffname!='$staffname'"; 
+                        $sql = "SELECT * FROM leaverequest where employee_name!='$employee_name'"; 
                         if ($result=mysqli_query($con,$sql)) {
                         $rowcount=mysqli_num_rows($result);
                         echo $rowcount; 

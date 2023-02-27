@@ -2,8 +2,8 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM staffregistration";
-$staffname= $row['hrname'];
+$sql="SELECT * FROM staff";
+$employee_name= $row['hr_name'];
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -265,10 +265,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["staffemail"];?></td>
-					<td><?php echo $result[$key]["staffphonenum"];?></td>
-					<td><?php echo $result[$key]["staffdeptname"];?></td>
+					<td><?php echo $result[$key]["staff_name"];?></td>
+					<td><?php echo $result[$key]["staff_email"];?></td>
+					<td><?php echo $result[$key]["staff_phoneNum"];?></td>
+					<td><?php echo $result[$key]["staff_deptName"];?></td>
 				</tr>
  <?php
     }

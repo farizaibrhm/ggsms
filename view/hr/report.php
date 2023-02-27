@@ -2,9 +2,9 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
+$sql="SELECT * FROM hr";
+$employee_name= $row['hr_name'];
+$sql = "SELECT * FROM report where employee_name='$employee_name'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -268,35 +268,17 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr style="background-color:white;">
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
+					<td><?php echo $result[$key]["report_date"];?></td>
+					<td><?php echo $result[$key]["report_ongoingtask"];?></td>
+					<td><?php echo $result[$key]["report_donetask"];?></td>
 					<td><a
-						href="../hr/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
+						href="../hr/updatereport.php?report_ID=<?php echo $result[$key]["report_ID"]; ?>"
 						class="mr-20">Update</a> &nbsp;
            
-            <a href="../../controller/hr/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>&nbsp;
+            <a href="../../controller/hr/DeleteReportController.php?report_ID=<?php echo $result[$key]["report_ID"]; ?>">Delete</a></td>&nbsp;
         
 
 				</tr>
-        <div id="myModal<?php echo $result[$key]["reportid"]; ?>" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-			    <div class="modal-content">
-					<div class="modal-header">
-						 <button type="button" class="close" data-dismiss="modal">&times;</button>
-						    <h4 class="modal-title">Details</h4>
-				    </div>
-				    <div class="modal-body">
-              <br>
-              <br>
-              <br>
-						 <h6>Name : <?php echo $result[$key]["staffname"];?></h6>
-						 <h6>Mobile Number : <?php echo $result[$key]["reportdate"]; ?></h6>
-						 <h6>Email : <?php echo $result[$key]["reportongoingtask"]; ?></h6>
-				    </div>
-				</div>
-			</div>
-		</div>
         
  <?php
     }

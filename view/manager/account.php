@@ -100,7 +100,7 @@ $result = $database->select($sql);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/manager/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>

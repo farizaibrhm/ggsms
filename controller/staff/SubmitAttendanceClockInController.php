@@ -3,22 +3,22 @@
 
 <?php
 include('../../controller/staff/StaffController.php');
-$sql="SELECT * FROM staffregistration";
+$sql="SELECT * FROM staff";
 $sendsql=mysqli_query($connection,$sql);
 
 
-$employeename= $row["staffname"];
-$employeeemail= $row["staffemail"];
+$employee_name= $row["staff_name"];
+$employee_email= $row["staff_email"];
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
-$clockintime= date("h:i:s");
-$clockouttime= date("0:0:0");
-$longitude =$_POST["longitude"];
-$latitude =$_POST["latitude"];
+$att_date= date("y-m-d");
+$att_clockintime= date("h:i:s");
+$att_clockouttime= date("0:0:0");
+$att_longitude =$_POST["att_longitude"];
+$att_latitude =$_POST["att_latitude"];
 
 
-$sql = "INSERT INTO attendance(employeename,employeeemail,date,clockintime,clockouttime,longitude,latitude)
-VALUES ('$employeename','$employeeemail','$date','$clockintime','$clockouttime','$longitude','$latitude')";
+$sql = "INSERT INTO attendance(employee_name,employee_email,att_date,att_clockintime,att_clockouttime,att_longitude,att_latitude)
+VALUES ('$employee_name','$employee_email','$att_date','$att_clockintime','$att_clockouttime','$att_longitude','$att_latitude')";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../staff/attendance.php";

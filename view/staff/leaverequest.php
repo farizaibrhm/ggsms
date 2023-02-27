@@ -2,11 +2,11 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/staff/StaffController.php');
-$sql="SELECT * FROM staffregistration";
-$staffname= $row['staffname'];
-$staffemail= $row['staffemail'];
-$staffdeptname= $row['staffdeptname'];
-$sql = "SELECT * FROM leaverequest where staffname='$staffname'";
+$sql="SELECT * FROM staff";
+$employee_name= $row['staff_name'];
+$staff_email= $row['staff_email'];
+$department_name= $row['staff_deptName'];
+$sql = "SELECT * FROM leaverequest where employee_name='$employee_name'";
 $result = $database->select($sql);
 ?>
 <!doctype html>
@@ -222,9 +222,9 @@ $result = $database->select($sql);
                         <h4><b>Leave Requests History</b></h4><br>
                         <table class="table-light">
                           <tr>
-                        <td><h6 >Name: <?php echo $staffname?></h6>
-                        <h6 >Email: <?php echo $staffemail?></h6>
-                        <h6 >Department Name: <?php echo $staffdeptname?></h6></td>
+                        <td><h6 >Name: <?php echo $employee_name?></h6>
+                        <h6 >Email: <?php echo $staff_email?></h6>
+                        <h6 >Department Name: <?php echo $department_name?></h6></td>
                           </tr>
                         </table>
                     </div>
@@ -252,14 +252,14 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr style="background-color: white;">
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["leavestartdate"];?></td>
-					<td><?php echo $result[$key]["leaveenddate"];?></td>
-					<td><?php echo $result[$key]["leavereason"];?></td>
-					<td><?php echo $result[$key]["leavenotes"];?></td>
-					<td><?php echo $result[$key]["leavestatus"];?></td>
-          <td><a href="../staff/updateleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+					<td><?php echo $result[$key]["leave_startdate"];?></td>
+					<td><?php echo $result[$key]["leave_enddate"];?></td>
+					<td><?php echo $result[$key]["leave_reason"];?></td>
+					<td><?php echo $result[$key]["leave_notes"];?></td>
+					<td><?php echo $result[$key]["leave_status"];?></td>
+          <td><a href="../staff/updateleaverequest.php?leave_ID=<?php echo $result[$key]["leave_ID"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/staff/DeleteLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+            <a href="../../controller/staff/DeleteLeaveRequestController.php?leave_ID=<?php echo $result[$key]["leave_ID"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

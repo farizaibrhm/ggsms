@@ -3,20 +3,20 @@ include('../../controller/staff/StaffController.php');
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 if (count($_POST) > 0) {
-    $sql = "UPDATE staffregistration set staffphonenum=?, staffdeptname=? WHERE staffid=?";
+    $sql = "UPDATE staff set staff_phoneNum=?, staff_deptName=? WHERE staff_ID=?";
     $paramType = 'ssi';
     $paramValue = array(
-        $_POST["staffphonenum"],
-        $_POST["staffdeptname"],
-        $_GET["staffid"]
+        $_POST["staff_phoneNum"],
+        $_POST["staff_deptName"],
+        $_GET["staff_ID"]
     );
     $database->execute($sql, $paramType, $paramValue);
     $message = "<script>alert('Account Updated Successfully');document.location='../../view/staff/account.php'</script>";
 }
-$sql = "select * from staffregistration where staffid=?";
+$sql = "select * from staff where staff_ID=?";
 $paramType = 'i';
 $paramValue = array(
-    $_GET["staffid"]
+    $_GET["staff_ID"]
 );
 $result = $database->select($sql, $paramType, $paramValue);
 ?>
@@ -28,7 +28,7 @@ $result = $database->select($sql, $paramType, $paramValue);
      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../assets/img/companylogo.jpg" type="image/icon type">
-    <title>Dashboard HR</title>
+    <title>Update Account</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/fonts/login/icomoon/style.css">
@@ -112,7 +112,7 @@ $result = $database->select($sql, $paramType, $paramValue);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/staff/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -237,9 +237,9 @@ $result = $database->select($sql, $paramType, $paramValue);
         <div class="card mb-4">
           <div class="card-body text-center">
 
-<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?php echo $staffname?></h5>
-            <p class="text-muted mb-1"><?php echo $staffdeptname?></p>
+<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3"><?php echo $staff_name?></h5>
+            <p class="text-muted mb-1"><?php echo $staff_deptName?></p>
             <div>
               <br>
   
@@ -257,7 +257,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                 <p class="mb-0">Name</p>
               </div>
               <div class="col-sm-9">
-              <?php echo $staffname; ?>
+              <?php echo $staff_name; ?>
               </div>
             </div>
             <hr>
@@ -266,7 +266,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-              <?php echo $staffemail; ?>
+              <?php echo $staff_email; ?>
               </div>
             </div>
             <hr>
@@ -275,7 +275,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-              <input type="text" name="staffphonenum" id="staffphonenum"  class="form-control" value="<?php echo $result[0]['staffphonenum']; ?>">
+              <input type="text" name="staff_phoneNum" id="staff_phoneNum"  class="form-control" value="<?php echo $result[0]['staff_phoneNum']; ?>">
               </div>
             </div>
             <hr>
@@ -284,7 +284,7 @@ $result = $database->select($sql, $paramType, $paramValue);
                 <p class="mb-0">Department Name</p>
               </div>
               <div class="col-sm-9">
-              <select name="staffdeptname" id="staffdeptname"  class="form-control" value="<?php echo $result[0]['staffdeptname']; ?>" >
+              <select name="staff_deptName" id="staff_deptName"  class="form-control" value="<?php echo $result[0]['staff_deptName']; ?>" >
                      <option value="Manager">Manager</option>
                      <option value="Human Resources">Human Resources</option>
                      <option value="Operation and Sales">Operation and Sales</option>

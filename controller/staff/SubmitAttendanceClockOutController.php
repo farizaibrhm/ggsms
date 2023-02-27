@@ -1,16 +1,16 @@
-<html>
-<body>
 <?php
 include('../../controller/staff/StaffController.php');
-$sql="SELECT * FROM staffregistration";
+
+$employee_name= $row["staff_name"];
+$sql="SELECT * FROM staff where staff_name='$staff_name'";
 $sendsql=mysqli_query($connection,$sql);
 
-
 date_default_timezone_set("Asia/Kuala_Lumpur");
-$date= date("y-m-d");
-$clockouttime= date("h:i:s");
+$att_date= date("y-m-d");
+$att_clockouttime= date("h:i:sa");
 
-$sql = "UPDATE attendance SET clockouttime=NOW() WHERE date=curdate() AND employeename='$employeename'";
+
+$sql = "UPDATE attendance SET att_clockouttime=NOW() WHERE att_date=curdate() AND employee_name='$employee_name'";
 
 $sendsql = mysqli_query($connection, $sql);
 $link="../staff/attendance.php";
@@ -25,6 +25,3 @@ else
    echo"Query failed";
   }
  ?>
-
-</body>
-</html>

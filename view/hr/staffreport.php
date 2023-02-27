@@ -2,9 +2,9 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$sql = "SELECT * FROM report where staffname!='$staffname'";
+$sql="SELECT * FROM hr";
+$employee_name= $row['hr_name'];
+$sql = "SELECT * FROM report where employee_name!='$employee_name'";
 $result = $database->select($sql);
 
 ?>
@@ -271,10 +271,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr style="background-color:white;">
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["staffname"];?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
+					<td><?php echo $result[$key]["employee_name"];?></td>
+					<td><?php echo $result[$key]["report_date"];?></td>
+					<td><?php echo $result[$key]["report_ongoingtask"];?></td>
+					<td><?php echo $result[$key]["report_donetask"];?></td>
 				</tr>
  <?php
     }

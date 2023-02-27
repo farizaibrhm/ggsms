@@ -3,20 +3,20 @@ include('../../controller/hr/HRController.php');
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 if (count($_POST) > 0) {
-    $sql = "UPDATE hrlogin set hrphonenum=?, hrdeptname=? WHERE hrid=?";
+    $sql = "UPDATE hr set hr_phoneNum=?, hr_deptName=? WHERE hr_ID=?";
     $paramType = 'ssi';
     $paramValue = array(
-        $_POST["hrphonenum"],
-        $_POST["hrdeptname"],
-        $_GET["hrid"]
+        $_POST["hr_phoneNum"],
+        $_POST["hr_deptName"],
+        $_GET["hr_ID"]
     );
     $database->execute($sql, $paramType, $paramValue);
     $message = "<script>alert('Account Updated Successfully');document.location='../../view/hr/account.php'</script>";
 }
-$sql = "select * from hrlogin where hrid=?";
+$sql = "select * from hr where hr_ID=?";
 $paramType = 'i';
 $paramValue = array(
-    $_GET["hrid"]
+    $_GET["hr_ID"]
 );
 $result = $database->select($sql, $paramType, $paramValue);
 ?>
@@ -285,8 +285,8 @@ $result = $database->select($sql, $paramType, $paramValue);
           <div class="card-body text-center">
 
 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?php echo $hrname?></h5>
-            <p class="text-muted mb-1"><?php echo $hrdeptname?></p>
+            <h5 class="my-3"><?php echo $hr_name?></h5>
+            <p class="text-muted mb-1"><?php echo $hr_deptName?></p>
             <div>
               <br>
             <?php
@@ -295,7 +295,7 @@ if (is_array($result) || is_object($result)) {
     foreach ($result as $key => $value) {
         ?>
 					<a
-						href="../hr/updateaccount.php?hrid=<?php echo $result[$key]["hrid"]; ?>"
+						href="../hr/updateaccount.php?hr_ID=<?php echo $result[$key]["hr_ID"]; ?>"
 						><button class="btn btn-primary">Update Account</button></a>
  <?php
     }
@@ -309,7 +309,7 @@ if (is_array($result) || is_object($result)) {
     foreach ($result as $key => $value) {
         ?>
 					<a
-						href="../hrforgotpassword.php?hrid=<?php echo $result[$key]["hrid"]; ?>"
+						href="../hrforgotpassword.php?hr_ID=<?php echo $result[$key]["hr_ID"]; ?>"
 						><button class="btn btn-error">Change Password</button></a>
  <?php
     }
@@ -329,7 +329,7 @@ if (is_array($result) || is_object($result)) {
                 <p class="mb-0">Name</p>
               </div>
               <div class="col-sm-9">
-              <?php echo $hrname; ?>
+              <?php echo $hr_name; ?>
               </div>
             </div>
             <hr>
@@ -338,7 +338,7 @@ if (is_array($result) || is_object($result)) {
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-              <?php echo $hremail; ?>
+              <?php echo $hr_email; ?>
               </div>
             </div>
             <hr>
@@ -347,7 +347,7 @@ if (is_array($result) || is_object($result)) {
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-              <input type="text" name="hrphonenum" id="hrphonenum"  class="form-control" value="<?php echo $result[0]['hrphonenum']; ?>">
+              <input type="text" name="hr_phoneNum" id="hr_phoneNum"  class="form-control" value="<?php echo $result[0]['hr_phoneNum']; ?>">
               </div>
             </div>
             <hr>
@@ -356,7 +356,7 @@ if (is_array($result) || is_object($result)) {
                 <p class="mb-0">Department Name</p>
               </div>
               <div class="col-sm-9">
-              <select name="hrdeptname" id="hrdeptname"  class="form-control" value="<?php echo $result[0]['hrdeptname']; ?>" >
+              <select name="hr_deptName" id="hr_deptName"  class="form-control" value="<?php echo $result[0]['hr_deptName']; ?>" >
                      <option value="Manager">Manager</option>
                      <option value="Human Resources">Human Resources</option>
                      <option value="Operation and Sales">Operation and Sales</option>

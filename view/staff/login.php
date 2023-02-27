@@ -102,10 +102,10 @@ include('../../controller/staff/LoginController.php');
             </div>
             <form action = "../staff/login.php" method = "POST">  
               <div class="form-group first">
-                <input type = "text" class="form-control" name  = "staffemail" placeholder="Email" />  
+                <input type = "text" class="form-control" name="staff_email" placeholder="Email" />  
               </div>
               <div class="form-group last mb-4">
-                <input type = "password" class="form-control"  name  = "staffpassword" placeholder="Password"/>  
+                <input type = "password" class="form-control"  name="staff_password" placeholder="Password"/>  
               </div>
               <input type="submit" value="Sign In" name="submit" class="btn btn-block btn-primary">
               <span class="error"><?php echo $Error;?></span>

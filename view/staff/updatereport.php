@@ -3,21 +3,21 @@ require_once '../../model/DataSource.php';
 $database = new DataSource();
 
 if (count($_POST) > 0) {
-    $sql = "UPDATE report set reportdate=?, reportongoingtask=?, reportdonetask=? WHERE reportid=?";
+    $sql = "UPDATE report set report_date=?, report_ongoingtask=?, report_donetask=? WHERE report_ID=?";
     $paramType = 'sssi';
     $paramValue = array(
-        $_POST["reportdate"],
-        $_POST["reportongoingtask"],
-        $_POST["reportdonetask"],
-        $_GET["reportid"]
+        $_POST["report_date"],
+        $_POST["report_ongoingtask"],
+        $_POST["report_donetask"],
+        $_GET["report_ID"]
     );
     $database->execute($sql, $paramType, $paramValue);
     $message = "Report updated successfully";
 }
-$sql = "select * from report where reportid=? ";
+$sql = "select * from report where report_ID=? ";
 $paramType = 'i';
 $paramValue = array(
-    $_GET["reportid"]
+    $_GET["report_ID"]
 );
 $result = $database->select($sql, $paramType, $paramValue);
 ?>
@@ -74,7 +74,7 @@ $result = $database->select($sql, $paramType, $paramValue);
 
     <link rel="stylesheet" type="text/css" href="../../assets/css/table.css" />
 
-    <title>Dashboard Staff</title>
+    <title>Update Report</title>
 
   </head>
   <body style="background-color: white;">
@@ -104,7 +104,7 @@ $result = $database->select($sql, $paramType, $paramValue);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/staff/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -230,26 +230,26 @@ $result = $database->select($sql, $paramType, $paramValue);
            
             <div>
                 <div class="row">
-                    <label for="reportdate">Report Date <span
+                    <label for="report_date">Report Date <span
                         class="error-color" id="reportdate_error"></span>
                     </label>
-                    <input type="date" name="reportdate" id="reportdate" class="form-control"  value="<?php echo $result[0]['reportdate']; ?>">
+                    <input type="date" name="report_date" id="report_date" class="form-control"  value="<?php echo $result[0]['report_date']; ?>">
                 </div>
             </div>
             <div><br>
                 <div class="row">
-                    <label for="reportongoingtask">Ongoing Task<span
-                        class="error-color" id="reportongoingtask_error"></span>
+                    <label for="report_ongoingtask">Ongoing Task<span
+                        class="error-color" id="report_ongoingtask_error"></span>
                     </label>
-                    <textarea id="reportongoingtask" name="reportongoingtask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportongoingtask']; ?></textarea>
+                    <textarea id="report_ongoingtask" name="report_ongoingtask" class="form-control" rows="5" cols="20"><?php echo $result[0]['report_ongoingtask']; ?></textarea>
                 </div>
             </div>
             <div><br>
                 <div class="row">
-                    <label for="reportdonetask">Done Task <span
+                    <label for="report_donetask">Done Task <span
                         class="error-color" id="reportdonetask_error"></span>
                     </label>
-                    <textarea id="reportdonetask" name="reportdonetask" class="form-control" rows="5" cols="20"><?php echo $result[0]['reportdonetask']; ?></textarea>
+                    <textarea id="report_donetask" name="report_donetask" class="form-control" rows="5" cols="20"><?php echo $result[0]['report_donetask']; ?></textarea>
                 </div>
             </div>
           <br>

@@ -3,22 +3,22 @@ require_once '../../model/DataSource.php';
 $database = new DataSource();
 
 if (count($_POST) > 0) {
-    $sql = "UPDATE leaverequest set leavestartdate=?,leaveenddate=? ,leavereason=?,leavenotes=?  WHERE leaveid=?";
+    $sql = "UPDATE leaverequest set leave_startdate=?,leave_enddate=? ,leave_reason=?,leave_notes=?  WHERE leave_ID=?";
     $paramType = 'ssssi';
     $paramValue = array(
-        $_POST["leavestartdate"],
-        $_POST["leaveenddate"],
-        $_POST["leavereason"],
-        $_POST["leavenotes"],
-        $_GET["leaveid"]
+        $_POST["leave_startdate"],
+        $_POST["leave_enddate"],
+        $_POST["leave_reason"],
+        $_POST["leave_notes"],
+        $_GET["leave_ID"]
     );
     $database->execute($sql, $paramType, $paramValue);
     $message = "Leave status updated successfully";
 }
-$sql = "select * from leaverequest where leaveid=? ";
+$sql = "select * from leaverequest where leave_ID=? ";
 $paramType = 'i';
 $paramValue = array(
-    $_GET["leaveid"]
+    $_GET["leave_ID"]
 );
 $result = $database->select($sql, $paramType, $paramValue);
 ?>
@@ -78,7 +78,7 @@ $result = $database->select($sql, $paramType, $paramValue);
     <title>Update Leave Request</title>
 
   </head>
-  <body>
+  <body style="background-color: white;">
   
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
@@ -246,30 +246,29 @@ $result = $database->select($sql, $paramType, $paramValue);
            
             <div>
                 <div class="row">
-                    <label for="leavestartdate">Leave Start Date <span
+                    <label for="leave_startdate">Leave Start Date <span
                         class="error-color" id="leavestartdate_error"></span>
                     </label><br>
-                    <input type="date" name="leavestartdate" id="leavestartdate"  class="form-control" value="<?php echo $result[0]['leavestartdate']; ?>">
+                    <input type="date" name="leave_startdate" id="leave_startdate"  class="form-control" value="<?php echo $result[0]['leave_startdate']; ?>">
                 </div>
             </div>
             <div>
             <div><br>
                 <div class="row">
-                    <label for="leaveenddate">Leave End Date<span
+                    <label for="leave_enddate">Leave End Date<span
                         class="error-color" id="leaveend_error"></span>
                     </label>
-                    <input type="date" name="leaveenddate" id="leaveenddate"  class="form-control" value="<?php echo $result[0]['leaveenddate']; ?>">
+                    <input type="date" name="leave_enddate" id="leave_enddate"  class="form-control" value="<?php echo $result[0]['leave_enddate']; ?>">
                 </div>
             </div>
             </div>
             <br>
             <div>
                 <div class="row">
-                    <label for="leavenotes">Leave Reason <span
+                    <label for="leave_notes">Leave Reason <span
                         class="error-color" id="leavereason_error"></span>
                     </label>
-                    <select name="leavereason" id="leavereason"  class="form-control" value="<?php echo $result[0]['leavereason']; ?>" >
-                     <option value="Public Holidays">Public Holidays</option>
+                    <select name="leave_reason" id="leave_reason"  class="form-control" value="<?php echo $result[0]['leave_reason']; ?>" >
                      <option value="Annual Leave">Annual Leave</option>
                      <option value="Sick Leave">Sick Leave</option>
                      <option value="Maternity Leave">Maternity Leave</option>
@@ -280,10 +279,10 @@ $result = $database->select($sql, $paramType, $paramValue);
             </div>
             <div><br>
                 <div class="row">
-                    <label for="leavenotes">Leave Notes <span
+                    <label for="leave_notes">Leave Notes <span
                         class="error-color" id="leavenotes_error"></span>
                     </label>
-                    <input type="text" name="leavenotes" id="leavenotes"  class="form-control" value="<?php echo $result[0]['leavenotes']; ?>">
+                    <input type="text" name="leave_notes" id="leave_notes"  class="form-control" value="<?php echo $result[0]['leave_notes']; ?>">
                 </div>
             </div>
           <br>

@@ -6,14 +6,15 @@ $db = mysqli_select_db($connection,"ggsms", );  // Selecting Database
 session_start();  // Starting Session
 $email_check=$_SESSION['login_user'];  // Storing Session
 //  SQL Query to Fetch Complete Information of User.
-$ses_sql=mysqli_query( $connection,"select * from staffregistration where staffemail='$email_check'");
+$ses_sql=mysqli_query( $connection,"select * from staff where staff_email='$email_check'");
 $row = mysqli_fetch_assoc($ses_sql);
-$staffname =$row['staffname'];
-$staffemail =$row['staffemail'];
-$staffpassword =$row['staffpassword'];
-$staffphonenum =$row['staffphonenum'];
-$staffdeptname =$row['staffdeptname'];
-if(!isset($staffemail))
+$staff_ID =$row['staff_ID'];
+$staff_name =$row['staff_name'];
+$staff_email =$row['staff_email'];
+$staff_password =$row['staff_password'];
+$staff_phoneNum =$row['staff_phoneNum'];
+$staff_deptName =$row['staff_deptName'];
+if(!isset($staff_email))
 {
 mysqli_close($connection); // Closing Connection
 header('Location:../staff/dashboard.php'); // Redirecting to Home Page

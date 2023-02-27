@@ -2,8 +2,8 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$hrid= $row['hrid'];
+$sql="SELECT * FROM hr";
+$hr_ID= $row['hr_ID'];
 $result = $database->select($sql);
 ?>
 <!doctype html>
@@ -73,7 +73,7 @@ $result = $database->select($sql);
     <script src="../../assets/assetsdashboard/js/config.js"></script>
 
   </head>
-  <body>
+  <body style="background-color: white;">
   
    <!-- ======= Header ======= -->
    <section id="topbar" class="topbar d-flex align-items-center">
@@ -262,11 +262,11 @@ $result = $database->select($sql);
           <div class="card-body text-center">
 
 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?php echo $hrname?></h5>
-            <p class="text-muted mb-1"><?php echo $hrdeptname?></p>
+            <h5 class="my-3"><?php echo $hr_name?></h5>
+            <p class="text-muted mb-1"><?php echo $hr_deptName?></p>
             <div>
               <br>
-              <a href="../hr/updateaccount.php?hrid=<?php echo $hrid;?>">
+              <a href="../hr/updateaccount.php?hr_ID=<?php echo $hr_ID;?>">
               <button class="btn btn-primary">Update Account</button></a>
 <br>
 <br>
@@ -285,7 +285,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Name</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrname?></p>
+                <p class="text-muted mb-0"><?php echo $hr_name?></p>
               </div>
             </div>
             <hr>
@@ -294,7 +294,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hremail?></p>
+                <p class="text-muted mb-0"><?php echo $hr_email?></p>
               </div>
             </div>
             <hr>
@@ -303,7 +303,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Phone</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrphonenum?></p>
+                <p class="text-muted mb-0"><?php echo $hr_phoneNum?></p>
               </div>
             </div>
             <hr>
@@ -312,7 +312,7 @@ $result = $database->select($sql);
                 <p class="mb-0">Department Name</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><?php echo $hrdeptname?></p>
+                <p class="text-muted mb-0"><?php echo $hr_deptName?></p>
               </div>
             </div>
           </div>

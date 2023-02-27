@@ -1,7 +1,7 @@
 <?php
 include('../../controller/manager/ManagerController.php');
-$sql="SELECT * FROM hrlogin";
-$sql="SELECT * FROM staffregistration";
+$sql="SELECT * FROM hr";
+$sql="SELECT * FROM staff";
 $sendsql=mysqli_query($connection,$sql);
 ?>
 <!doctype html>
@@ -98,7 +98,7 @@ $sendsql=mysqli_query($connection,$sql);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/hr/LogoutController.php">Sign Out</a></li>
+          <li><a href="../../controller/manager/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -254,7 +254,7 @@ $sendsql=mysqli_query($connection,$sql);
                         <h4>
                         <?php
                         require_once '../../model/db_connect.php';
-                        $sql = "SELECT * FROM staffregistration"; 
+                        $sql = "SELECT * FROM staff"; 
                         if ($result=mysqli_query($con,$sql)) {
                         $rowcount=mysqli_num_rows($result);
                         echo $rowcount; 

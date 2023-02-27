@@ -1,6 +1,6 @@
 <?php
 include('../../controller/staff/StaffController.php');
-$sql="SELECT * FROM staffregistration";
+$sql="SELECT * FROM staff";
 $sendsql=mysqli_query($connection,$sql);
 ?>
 <!doctype html>
@@ -224,7 +224,7 @@ $sendsql=mysqli_query($connection,$sql);
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome<b> <?php echo $staffname; ?>.</b></h5>
+                        <h5 class="card-title text-primary">Welcome<b> <?php echo $staff_name; ?>.</b></h5>
                         <p class="mb-4">
                           Have you taken your attendance today?  <span class="fw-bold"></span> 
                         </p>

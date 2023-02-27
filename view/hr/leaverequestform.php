@@ -1,6 +1,6 @@
 <?php
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM hr";
 $sendsql=mysqli_query($connection,$sql);
 ?>
 <!doctype html>
@@ -244,18 +244,17 @@ $sendsql=mysqli_query($connection,$sql);
             <form action = "../../controller/hr/SubmitLeaveRequestController.php" method = "POST">  
             <label><b> Start Date:</b> </label>
               <div class="form-group first">
-                <input type="date" class="form-control"  id="leavestartdate" name="leavestartdate">
+                <input type="date" class="form-control"  id="leave_startdate" name="leave_startdate">
               </div>
               <br>
               <label> <b>End Date: </b></label>
               <div class="form-group first">
-                <input type="date" class="form-control"  id="leaveenddate" name="leaveenddate">
+                <input type="date" class="form-control"  id="leave_enddate" name="leave_enddate">
               </div>
                 <br>
                 <label> <b>Leave Reason:</b> </label>
                 <div class="form-group first">
-                     <select name="leavereason" id="leavereason"  class="form-control" >
-                     <option value="Public Holidays">Public Holidays</option>
+                     <select name="leave_reason" id="leave_reason"  class="form-control" >
                      <option value="Annual Leave">Annual Leave</option>
                      <option value="Sick Leave">Sick Leave</option>
                      <option value="Maternity Leave">Maternity Leave</option>
@@ -265,11 +264,11 @@ $sendsql=mysqli_query($connection,$sql);
                       </div>
                       <br>
                       <label><b> Leave Notes:</b> </label>
-                      <textarea style="justify-content: baseline;" id="leavenotes" name="leavenotes" class="form-control" >
+                      <textarea style="justify-content: baseline;" id="leave_notes" name="leave_notes" class="form-control" >
                         </textarea>
                       <br>
                         <div class="form-group first">
-                             <select name="leavestatus" id="leavestatus"  class="form-control">
+                             <select name="leave_status" id="leave_status"  class="form-control">
                              <option value="Requesting">Requesting</option>
                              </select>
                               </div>

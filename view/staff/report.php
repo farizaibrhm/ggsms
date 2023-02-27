@@ -2,9 +2,9 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/staff/staffController.php');
-$sql="SELECT * FROM stafflogin";
-$staffname= $row['staffname'];
-$sql = "SELECT * FROM report where staffname='$staffname'";
+$sql="SELECT * FROM staff";
+$employee_name= $row['staff_name'];
+$sql = "SELECT * FROM report where employee_name='$staff_name'";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -240,13 +240,13 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr  style="background-color:white;">
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["reportdate"];?></td>
-					<td><?php echo $result[$key]["reportongoingtask"];?></td>
-					<td><?php echo $result[$key]["reportdonetask"];?></td>
+					<td><?php echo $result[$key]["report_date"];?></td>
+					<td><?php echo $result[$key]["report_ongoingtask"];?></td>
+					<td><?php echo $result[$key]["report_donetask"];?></td>
 					<td><a
-						href="../staff/updatereport.php?reportid=<?php echo $result[$key]["reportid"]; ?>"
+						href="../staff/updatereport.php?report_ID=<?php echo $result[$key]["report_ID"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/staff/DeleteReportController.php?reportid=<?php echo $result[$key]["reportid"]; ?>">Delete</a></td>
+            <a href="../../controller/staff/DeleteReportController.php?report_ID=<?php echo $result[$key]["report_ID"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

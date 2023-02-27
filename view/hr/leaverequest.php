@@ -2,11 +2,11 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
-$staffname= $row['hrname'];
-$hremail= $row['hremail'];
-$hrdeptname= $row['hrdeptname'];
-$sql = "SELECT * FROM leaverequest where staffname='$staffname'";
+$sql="SELECT * FROM hr";
+$employee_name= $row['hr_name'];
+$hr_email= $row['hr_email'];
+$hr_deptName= $row['hr_deptName'];
+$sql = "SELECT * FROM leaverequest where employee_name='$employee_name'";
 $result = $database->select($sql);
 ?>
 <!doctype html>
@@ -270,16 +270,16 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-          <td><?php echo $result[$key]["requestdate"];?></td>
-					<td><?php echo $result[$key]["leavestartdate"];?></td>
-					<td><?php echo $result[$key]["leaveenddate"];?></td>
-					<td><?php echo $result[$key]["leavereason"];?></td>
-					<td><?php echo $result[$key]["leavenotes"];?></td>
-					<td><?php echo $result[$key]["leavestatus"];?></td>
+          <td><?php echo $result[$key]["leave_requestdate"];?></td>
+					<td><?php echo $result[$key]["leave_startdate"];?></td>
+					<td><?php echo $result[$key]["leave_enddate"];?></td>
+					<td><?php echo $result[$key]["leave_reason"];?></td>
+					<td><?php echo $result[$key]["leave_notes"];?></td>
+					<td><?php echo $result[$key]["leave_status"];?></td>
           <td><a
-						href="../hr/updateleaverequest.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>"
+						href="../hr/updateleaverequest.php?leave_ID=<?php echo $result[$key]["leave_ID"]; ?>"
 						class="mr-20">Update</a> &nbsp;
-            <a href="../../controller/hr/DeleteLeaveRequestController.php?leaveid=<?php echo $result[$key]["leaveid"]; ?>">Delete</a></td>
+            <a href="../../controller/hr/DeleteLeaveRequestController.php?leave_ID=<?php echo $result[$key]["leave_ID"]; ?>">Delete</a></td>
 				</tr>
  <?php
     }

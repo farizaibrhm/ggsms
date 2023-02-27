@@ -2,9 +2,9 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/manager/ManagerController.php');
-$sql="SELECT * FROM staffregistration";
-$employeename= $row['mngr_name'];
-$sql = "SELECT * FROM attendance where employeename!='$employeename' order by date desc";
+$sql="SELECT * FROM staff";
+$employee_name= $row['mngr_name'];
+$sql = "SELECT * FROM attendance where employee_name!='$employee_name' order by att_date desc";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -92,7 +92,7 @@ $result = $database->select($sql);
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="../../controller/staff/StaffController.php">Sign Out</a></li>
+          <li><a href="../../controller/manager/LogoutController.php">Sign Out</a></li>
           
         </ul>
       </nav>
@@ -193,11 +193,11 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-          <td><?php echo $result[$key]["date"];?></td>
-					<td><?php echo $result[$key]["employeename"];?></td>
-					<td><?php echo $result[$key]["clockintime"];?></td>
-          <td><?php echo $result[$key]["clockouttime"];?></td>
-          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
+          <td><?php echo $result[$key]["att_date"];?></td>
+					<td><?php echo $result[$key]["employee_name"];?></td>
+					<td><?php echo $result[$key]["att_clockintime"];?></td>
+          <td><?php echo $result[$key]["att_clockouttime"];?></td>
+          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["att_latitude"];?>,<?php echo $result[$key]["att_longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
 				</tr>
  <?php
     }
@@ -212,7 +212,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("staffname")[0];
+    td = tr[i].getElementsByTagName("employee_name")[0];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

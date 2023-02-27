@@ -2,10 +2,10 @@
 require_once '../../model/DataSource.php';
 $database = new DataSource();
 include('../../controller/hr/HRController.php');
-$sql="SELECT * FROM hrlogin";
+$sql="SELECT * FROM hr";
 $sql="SELECT * FROM attendance";
-$employeename= $row['hrname'];
-$sql = "SELECT * FROM attendance where employeename='$employeename' order by date desc,clockintime desc";
+$employee_name= $row['hr_name'];
+$sql = "SELECT * FROM attendance where employee_name='$employee_name' order by att_date desc,att_clockintime desc";
 $sendsql=mysqli_query($connection,$sql);
 $result = $database->select($sql);
 
@@ -249,10 +249,10 @@ if (is_array($result) || is_object($result)) {
 		
 	         <tr>
 					<td><?php echo  $did ;?></td>
-					<td><?php echo $result[$key]["date"];?></td>
-					<td><?php echo $result[$key]["clockintime"];?></td>
-          <td><?php echo $result[$key]["clockouttime"];?></td>
-          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["latitude"];?>,<?php echo $result[$key]["longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
+					<td><?php echo $result[$key]["att_date"];?></td>
+					<td><?php echo $result[$key]["att_clockintime"];?></td>
+          <td><?php echo $result[$key]["att_clockouttime"];?></td>
+          <td style = "width: 300px; height: 300px;"><iframe style = "width: 100%; height: 100%;" src="https://www.google.com/maps?q=<?php echo $result[$key]["att_latitude"];?>,<?php echo $result[$key]["att_longitude"];?>&hl=es;z=14&output=embed"></iframe></td>
 				</tr>
  <?php
     }

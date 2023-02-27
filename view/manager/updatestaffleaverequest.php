@@ -3,19 +3,19 @@ require_once '../../model/DataSource.php';
 $database = new DataSource();
 
 if (count($_POST) > 0) {
-    $sql = "UPDATE leaverequest set leavestatus=? WHERE leaveid=?";
+    $sql = "UPDATE leaverequest set leave_status=? WHERE leave_ID=?";
     $paramType = 'si';
     $paramValue = array(
-        $_POST["leavestatus"],
-        $_GET["leaveid"]
+        $_POST["leave_status"],
+        $_GET["leave_ID"]
     );
     $database->execute($sql, $paramType, $paramValue);
     $message = "<script>alert('Leave status Updated Successfully');document.location='../../view/manager/staffleaverequest.php'</script>";
 }
-$sql = "select * from leaverequest where leaveid=? ";
+$sql = "select * from leaverequest where leave_ID=? ";
 $paramType = 'i';
 $paramValue = array(
-    $_GET["leaveid"]
+    $_GET["leave_ID"]
 );
 $result = $database->select($sql, $paramType, $paramValue);
 ?>
@@ -186,10 +186,10 @@ $result = $database->select($sql, $paramType, $paramValue);
            
             <div>
                 <div class="row">
-                    <label for="leavestatus">Leave Status <span
+                    <label for="leave_status">Leave Status <span
                         class="error-color" id="leavestatus_error"></span>
                     </label>
-                    <select name="leavestatus" id="leavestatus"  class="form-control" value="<?php echo $result[0]['leavestatus']; ?>">
+                    <select name="leave_status" id="leave_status"  class="form-control" value="<?php echo $result[0]['leave_status']; ?>">
                              <option value="Requesting">Requesting</option>
                              <option value="Approved">Approved</option>
                              </select>
